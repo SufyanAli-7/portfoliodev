@@ -9,8 +9,8 @@ export default function HeroPortrait() {
         <Image
           src={PROFILE.portrait.src}
           alt={PROFILE.portrait.alt}
-          width={PROFILE.portrait.width}
-          height={PROFILE.portrait.height}
+          fill
+          sizes="(max-width: 809px) 100vw, 320px"
           priority
           className={styles.portraitImage}
         />

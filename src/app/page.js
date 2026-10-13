@@ -1,6 +1,7 @@
 import DotGridBackground from "@/components/layout/DotGridBackground/DotGridBackground";
 import Navbar from "@/components/layout/Navbar/Navbar";
 import Hero from "@/components/sections/Hero/Hero";
+import styles from "./page.module.css";
 
 export default function Home() {
   return (
@@ -9,9 +10,9 @@ export default function Home() {
       <DotGridBackground />
 
       {/* Main page layout */}
-      <div className="relative min-h-screen flex flex-col justify-between">
+      <div className={styles.pageWrapper}>
         <Navbar />
-        <main className="flex-1 flex flex-col justify-center">
+        <main className={styles.mainContent}>
           <Hero />
         </main>
       </div>
