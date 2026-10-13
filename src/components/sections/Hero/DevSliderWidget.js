@@ -4,19 +4,33 @@ import { useState } from "react";
 import styles from "./Hero.module.css";
 
 export default function DevSliderWidget() {
-  // Interactive slider notch positions (percentages from 0 to 100 within each side track)
+  // Slider notch positions: left and right start 100% identical
   const [positions, setPositions] = useState({
     topLeft: 45,
-    topRight: 75,
-    bottomLeft: 60,
-    bottomRight: 30,
+    topRight: 45,
+    bottomLeft: 65,
+    bottomRight: 65,
   });
 
   const handleSliderClick = (trackKey, e) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
     const percentage = Math.max(0, Math.min(100, Math.round((clickX / rect.width) * 100)));
-    setPositions((prev) => ({ ...prev, [trackKey]: percentage }));
+    
+    // Synchronize both sides so they stay identical
+    if (trackKey.includes("top") || trackKey === "topLeft" || trackKey === "topRight") {
+      setPositions((prev) => ({
+        ...prev,
+        topLeft: percentage,
+        topRight: percentage,
+      }));
+    } else {
+      setPositions((prev) => ({
+        ...prev,
+        bottomLeft: percentage,
+        bottomRight: percentage,
+      }));
+    }
   };
 
   return (
@@ -36,9 +50,12 @@ export default function DevSliderWidget() {
           <div className={styles.endStopLeft} />
           <div className={styles.trackLine} />
           <div
-            className={styles.sliderNotch}
+            className={`${styles.sliderNotch} ${styles.rainSlideTop}`}
             style={{ left: `${positions.topLeft}%` }}
-          />
+          >
+            <span className={`${styles.raindropDrip} ${styles.rainDelay1}`} />
+            <span className={`${styles.raindropSplash} ${styles.rainDelay1}`} />
+          </div>
         </div>
 
         {/* Track 2 (Middle) */}
@@ -56,9 +73,12 @@ export default function DevSliderWidget() {
           <div className={styles.endStopLeft} />
           <div className={styles.trackLine} />
           <div
-            className={styles.sliderNotch}
+            className={`${styles.sliderNotch} ${styles.rainSlideBottom}`}
             style={{ left: `${positions.bottomLeft}%` }}
-          />
+          >
+            <span className={`${styles.raindropDrip} ${styles.rainDelay2}`} />
+            <span className={`${styles.raindropSplash} ${styles.rainDelay2}`} />
+          </div>
         </div>
       </div>
 
@@ -67,7 +87,7 @@ export default function DevSliderWidget() {
         <span className={styles.devBadgeText}>DEV</span>
       </div>
 
-      {/* Right rail system */}
+      {/* Right rail system (Identical to Left) */}
       <div className={styles.railSide}>
         {/* Track 1 (Top) */}
         <div
@@ -78,9 +98,12 @@ export default function DevSliderWidget() {
           <div className={styles.trackLine} />
           <div className={styles.endStopRight} />
           <div
-            className={styles.sliderNotch}
+            className={`${styles.sliderNotch} ${styles.rainSlideTop}`}
             style={{ left: `${positions.topRight}%` }}
-          />
+          >
+            <span className={`${styles.raindropDrip} ${styles.rainDelay1}`} />
+            <span className={`${styles.raindropSplash} ${styles.rainDelay1}`} />
+          </div>
         </div>
 
         {/* Track 2 (Middle) */}
@@ -98,9 +121,12 @@ export default function DevSliderWidget() {
           <div className={styles.trackLine} />
           <div className={styles.endStopRight} />
           <div
-            className={styles.sliderNotch}
+            className={`${styles.sliderNotch} ${styles.rainSlideBottom}`}
             style={{ left: `${positions.bottomRight}%` }}
-          />
+          >
+            <span className={`${styles.raindropDrip} ${styles.rainDelay2}`} />
+            <span className={`${styles.raindropSplash} ${styles.rainDelay2}`} />
+          </div>
         </div>
       </div>
     </div>
