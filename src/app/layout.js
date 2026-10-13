@@ -23,20 +23,21 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "ERICODE_ | Full-stack Developer",
+  title: "Muhammad Sufyan Ali | Full-stack Developer",
   description:
     "Full-stack developer based in Berlin. I turn ideas into fast, scalable products — and I care about the details that make software feel right.",
   keywords: [
-    "ERICODE",
+    "Muhammad Sufyan Ali",
+    "Sufyan",
     "Full-stack developer",
     "Berlin",
     "React",
     "Next.js",
     "Portfolio",
   ],
-  authors: [{ name: "Ericode" }],
+  authors: [{ name: "Muhammad Sufyan Ali" }],
   openGraph: {
-    title: "ERICODE_ | Full-stack Developer",
+    title: "Muhammad Sufyan Ali | Full-stack Developer",
     description:
       "Full-stack developer based in Berlin. I turn ideas into fast, scalable products — and I care about the details that make software feel right.",
     type: "website",

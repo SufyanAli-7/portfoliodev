@@ -48,6 +48,22 @@
   display: block;
 }
 
+.cursor {
+  display: inline-block;
+  color: var(--brand-accent);
+  margin-left: 6px;
+  animation: blinkCursor 1.2s infinite steps(1);
+}
+
+@keyframes blinkCursor {
+  0%, 50% {
+    opacity: 1;
+  }
+  50.01%, 100% {
+    opacity: 0;
+  }
+}
+
 .bioWrapper {
   max-width: 460px;
   margin-top: auto;

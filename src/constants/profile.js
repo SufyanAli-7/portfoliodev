@@ -1,5 +1,12 @@
 export const PROFILE = {
-  name: "ERICODE",
+  name: "Muhammad Sufyan Ali",
+  shortName: "Sufyan",
+  logoName: "SUFYAN ALI",
+  cursorChar: "_",
+  terminalCursor: {
+    enabled: true,
+    char: "_",
+  },
   title: "Full-stack developer",
   location: "Berlin",
   timezone: "Europe/Madrid",
@@ -7,7 +14,8 @@ export const PROFILE = {
   status: "AVAILABLE TO WORK",
   bioHeadline: {
     greeting: "HEY, I'M",
-    name: "ERICODE",
+    name: "MUHAMMAD SUFYAN ALI",
+    hasCursor: true,
   },
   bioSummary: {
     prefix: "Full-stack developer ",
@@ -17,7 +25,7 @@ export const PROFILE = {
   },
   portrait: {
     src: "/images/portrait.png",
-    alt: "Ericode developer portrait with dramatic cyan ambient lighting",
+    alt: "Muhammad Sufyan Ali developer portrait with dramatic cyan ambient lighting",
     width: 600,
     height: 750,
   },

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Container from "../Container/Container";
 import Button from "../../common/Button/Button";
 import { NAV_LINKS, CTA_CONFIG } from "@/constants/navigation";
+import { PROFILE } from "@/constants/profile";
 import styles from "./Navbar.module.css";
 
 export default function Navbar() {
@@ -14,9 +15,15 @@ export default function Navbar() {
       <Container>
         <div className={styles.navInner}>
           {/* Brand Logo */}
-          <a href="#home" className={styles.logo} aria-label="ERICODE Homepage">
-            <span>ERICODE</span>
-            <span className={styles.cursor}>_</span>
+          <a
+            href="#home"
+            className={styles.logo}
+            aria-label={`${PROFILE.name} Homepage`}
+          >
+            <span>{PROFILE.logoName}</span>
+            <span className={styles.cursor}>
+              {PROFILE.cursorChar || "_"}
+            </span>
           </a>
 
           {/* Desktop Nav Links */}
