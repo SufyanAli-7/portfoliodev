@@ -1,0 +1,320 @@
+.heroSection {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  min-height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 32px;
+  padding-bottom: 48px;
+}
+
+.heroGrid {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 48px;
+  flex: 1;
+}
+
+/* Left Column */
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  max-width: 720px;
+}
+
+.headlineWrapper {
+  margin-top: 16px;
+}
+
+.displayHeading {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.whiteLine {
+  color: var(--brand-text-primary);
+  display: block;
+}
+
+.accentLine {
+  color: var(--brand-accent);
+  display: block;
+}
+
+.bioWrapper {
+  max-width: 460px;
+  margin-top: auto;
+  padding-top: 64px;
+}
+
+.bioText {
+  color: var(--brand-text-secondary);
+  line-height: 1.65em;
+  font-size: 16px;
+  font-family: var(--font-inter), "Inter", sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.bioHighlight {
+  color: var(--brand-accent);
+  font-weight: 600;
+}
+
+/* Right Column */
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 310px;
+  flex-shrink: 0;
+}
+
+/* Portrait */
+.portraitContainer {
+  width: 100%;
+}
+
+.portraitFrame {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  overflow: hidden;
+  background-color: var(--brand-surface);
+  border: 1px solid var(--brand-border);
+}
+
+.portraitImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  display: block;
+}
+
+/* Equalizer Slider Widget */
+.sliderWidget {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 52px;
+  margin-top: 20px;
+  position: relative;
+}
+
+.railSide {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 28px;
+  flex: 1;
+  padding: 0 4px;
+}
+
+.trackLineContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 8px;
+  cursor: pointer;
+}
+
+.trackLine {
+  width: 100%;
+  height: 1px;
+  background-color: var(--brand-border);
+}
+
+.endStopLeft {
+  width: 1px;
+  height: 6px;
+  background-color: var(--brand-border);
+  flex-shrink: 0;
+}
+
+.endStopRight {
+  width: 1px;
+  height: 6px;
+  background-color: var(--brand-border);
+  flex-shrink: 0;
+}
+
+.sliderNotch {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 4px;
+  height: 10px;
+  background-color: var(--brand-accent);
+  border-radius: 1px;
+  box-shadow: 0 0 6px rgba(200, 255, 0, 0.4);
+  pointer-events: none;
+  transition: left 120ms ease-out;
+}
+
+.devBadge {
+  background-color: var(--brand-surface);
+  border: 1px solid var(--brand-border);
+  padding: 6px 14px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  margin: 0 6px;
+}
+
+.devBadgeText {
+  color: var(--brand-accent);
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Status Widget */
+.statusWidgetContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+  margin-top: 44px;
+  width: 100%;
+}
+
+.statusBadgeRow {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.availabilityBadge {
+  background-color: var(--brand-surface);
+  border: 1px solid var(--brand-border);
+  color: var(--brand-accent);
+}
+
+.timezoneRow {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--brand-text-primary);
+}
+
+.timeValue {
+  font-weight: 700;
+  color: var(--brand-text-primary);
+}
+
+.timezoneLabel {
+  font-weight: 400;
+  color: var(--brand-text-secondary);
+}
+
+.actionRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+.heroCtaButton {
+  min-width: 120px;
+}
+
+.framerWatermark {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--brand-text-muted);
+  font-family: var(--font-inter), sans-serif;
+  font-size: 11px;
+  margin-top: 12px;
+  opacity: 0.45;
+  transition: opacity var(--transition-fast);
+  user-select: none;
+}
+
+.framerWatermark:hover {
+  opacity: 0.8;
+}
+
+.framerIcon {
+  display: block;
+}
+
+.framerText {
+  letter-spacing: -0.01em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1199.98px) {
+  .heroSection {
+    min-height: auto;
+    padding-bottom: 40px;
+  }
+
+  .heroGrid {
+    gap: 32px;
+  }
+
+  .rightColumn {
+    width: 280px;
+  }
+
+  .portraitFrame {
+    height: 350px;
+  }
+
+  .bioWrapper {
+    padding-top: 48px;
+  }
+}
+
+@media (max-width: 809.98px) {
+  .heroSection {
+    padding-top: 16px;
+    padding-bottom: 40px;
+  }
+
+  .heroGrid {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .leftColumn {
+    max-width: 100%;
+  }
+
+  .bioWrapper {
+    padding-top: 24px;
+    order: 3;
+  }
+
+  .rightColumn {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+    align-items: center;
+    order: 2;
+  }
+
+  .statusWidgetContainer {
+    align-items: center;
+    margin-top: 32px;
+  }
+
+  .statusBadgeRow,
+  .actionRow {
+    justify-content: center;
+  }
+}

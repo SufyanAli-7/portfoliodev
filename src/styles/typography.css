@@ -1,0 +1,179 @@
+/* Typography presets extracted from design.md */
+
+.text-display {
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  text-align: left;
+  text-transform: uppercase;
+  color: var(--brand-text-primary);
+  font-feature-settings: "blwf" 1, "cv03" 1, "cv04" 1, "cv09" 1, "cv11" 1;
+  font-size: 120px;
+  letter-spacing: -0.05em;
+  line-height: 0.98em;
+}
+
+@media (min-width: 810px) and (max-width: 1199.98px) {
+  .text-display {
+    font-size: 96px;
+    letter-spacing: -0.05em;
+    line-height: 0.98em;
+  }
+}
+
+@media (max-width: 809.98px) {
+  .text-display {
+    font-size: 64px;
+    letter-spacing: -0.05em;
+    line-height: 0.98em;
+  }
+}
+
+.text-heading {
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  text-align: left;
+  text-transform: uppercase;
+  color: var(--brand-text-primary);
+  font-feature-settings: "blwf" 1, "cv03" 1, "cv04" 1, "cv09" 1, "cv11" 1;
+  font-size: 32px;
+  letter-spacing: -0.02em;
+  line-height: 1.2em;
+}
+
+@media (min-width: 810px) and (max-width: 1199.98px) {
+  .text-heading {
+    font-size: 26px;
+    letter-spacing: -0.02em;
+    line-height: 1.2em;
+  }
+}
+
+@media (max-width: 809.98px) {
+  .text-heading {
+    font-size: 20px;
+    letter-spacing: -0.02em;
+    line-height: 1.2em;
+  }
+}
+
+.text-heading-l {
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  text-align: left;
+  text-transform: uppercase;
+  color: var(--brand-text-primary);
+  font-feature-settings: "blwf" 1, "cv03" 1, "cv04" 1, "cv09" 1, "cv11" 1;
+  font-size: 48px;
+  letter-spacing: -0.02em;
+  line-height: 1.2em;
+}
+
+@media (min-width: 810px) and (max-width: 1199.98px) {
+  .text-heading-l {
+    font-size: 38px;
+    letter-spacing: -0.02em;
+    line-height: 1.2em;
+  }
+}
+
+@media (max-width: 809.98px) {
+  .text-heading-l {
+    font-size: 31px;
+    letter-spacing: -0.02em;
+    line-height: 1.2em;
+  }
+}
+
+.text-heading-sm {
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  text-align: left;
+  text-transform: uppercase;
+  color: var(--brand-text-primary);
+  font-feature-settings: "blwf" 1, "cv03" 1, "cv04" 1, "cv09" 1, "cv11" 1;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+  line-height: 1.3em;
+}
+
+.text-display-sm {
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  text-align: left;
+  color: var(--brand-text-primary);
+  font-feature-settings: "blwf" 1, "cv03" 1, "cv04" 1, "cv09" 1, "cv11" 1;
+  font-size: 64px;
+  letter-spacing: -0.03em;
+  line-height: 1em;
+}
+
+@media (min-width: 810px) and (max-width: 1199.98px) {
+  .text-display-sm {
+    font-size: 51px;
+    letter-spacing: -0.03em;
+    line-height: 1em;
+  }
+}
+
+@media (max-width: 809.98px) {
+  .text-display-sm {
+    font-size: 41px;
+    letter-spacing: -0.03em;
+    line-height: 1em;
+  }
+}
+
+.text-body {
+  font-family: var(--font-inter), "Inter", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: left;
+  color: var(--brand-text-secondary);
+  font-feature-settings: "blwf" 1, "cv03" 1, "cv04" 1, "cv09" 1, "cv11" 1;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  line-height: 1.65em;
+}
+
+.text-mono {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+  text-align: left;
+  color: var(--brand-text-secondary);
+  font-feature-settings: "blwf" 1, "cv03" 1, "cv04" 1, "cv09" 1, "cv11" 1;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  line-height: 1.5em;
+}
+
+.text-mono-caps {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-weight: 500;
+  font-style: normal;
+  text-align: left;
+  text-transform: uppercase;
+  color: var(--brand-text-secondary);
+  font-feature-settings: "blwf" 1, "cv03" 1, "cv04" 1, "cv09" 1, "cv11" 1;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  line-height: 1.45em;
+}
+
+.text-mono-caps-bold {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-weight: 700;
+  font-style: normal;
+  text-align: left;
+  text-transform: uppercase;
+  color: var(--brand-text-primary);
+  font-feature-settings: "blwf" 1, "cv03" 1, "cv04" 1, "cv09" 1, "cv11" 1;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  line-height: 1.45em;
+}

@@ -1,0 +1,64 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 9999px;
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-normal);
+  user-select: none;
+}
+
+/* Primary Variant (Lime pill button) */
+.primary {
+  background-color: var(--brand-accent);
+  color: var(--brand-background);
+  border: 1px solid var(--brand-accent);
+  padding: 10px 24px;
+}
+
+.primary:hover {
+  background-color: #d4ff1a;
+  box-shadow: 0 0 24px rgba(200, 255, 0, 0.4);
+  transform: translateY(-1px);
+}
+
+.primary:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Secondary / Outline Variant */
+.outline {
+  background-color: transparent;
+  color: var(--brand-text-primary);
+  border: 1px solid var(--brand-border);
+  padding: 10px 24px;
+}
+
+.outline:hover {
+  border-color: var(--brand-accent);
+  color: var(--brand-accent);
+}
+
+/* Sizes */
+.sm {
+  padding: 8px 18px;
+  font-size: 11px;
+}
+
+.md {
+  padding: 10px 24px;
+  font-size: 12px;
+}
+
+.lg {
+  padding: 12px 30px;
+  font-size: 13px;
+}
