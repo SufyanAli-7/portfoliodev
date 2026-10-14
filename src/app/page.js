@@ -1,6 +1,7 @@
 import DotGridBackground from "@/components/layout/DotGridBackground/DotGridBackground";
 import Navbar from "@/components/layout/Navbar/Navbar";
 import Hero from "@/components/sections/Hero/Hero";
+import VitalStats from "@/components/sections/VitalStats/VitalStats";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
         <Navbar />
         <main className={styles.mainContent}>
           <Hero />
+          <VitalStats />
         </main>
       </div>
     </>

@@ -1,0 +1,237 @@
+.statsSection {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  padding-top: 100px;
+  padding-bottom: 90px;
+}
+
+/* Section Header */
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 48px;
+  width: 100%;
+}
+
+.headerPrefix {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--brand-text-secondary);
+  white-space: nowrap;
+}
+
+.headerTitle {
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #ffffff;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.accentLine {
+  flex: 1;
+  height: 1px;
+  background-color: var(--brand-accent);
+  opacity: 0.9;
+  box-shadow: 0 0 8px rgba(200, 255, 0, 0.3);
+}
+
+/* Cards Grid */
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+  margin-bottom: 64px;
+}
+
+.statCard {
+  background-color: var(--brand-surface);
+  border: 1px solid var(--brand-border);
+  border-radius: 6px;
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 16px;
+  min-height: 220px;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.statCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(200, 255, 0, 0.04) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  pointer-events: none;
+}
+
+.statCard:hover {
+  border-color: rgba(200, 255, 0, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 16px rgba(200, 255, 0, 0.1);
+}
+
+.statCard:hover::before {
+  opacity: 1;
+}
+
+.statValue {
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  font-size: 72px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: #ffffff;
+  margin: 0;
+}
+
+.statLabel {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand-text-secondary);
+  margin: 0;
+}
+
+/* Tech Marquee */
+.marqueeContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 24px 0;
+  /* Fade out edges seamlessly */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+}
+
+.marqueeTrack {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: marqueeRightToLeft 28s linear infinite;
+  will-change: transform;
+}
+
+.marqueeContainer:hover .marqueeTrack {
+  animation-play-state: paused;
+}
+
+.marqueeItemWrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  padding-right: 24px;
+}
+
+.marqueeItem {
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  user-select: none;
+  color: #ffffff;
+  transition: color var(--transition-fast);
+}
+
+.marqueeItem:hover {
+  color: var(--brand-accent);
+  text-shadow: 0 0 12px rgba(200, 255, 0, 0.5);
+}
+
+.marqueeDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--brand-accent);
+  box-shadow: 0 0 8px rgba(200, 255, 0, 0.8);
+  flex-shrink: 0;
+}
+
+/* Continuous smooth loop from right to left */
+@keyframes marqueeRightToLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1199.98px) {
+  .headerTitle {
+    font-size: 26px;
+  }
+
+  .statValue {
+    font-size: 60px;
+  }
+
+  .marqueeItem {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 809.98px) {
+  .statsSection {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .headerTitle {
+    font-size: 22px;
+  }
+
+  .cardsGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .statCard {
+    padding: 36px 20px;
+    min-height: 180px;
+  }
+
+  .statValue {
+    font-size: 54px;
+  }
+
+  .marqueeItem {
+    font-size: 18px;
+  }
+}
