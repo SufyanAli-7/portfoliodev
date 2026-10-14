@@ -557,6 +557,213 @@
   text-shadow: 0 0 16px rgba(200, 255, 0, 0.9);
 }
 
+/* ==========================================================================
+   PerfVisualWindow (0033): Radar Scanner + Scrolling Checklist
+   ========================================================================== */
+.perfVisualCard {
+  position: relative;
+  background-color: #121212;
+  border: 1px solid #242424;
+  border-radius: 8px;
+  overflow: hidden;
+  min-height: 340px;
+  max-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 32px;
+  gap: 32px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6), 0 0 1px rgba(255, 255, 255, 0.05);
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.perfVisualCard:hover {
+  border-color: #333333;
+  box-shadow: 0 28px 56px rgba(0, 0, 0, 0.7), 0 0 24px rgba(200, 255, 0, 0.05);
+}
+
+.perfCardGlow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 35% center,
+    rgba(200, 255, 0, 0.04) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+}
+
+/* Left: 360-degree Rotating Radar Scanner */
+.radarContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-width: 200px;
+}
+
+.radarDish {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background-color: #0b0b0b;
+  border: 1px solid #202020;
+  overflow: hidden;
+  box-shadow: inset 0 0 32px rgba(0, 0, 0, 0.9), 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* Concentric Rings */
+.radarRing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+}
+
+.ringInner {
+  width: 70px;
+  height: 70px;
+}
+
+.ringMiddle {
+  width: 140px;
+  height: 140px;
+}
+
+.ringOuter {
+  width: 210px;
+  height: 210px;
+}
+
+/* 360-degree rotating sweep cone */
+.radarSweep {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #c8ff00 0deg,
+    rgba(200, 255, 0, 0.45) 15deg,
+    rgba(200, 255, 0, 0.15) 30deg,
+    transparent 45deg,
+    transparent 360deg
+  );
+  animation: rotateRadar 3.5s linear infinite;
+  will-change: transform;
+}
+
+@keyframes rotateRadar {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+/* Center Glowing Pivot */
+.radarPivot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--brand-accent);
+  box-shadow: 0 0 10px rgba(200, 255, 0, 0.9);
+  z-index: 5;
+}
+
+/* Right: Vertically Auto-Scrolling Checklist */
+.checksViewport {
+  flex: 1;
+  max-width: 250px;
+  height: 290px;
+  position: relative;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 14%,
+    black 86%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 14%,
+    black 86%,
+    transparent 100%
+  );
+}
+
+.checksTrack {
+  display: flex;
+  flex-direction: column;
+  animation: checkScroll 20s linear infinite;
+  will-change: transform;
+}
+
+.perfVisualCard:hover .checksTrack {
+  animation-play-state: paused;
+}
+
+@keyframes checkScroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.checkGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 8px;
+}
+
+.checkCard {
+  background-color: #171717;
+  border: 1px solid #242424;
+  border-radius: 4px;
+  height: 38px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.checkCard:hover {
+  border-color: #383838;
+  background-color: #1b1b1b;
+}
+
+.checkCardIcon {
+  color: var(--brand-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.checkCardLabel {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #e5e5e5;
+  white-space: nowrap;
+}
+
 /* Responsive adjustments */
 @media (max-width: 1199.98px) {
   .itemVisualRight,
@@ -596,6 +803,114 @@
   .apiVisualCard {
     min-height: 280px;
     max-height: 320px;
+  }
+
+  .perfVisualCard {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 180px;
+    max-height: 220px;
+    padding: 16px 14px;
+    gap: 12px;
+  }
+
+  .radarContainer {
+    flex: 0 0 auto;
+    min-width: auto;
+  }
+
+  .radarDish {
+    width: 136px;
+    height: 136px;
+  }
+
+  .ringInner {
+    width: 44px;
+    height: 44px;
+  }
+
+  .ringMiddle {
+    width: 88px;
+    height: 88px;
+  }
+
+  .ringOuter {
+    width: 130px;
+    height: 130px;
+  }
+
+  .checksViewport {
+    flex: 1;
+    min-width: 0;
+    max-width: none;
+    height: 155px;
+  }
+
+  .checkGroup {
+    gap: 6px;
+    padding-bottom: 6px;
+  }
+
+  .checkCard {
+    min-height: 32px;
+    height: auto;
+    padding: 5px 8px;
+    gap: 7px;
+  }
+
+  .checkCardIcon {
+    width: 13px;
+    height: 13px;
+  }
+
+  .checkCardLabel {
+    font-size: 9px;
+    line-height: 1.25;
+    letter-spacing: 0.08em;
+    white-space: normal;
+    word-break: break-word;
+  }
+}
+
+@media (max-width: 420px) {
+  .perfVisualCard {
+    padding: 12px 10px;
+    gap: 10px;
+  }
+
+  .radarDish {
+    width: 120px;
+    height: 120px;
+  }
+
+  .ringInner {
+    width: 38px;
+    height: 38px;
+  }
+
+  .ringMiddle {
+    width: 76px;
+    height: 76px;
+  }
+
+  .ringOuter {
+    width: 114px;
+    height: 114px;
+  }
+
+  .checksViewport {
+    height: 140px;
+  }
+
+  .checkCard {
+    padding: 4px 6px;
+    gap: 6px;
+  }
+
+  .checkCardLabel {
+    font-size: 8px;
   }
 }
 

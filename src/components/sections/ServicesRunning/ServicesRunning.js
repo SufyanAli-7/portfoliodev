@@ -2,8 +2,22 @@ import Container from "../../layout/Container/Container";
 import ServiceInfo from "./ServiceInfo";
 import CodeWindow from "./CodeWindow";
 import ApiVisualWindow from "./ApiVisualWindow";
+import PerfVisualWindow from "./PerfVisualWindow";
 import { SERVICES_SECTION, SERVICES_LIST } from "@/constants/services";
 import styles from "./ServicesRunning.module.css";
+
+function renderVisual(visualType) {
+  switch (visualType) {
+    case "code-window":
+      return <CodeWindow />;
+    case "api-visual":
+      return <ApiVisualWindow />;
+    case "perf-radar":
+      return <PerfVisualWindow />;
+    default:
+      return null;
+  }
+}
 
 export default function ServicesRunning() {
   return (
@@ -24,7 +38,7 @@ export default function ServicesRunning() {
           <div className={styles.accentLine} aria-hidden="true" />
         </div>
 
-        {/* List of Services (0031: FULL_STACK_DEV, 0032: API_ENGINEERING) */}
+        {/* List of Services (0031: FULL_STACK_DEV, 0032: API_ENGINEERING, 0033: PERF_OPTIMIZATION) */}
         <div className={styles.servicesList}>
           {SERVICES_LIST.map((service) => (
             <div
@@ -37,9 +51,7 @@ export default function ServicesRunning() {
             >
               {service.layout === "visual-left" ? (
                 <>
-                  {/* Left: API Visual Canvas with left-to-right flowing colorful lines */}
-                  <ApiVisualWindow />
-                  {/* Right: Info Column */}
+                  {renderVisual(service.visualType)}
                   <ServiceInfo
                     serviceCode={service.serviceCode}
                     title={service.title}
@@ -49,15 +61,13 @@ export default function ServicesRunning() {
                 </>
               ) : (
                 <>
-                  {/* Left: Info Column */}
                   <ServiceInfo
                     serviceCode={service.serviceCode}
                     title={service.title}
                     description={service.description}
                     status={service.status}
                   />
-                  {/* Right: Scrolling Code Window */}
-                  <CodeWindow />
+                  {renderVisual(service.visualType)}
                 </>
               )}
             </div>

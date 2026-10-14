@@ -32,6 +32,20 @@ export const SERVICES_LIST = [
     visualType: "api-visual",
     layout: "visual-left", // Left: API visual canvas, Right: text info
   },
+  {
+    id: "perf-optimization",
+    serviceCode: "0033",
+    title: "PERF_OPTIMIZATION",
+    description:
+      "I make slow things fast. Core Web Vitals, bundle sizes, query optimization — I dig into the numbers and fix what matters.",
+    status: {
+      state: "ACTIVE",
+      duration: "2Y 6MO",
+      startDate: "2024-04-01",
+    },
+    visualType: "perf-radar",
+    layout: "visual-right", // Left: text info, Right: radar scanner & scrolling check items
+  },
 ];
 
 // Backwards compatibility for existing imports
