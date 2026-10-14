@@ -394,7 +394,7 @@
   max-width: 480px;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 34px;
   align-items: stretch;
   justify-content: center;
 }
@@ -404,7 +404,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  height: 12px;
+  height: 2px;
   position: relative;
 }
 
@@ -492,7 +492,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 96px;
-  height: 92px;
+  height: 104px;
   background-color: #0d0d0d;
   border: 1px solid #282828;
   border-radius: 10px;
@@ -528,9 +528,9 @@
   right: -3px;
 }
 
-/* Align notches with the 3 tracks */
+/* Align notches precisely with the 3 track lines (spacing = 36px) */
 .chipPinTop {
-  top: calc(50% - 28px - 2px);
+  top: calc(50% - 36px - 2px);
 }
 
 .chipPinMiddle {
@@ -538,7 +538,7 @@
 }
 
 .chipPinBottom {
-  top: calc(50% + 28px - 2px);
+  top: calc(50% + 36px - 2px);
 }
 
 /* API Brand Text */
