@@ -3,7 +3,7 @@
    Matches screenshots:
    - 03 / SERVICES_RUNNING with horizontal neon accent line
    - 0031: FULL_STACK_DEV (Left info, Right scrolling code window)
-   - 0032: API_ENGINEERING (Left API visual window with flowing lines, Right info)
+   - 0032: API_ENGINEERING (Left API visual window with synchronized neon beams, Right info)
    ========================================================================== */
 
 .servicesSection {
@@ -353,7 +353,7 @@
 
 /* ==========================================================================
    Left Column (0032): API Interactive Visual Card
-   Features moving colorful lines from left to right through the central API chip
+   Synchronized, identical neon beams starting at left dots and ending at right dots (#C8FF00)
    ========================================================================== */
 .apiVisualCard {
   position: relative;
@@ -366,6 +366,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 40px 24px;
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6), 0 0 1px rgba(255, 255, 255, 0.05);
   transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
 }
@@ -380,65 +381,180 @@
   inset: 0;
   background: radial-gradient(
     circle at center,
-    rgba(200, 255, 0, 0.03) 0%,
+    rgba(200, 255, 0, 0.04) 0%,
     transparent 65%
   );
   pointer-events: none;
 }
 
-.apiCanvas {
+/* Pipeline Stage */
+.pipelineStage {
+  position: relative;
   width: 100%;
-  height: 100%;
-  display: block;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  align-items: stretch;
+  justify-content: center;
 }
 
-/* Moving Colorful Data Beams from Left to Right */
-@keyframes flowDataLeftToRight {
+/* Individual Pipeline Row */
+.pipelineRow {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 12px;
+  position: relative;
+}
+
+/* Terminal Pins: Bounded strictly at the two ends */
+.terminalPinLeft,
+.terminalPinRight {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #3a3a3a;
+  border: 1.5px solid #1a1a1a;
+  flex-shrink: 0;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+  z-index: 5;
+}
+
+.terminalPinLeft {
+  margin-right: -4px;
+}
+
+.terminalPinRight {
+  margin-left: -4px;
+}
+
+/* Base Track Line - Strictly clips any beam overflow past the terminal dots */
+.trackLine {
+  flex: 1;
+  height: 2px;
+  background-color: #222222;
+  position: relative;
+  overflow: hidden; /* Strict boundary: Beam CANNOT go past the left or right dots */
+}
+
+/* ==========================================================================
+   Synchronized Identical Beams (#C8FF00)
+   Start at left dots, travel simultaneously, and terminate at right dots
+   ========================================================================== */
+.beam {
+  position: absolute;
+  top: -1px;
+  height: 4px;
+  width: 85px;
+  border-radius: 2px;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(200, 255, 0, 0) 0%,
+    rgba(200, 255, 0, 0.4) 35%,
+    #c8ff00 100%
+  );
+  box-shadow: 0 0 10px #c8ff00, 0 0 4px #c8ff00;
+  animation: streamSync 2.4s linear infinite;
+  will-change: left, transform, opacity;
+}
+
+/* Synchronized Motion: Starts at left dot, travels across, ends at right dot */
+@keyframes streamSync {
   0% {
-    stroke-dashoffset: 100;
+    left: 0%;
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  6% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  98% {
+    left: 100%;
+    transform: translateX(0%);
+    opacity: 0;
   }
   100% {
-    stroke-dashoffset: -400;
+    left: 100%;
+    transform: translateX(0%);
+    opacity: 0;
   }
 }
 
-.beamTrack1 {
-  stroke-dasharray: 100 400;
-  animation: flowDataLeftToRight 2.8s linear infinite;
-  will-change: stroke-dashoffset;
+/* Center API Processor Chip */
+.apiChip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 96px;
+  height: 92px;
+  background-color: #0d0d0d;
+  border: 1px solid #282828;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
 }
 
-.beamTrack2 {
-  stroke-dasharray: 100 400;
-  animation: flowDataLeftToRight 2.2s linear infinite;
-  animation-delay: -0.8s;
-  will-change: stroke-dashoffset;
+.apiVisualCard:hover .apiChip {
+  transform: translate(-50%, -50%) scale(1.03);
+  border-color: #383838;
 }
 
-.beamTrack3 {
-  stroke-dasharray: 100 400;
-  animation: flowDataLeftToRight 3.2s linear infinite;
-  animation-delay: -1.6s;
-  will-change: stroke-dashoffset;
+/* Connector Pins on Chip Left and Right */
+.chipPinLeft,
+.chipPinRight {
+  position: absolute;
+  width: 6px;
+  height: 4px;
+  background-color: var(--brand-accent);
+  border-radius: 1px;
+  box-shadow: 0 0 6px rgba(200, 255, 0, 0.8);
 }
 
-/* API Chip styling */
-.apiChipGroup {
-  transition: transform var(--transition-fast);
+.chipPinLeft {
+  left: -3px;
 }
 
-.apiVisualCard:hover .apiChipGroup {
-  transform: scale(1.02);
-  transform-origin: 280px 150px;
+.chipPinRight {
+  right: -3px;
 }
 
-.apiText {
+/* Align notches with the 3 tracks */
+.chipPinTop {
+  top: calc(50% - 28px - 2px);
+}
+
+.chipPinMiddle {
+  top: calc(50% - 2px);
+}
+
+.chipPinBottom {
+  top: calc(50% + 28px - 2px);
+}
+
+/* API Brand Text */
+.apiBrandText {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--brand-accent);
+  text-shadow: 0 0 10px rgba(200, 255, 0, 0.6);
   user-select: none;
-  transition: fill var(--transition-fast), filter var(--transition-fast);
+  transition: text-shadow var(--transition-fast);
 }
 
-.apiVisualCard:hover .apiText {
-  filter: drop-shadow(0 0 8px rgba(200, 255, 0, 0.8));
+.apiVisualCard:hover .apiBrandText {
+  text-shadow: 0 0 16px rgba(200, 255, 0, 0.9);
 }
 
 /* Responsive adjustments */
