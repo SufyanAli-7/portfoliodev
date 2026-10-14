@@ -8,7 +8,7 @@ import { CTA_CONFIG } from "@/constants/navigation";
 import styles from "./Hero.module.css";
 
 export default function StatusWidget() {
-  const currentTime = useLocalTime(PROFILE.timezone, "12:38");
+  const { time, period, location } = useLocalTime();
 
   return (
     <div className={styles.statusWidgetContainer}>
@@ -19,10 +19,12 @@ export default function StatusWidget() {
         </Badge>
       </div>
 
-      {/* Timezone and Live Time */}
+      {/* Dynamic 12h User Time & Geolocation */}
       <div className={styles.timezoneRow}>
-        <span className={styles.timeValue}>{currentTime}</span>
-        <span className={styles.timezoneLabel}>{PROFILE.timezoneLabel}</span>
+        <span className={styles.timeValue}>
+          {time} {period}
+        </span>
+        <span className={styles.timezoneLabel}>{location}</span>
       </div>
 
       {/* Bottom CTA Button */}
