@@ -1,0 +1,521 @@
+/* ==========================================================================
+   ServicesRunning Section Styles
+   Matches screenshots:
+   - 03 / SERVICES_RUNNING with horizontal neon accent line
+   - 0031: FULL_STACK_DEV (Left info, Right scrolling code window)
+   - 0032: API_ENGINEERING (Left API visual window with flowing lines, Right info)
+   ========================================================================== */
+
+.servicesSection {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  padding-top: 60px;
+  padding-bottom: 110px;
+}
+
+/* Section Header: 03 / SERVICES_RUNNING with horizontal neon accent line */
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 56px;
+  width: 100%;
+}
+
+.headerPrefix {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--brand-text-secondary);
+  white-space: nowrap;
+}
+
+.headerTitle {
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #ffffff;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.accentLine {
+  flex: 1;
+  height: 1px;
+  background-color: var(--brand-accent);
+  opacity: 0.9;
+  box-shadow: 0 0 8px rgba(200, 255, 0, 0.3);
+}
+
+/* Services List Container */
+.servicesList {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  width: 100%;
+}
+
+/* Service Item Layouts */
+.serviceItem {
+  display: grid;
+  align-items: center;
+  width: 100%;
+}
+
+/* Item 1 (0031): Left Info Column (~40%), Right Code Window (~60%) */
+.itemVisualRight {
+  grid-template-columns: 1fr 1.35fr;
+  gap: 64px;
+}
+
+/* Item 2 (0032): Left Visual Window (~60%), Right Info Column (~40%) */
+.itemVisualLeft {
+  grid-template-columns: 1.35fr 1fr;
+  gap: 64px;
+}
+
+/* Info Column */
+.infoColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.serviceCode {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: #666666;
+  margin-bottom: 32px;
+}
+
+.serviceTitle {
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+  line-height: 1.15;
+}
+
+.serviceDescription {
+  font-family: var(--font-inter), "Inter", sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #a0a0a0;
+  margin: 0 0 36px 0;
+  max-width: 480px;
+}
+
+/* Active Status Pill */
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.statusDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--brand-accent);
+  box-shadow: 0 0 10px rgba(200, 255, 0, 0.9);
+  flex-shrink: 0;
+}
+
+.statusState {
+  font-weight: 700;
+  color: var(--brand-accent);
+}
+
+.statusDuration {
+  font-weight: 500;
+  color: #888888;
+}
+
+/* ==========================================================================
+   Right Column (0031): Code Window Frame
+   ========================================================================== */
+.codeWindow {
+  position: relative;
+  background-color: #121212;
+  border: 1px solid #242424;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6), 0 0 1px rgba(255, 255, 255, 0.05);
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.codeWindow:hover {
+  border-color: #333333;
+  box-shadow: 0 28px 56px rgba(0, 0, 0, 0.7), 0 0 20px rgba(200, 255, 0, 0.04);
+}
+
+/* Window Chrome / Header Bar */
+.windowHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  padding: 0 16px;
+  background-color: #161616;
+  border-bottom: 1px solid #222222;
+  user-select: none;
+}
+
+.navArrows {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.arrowBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #555555;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-fast);
+}
+
+.arrowBtn:hover {
+  color: #aaaaaa;
+}
+
+.windowControls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cubeIcon {
+  color: var(--brand-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.85;
+}
+
+.controlBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #555555;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-fast);
+}
+
+.controlBtn:hover {
+  color: #ffffff;
+}
+
+/* Window Body: Activity Bar + Code Viewport */
+.windowBody {
+  display: flex;
+  min-height: 340px;
+  max-height: 360px;
+}
+
+/* Left Mini Activity Bar */
+.activityBar {
+  width: 44px;
+  background-color: #141414;
+  border-right: 1px solid #1f1f1f;
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  flex-shrink: 0;
+}
+
+.activityIcon {
+  color: #555555;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-fast);
+}
+
+.activityIcon:hover {
+  color: #aaaaaa;
+}
+
+.activityIcon.active {
+  color: #888888;
+}
+
+/* Code Viewport with Top & Bottom Fade Mask */
+.codeViewport {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  padding: 24px 28px;
+  background-color: #0f0f0f;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+}
+
+/* Infinite Scrolling Track */
+.scrollTrack {
+  display: flex;
+  flex-direction: column;
+  animation: codeScroll 18s linear infinite;
+  will-change: transform;
+}
+
+.codeWindow:hover .scrollTrack {
+  animation-play-state: paused;
+}
+
+@keyframes codeScroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+/* Code Block Content */
+.codeBlock {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: #a3a3a3;
+  white-space: pre;
+  padding-bottom: 24px;
+}
+
+/* Syntax Highlighting */
+.tokenLime {
+  color: var(--brand-accent);
+  font-weight: 500;
+}
+
+.tokenWhite {
+  color: #f5f5f5;
+  font-weight: 500;
+}
+
+.tokenMuted {
+  color: #9e9e9e;
+}
+
+.tokenProperty {
+  color: #a8a8a8;
+}
+
+.tokenComment {
+  color: #555555;
+  font-style: italic;
+}
+
+.tokenIndent {
+  display: inline-block;
+  width: 16px;
+}
+
+.tokenIndent2 {
+  display: inline-block;
+  width: 32px;
+}
+
+/* ==========================================================================
+   Left Column (0032): API Interactive Visual Card
+   Features moving colorful lines from left to right through the central API chip
+   ========================================================================== */
+.apiVisualCard {
+  position: relative;
+  background-color: #121212;
+  border: 1px solid #242424;
+  border-radius: 8px;
+  overflow: hidden;
+  min-height: 340px;
+  max-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6), 0 0 1px rgba(255, 255, 255, 0.05);
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.apiVisualCard:hover {
+  border-color: #333333;
+  box-shadow: 0 28px 56px rgba(0, 0, 0, 0.7), 0 0 24px rgba(200, 255, 0, 0.05);
+}
+
+.apiCardGlow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(200, 255, 0, 0.03) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+}
+
+.apiCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Moving Colorful Data Beams from Left to Right */
+@keyframes flowDataLeftToRight {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: -400;
+  }
+}
+
+.beamTrack1 {
+  stroke-dasharray: 100 400;
+  animation: flowDataLeftToRight 2.8s linear infinite;
+  will-change: stroke-dashoffset;
+}
+
+.beamTrack2 {
+  stroke-dasharray: 100 400;
+  animation: flowDataLeftToRight 2.2s linear infinite;
+  animation-delay: -0.8s;
+  will-change: stroke-dashoffset;
+}
+
+.beamTrack3 {
+  stroke-dasharray: 100 400;
+  animation: flowDataLeftToRight 3.2s linear infinite;
+  animation-delay: -1.6s;
+  will-change: stroke-dashoffset;
+}
+
+/* API Chip styling */
+.apiChipGroup {
+  transition: transform var(--transition-fast);
+}
+
+.apiVisualCard:hover .apiChipGroup {
+  transform: scale(1.02);
+  transform-origin: 280px 150px;
+}
+
+.apiText {
+  user-select: none;
+  transition: fill var(--transition-fast), filter var(--transition-fast);
+}
+
+.apiVisualCard:hover .apiText {
+  filter: drop-shadow(0 0 8px rgba(200, 255, 0, 0.8));
+}
+
+/* Responsive adjustments */
+@media (max-width: 1199.98px) {
+  .itemVisualRight,
+  .itemVisualLeft {
+    gap: 40px;
+  }
+
+  .serviceTitle {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 899.98px) {
+  .servicesList {
+    gap: 60px;
+  }
+
+  .itemVisualRight,
+  .itemVisualLeft {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  /* Keep visual card above text on mobile for nice flow */
+  .itemVisualLeft > :first-child {
+    order: 2;
+  }
+  .itemVisualLeft > :last-child {
+    order: 1;
+  }
+
+  .serviceDescription {
+    max-width: 100%;
+  }
+
+  .windowBody,
+  .apiVisualCard {
+    min-height: 280px;
+    max-height: 320px;
+  }
+}
+
+@media (max-width: 809.98px) {
+  .servicesSection {
+    padding-top: 40px;
+    padding-bottom: 70px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 36px;
+  }
+
+  .headerTitle {
+    font-size: 22px;
+  }
+
+  .serviceTitle {
+    font-size: 24px;
+  }
+
+  .serviceCode {
+    margin-bottom: 20px;
+  }
+
+  .serviceDescription {
+    font-size: 15px;
+    margin-bottom: 28px;
+  }
+
+  .codeBlock {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .codeViewport {
+    padding: 18px 16px;
+  }
+}
