@@ -25,12 +25,12 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata = {
   title: "Muhammad Sufyan Ali | Full-stack Developer",
   description:
-    "Full-stack developer based in Berlin. I turn ideas into fast, scalable products — and I care about the details that make software feel right.",
+    "Full-stack developer based in Faisalabad. I turn ideas into fast, scalable products — and I care about the details that make software feel right.",
   keywords: [
     "Muhammad Sufyan Ali",
     "Sufyan",
     "Full-stack developer",
-    "Berlin",
+    "Faisalabad",
     "React",
     "Next.js",
     "Portfolio",
@@ -39,7 +39,7 @@ export const metadata = {
   openGraph: {
     title: "Muhammad Sufyan Ali | Full-stack Developer",
     description:
-      "Full-stack developer based in Berlin. I turn ideas into fast, scalable products — and I care about the details that make software feel right.",
+      "Full-stack developer based in Faisalabad. I turn ideas into fast, scalable products — and I care about the details that make software feel right.",
     type: "website",
   },
 };

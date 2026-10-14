@@ -8,7 +8,7 @@ export const PROFILE = {
     char: "_",
   },
   title: "Full-stack developer",
-  location: "Berlin",
+  location: "Faisalabad",
   timezone: "Europe/Madrid",
   timezoneLabel: "Europe/Madrid",
   status: "AVAILABLE TO WORK",
@@ -18,8 +18,9 @@ export const PROFILE = {
     hasCursor: true,
   },
   bioSummary: {
-    prefix: "Full-stack developer ",
-    highlight: "based in Berlin.",
+    role: "Full-stack developer",
+    basedIn: " based in ",
+    city: "Faisalabad.",
     suffix:
       " I turn ideas into fast, scalable products — and I care about the details that make software feel right.",
   },
