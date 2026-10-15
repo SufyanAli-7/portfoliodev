@@ -61,6 +61,21 @@ export const SERVICES_LIST = [
     visualType: "saas-visual",
     layout: "visual-left", // Left: SaaS visual architecture, Right: text info (alternating sequence)
   },
+  {
+    id: "mobile-app-dev",
+    serviceCode: "0035",
+    title: "MOBILE_APP_DEVELOPMENT",
+    description:
+      "I build cross-platform mobile apps with modern tech like React Native and Expo — fast, scalable, and user-friendly.",
+    status: {
+      state: "ACTIVE",
+      duration: "2Y 6M",
+      exactDuration: true,
+      startDate: "2024-04-01",
+    },
+    visualType: "mobile-visual",
+    layout: "visual-right", // Left: text info, Right: mobile app visual canvas (alternating sequence)
+  },
 ];
 
 // Backwards compatibility for existing imports

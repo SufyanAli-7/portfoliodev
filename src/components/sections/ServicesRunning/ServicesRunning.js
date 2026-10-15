@@ -4,6 +4,7 @@ import CodeWindow from "./CodeWindow";
 import ApiVisualWindow from "./ApiVisualWindow";
 import PerfVisualWindow from "./PerfVisualWindow";
 import SaasVisualWindow from "./SaasVisualWindow";
+import MobileVisualWindow from "./MobileVisualWindow";
 import { SERVICES_SECTION, SERVICES_LIST } from "@/constants/services";
 import styles from "./ServicesRunning.module.css";
 
@@ -17,6 +18,8 @@ function renderVisual(visualType) {
       return <PerfVisualWindow />;
     case "saas-visual":
       return <SaasVisualWindow />;
+    case "mobile-visual":
+      return <MobileVisualWindow />;
     default:
       return null;
   }
