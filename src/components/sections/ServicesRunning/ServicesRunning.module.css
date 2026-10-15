@@ -764,6 +764,266 @@
   white-space: nowrap;
 }
 
+/* ==========================================================================
+   SaasVisualWindow (0034): 3D Isometric SaaS Platform Architecture
+   ========================================================================== */
+.saasVisualCard {
+  position: relative;
+  background-color: #121212;
+  border: 1px solid #242424;
+  border-radius: 8px;
+  overflow: hidden;
+  min-height: 340px;
+  max-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 20px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6), 0 0 1px rgba(255, 255, 255, 0.05);
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.saasVisualCard:hover {
+  border-color: #333333;
+  box-shadow: 0 28px 56px rgba(0, 0, 0, 0.7), 0 0 24px rgba(200, 255, 0, 0.05);
+}
+
+/* Ambient Radial Glow */
+.saasCardGlow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(200, 255, 0, 0.06) 0%,
+    rgba(200, 255, 0, 0.02) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  transition: opacity var(--transition-normal);
+}
+
+.saasVisualCard:hover .saasCardGlow {
+  opacity: 1.35;
+}
+
+/* Stage SVG */
+.saasSvgStage {
+  width: 100%;
+  height: 100%;
+  max-width: 540px;
+  max-height: 320px;
+  display: block;
+  overflow: visible;
+}
+
+/* 4 Connector Tracks */
+.trackBase {
+  fill: none;
+  stroke: rgba(200, 255, 0, 0.3);
+  stroke-width: 1.5;
+}
+
+.trackPulse {
+  fill: none;
+  stroke: var(--brand-accent);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 4px rgba(200, 255, 0, 0.95));
+  stroke-dasharray: 26 160;
+  will-change: stroke-dashoffset;
+}
+
+.trackPulseAuth {
+  animation: saasBeamIn 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.trackPulseBilling {
+  animation: saasBeamIn 3.4s cubic-bezier(0.4, 0, 0.2, 1) infinite 0.7s;
+}
+
+.trackPulseAnalytics {
+  animation: saasBeamOut 3s cubic-bezier(0.4, 0, 0.2, 1) infinite 0.3s;
+}
+
+.trackPulseDeployment {
+  animation: saasBeamOut 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite 1.1s;
+}
+
+@keyframes saasBeamIn {
+  0% {
+    stroke-dashoffset: 186;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes saasBeamOut {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -186;
+  }
+}
+
+/* Pin Nodes */
+.pinNode {
+  fill: var(--brand-accent);
+  filter: drop-shadow(0 0 5px rgba(200, 255, 0, 0.95));
+  transition: transform var(--transition-fast);
+}
+
+.pinHalo {
+  fill: rgba(200, 255, 0, 0.16);
+  animation: saasHaloPulse 2.6s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes saasHaloPulse {
+  0%, 100% {
+    r: 6;
+    opacity: 0.25;
+  }
+  50% {
+    r: 8.5;
+    opacity: 0.75;
+  }
+}
+
+/* Central 3D Isometric Stack & Levitating Float */
+.saasStackGroup {
+  animation: saasStackFloat 4.2s ease-in-out infinite;
+  transform-origin: 270px 145px;
+  will-change: transform;
+}
+
+@keyframes saasStackFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.saasStackShadow {
+  animation: saasShadowBreathe 4.2s ease-in-out infinite;
+  transform-origin: 270px 234px;
+}
+
+@keyframes saasShadowBreathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(0.92);
+    opacity: 0.45;
+  }
+}
+
+/* Neon Green Layer 2 Breathing Glow */
+.saasNeonLayer {
+  filter: drop-shadow(0 0 10px rgba(200, 255, 0, 0.65)) drop-shadow(0 0 26px rgba(200, 255, 0, 0.3));
+  animation: saasNeonPulse 3s ease-in-out infinite;
+  will-change: filter;
+}
+
+@keyframes saasNeonPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(200, 255, 0, 0.55)) drop-shadow(0 0 20px rgba(200, 255, 0, 0.25));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgba(200, 255, 0, 0.95)) drop-shadow(0 0 36px rgba(200, 255, 0, 0.5));
+  }
+}
+
+/* 4 Dashboard / App Launcher Squares on Top Surface */
+.appDot {
+  filter: drop-shadow(0 0 4px rgba(200, 255, 0, 0.8));
+  transition: filter var(--transition-fast);
+  animation: saasAppDotShimmer 2.4s ease-in-out infinite;
+}
+
+.appDot1 { animation-delay: 0s; }
+.appDot2 { animation-delay: 0.4s; }
+.appDot3 { animation-delay: 0.8s; }
+.appDot4 { animation-delay: 1.2s; }
+
+@keyframes saasAppDotShimmer {
+  0%, 100% {
+    opacity: 0.82;
+    filter: drop-shadow(0 0 3px rgba(200, 255, 0, 0.6));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(200, 255, 0, 1));
+  }
+}
+
+/* 4 Feature Badges (AUTH, BILLING, ANALYTICS, DEPLOYMENT) */
+.saasCardItem {
+  cursor: pointer;
+  outline: none;
+  transition: transform var(--transition-fast);
+  transform-origin: center;
+}
+
+.cardBg {
+  fill: #141414;
+  stroke: #262626;
+  stroke-width: 1px;
+  transition: fill var(--transition-fast), stroke var(--transition-fast), filter var(--transition-fast);
+}
+
+.cardIconStroke {
+  transition: stroke var(--transition-fast), filter var(--transition-fast);
+}
+
+.cardIconFill {
+  transition: fill var(--transition-fast), filter var(--transition-fast);
+}
+
+.cardTextLabel {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  fill: #999999;
+  text-transform: uppercase;
+  transition: fill var(--transition-fast);
+  user-select: none;
+}
+
+/* Card Hover & Focus States */
+.saasCardItem:hover .cardBg,
+.saasCardItem:focus-visible .cardBg {
+  fill: #1a1a1a;
+  stroke: #3c3c3c;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.6));
+}
+
+.saasCardItem:hover .cardTextLabel,
+.saasCardItem:focus-visible .cardTextLabel {
+  fill: #ffffff;
+}
+
+.saasCardItem:hover .cardIconStroke,
+.saasCardItem:focus-visible .cardIconStroke {
+  filter: drop-shadow(0 0 8px rgba(200, 255, 0, 0.95));
+}
+
+.saasCardItem:hover .cardIconFill,
+.saasCardItem:focus-visible .cardIconFill {
+  filter: drop-shadow(0 0 8px rgba(200, 255, 0, 0.95));
+}
+
+.saasCardItem:hover,
+.saasCardItem:focus-visible {
+  transform: translateY(-2px);
+}
+
 /* Responsive adjustments */
 @media (max-width: 1199.98px) {
   .itemVisualRight,
@@ -800,7 +1060,8 @@
   }
 
   .windowBody,
-  .apiVisualCard {
+  .apiVisualCard,
+  .saasVisualCard {
     min-height: 280px;
     max-height: 320px;
   }

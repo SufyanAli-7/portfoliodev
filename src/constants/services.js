@@ -46,6 +46,21 @@ export const SERVICES_LIST = [
     visualType: "perf-radar",
     layout: "visual-right", // Left: text info, Right: radar scanner & scrolling check items
   },
+  {
+    id: "saas-platform-dev",
+    serviceCode: "0034",
+    title: "SAAS_PLATFORM_DEV",
+    description:
+      "I build scalable SaaS products with secure auth, subscription billing, dashboards, and cloud-ready architecture.",
+    status: {
+      state: "ACTIVE",
+      duration: "2Y 6M",
+      exactDuration: true,
+      startDate: "2024-04-01",
+    },
+    visualType: "saas-visual",
+    layout: "visual-left", // Left: SaaS visual architecture, Right: text info (alternating sequence)
+  },
 ];
 
 // Backwards compatibility for existing imports

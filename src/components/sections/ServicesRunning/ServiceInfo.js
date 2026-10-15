@@ -42,9 +42,13 @@ export default function ServiceInfo({
   );
 
   useEffect(() => {
+    if (status?.duration && (status?.exactDuration || status?.duration === "2Y 6M")) {
+      setDynamicDuration(status.duration);
+      return;
+    }
     const startDate = status?.startDate || "2024-04-01";
     setDynamicDuration(calculateExperience(startDate));
-  }, [status?.startDate]);
+  }, [status?.startDate, status?.duration, status?.exactDuration]);
 
   return (
     <div className={styles.infoColumn}>
