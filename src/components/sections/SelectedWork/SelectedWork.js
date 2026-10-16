@@ -23,10 +23,10 @@ export default function SelectedWork() {
           <div className={styles.accentLine} aria-hidden="true" />
         </div>
 
-        {/* Projects Showcase */}
-        <div className={styles.projectWrapper}>
+        {/* Projects Showcase List */}
+        <div className={styles.projectsList}>
           {PROJECTS_DATA.map((project) => (
-            <div key={project.id} className={styles.projectWrapper}>
+            <div key={project.id} className={styles.projectItem}>
               {/* Project Meta, Title, Description and Top-Right Action Buttons */}
               <ProjectHeader project={project} />
 
@@ -34,6 +34,7 @@ export default function SelectedWork() {
               <MockupCarousel
                 screens={project.screens}
                 detailUrl={project.detailUrl || `/projects/${project.id}`}
+                projectTitle={project.title}
               />
             </div>
           ))}

@@ -57,12 +57,38 @@
   box-shadow: 0 0 8px rgba(200, 255, 0, 0.3);
 }
 
-/* Project Showcase Wrapper */
+/* Projects Showcase List */
+.projectsList {
+  display: flex;
+  flex-direction: column;
+  gap: 84px;
+  width: 100%;
+}
+
+.projectItem,
 .projectWrapper {
   display: flex;
   flex-direction: column;
   gap: 28px;
   width: 100%;
+  position: relative;
+}
+
+/* Subtle separator between project items */
+.projectItem:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  bottom: -42px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(200, 255, 0, 0.16) 25%,
+    rgba(255, 255, 255, 0.04) 65%,
+    transparent 100%
+  );
 }
 
 /* Project Header: Meta on top, Title, and Subtitle Row with facing buttons */
@@ -645,6 +671,14 @@
 
   .sectionHeader {
     margin-bottom: 32px;
+  }
+
+  .projectsList {
+    gap: 56px;
+  }
+
+  .projectItem:not(:last-child)::after {
+    bottom: -28px;
   }
 
   .headerTitle {

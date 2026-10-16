@@ -7,6 +7,7 @@ import styles from "./SelectedWork.module.css";
 export default function MockupCarousel({
   screens,
   detailUrl = "/projects/quickcart",
+  projectTitle = "Project",
 }) {
   const trackRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -156,6 +157,7 @@ export default function MockupCarousel({
               screen={screen}
               total={screens.length}
               detailUrl={detailUrl}
+              projectTitle={projectTitle}
             />
           ))}
         </div>

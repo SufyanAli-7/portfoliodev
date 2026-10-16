@@ -9,6 +9,7 @@ export default function MockupCard({
   screen,
   total,
   detailUrl = "/projects/quickcart",
+  projectTitle = "Project",
 }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const imgRef = useRef(null);
@@ -26,7 +27,7 @@ export default function MockupCard({
     <Link
       href={detailUrl}
       className={`${styles.card} ${isFirst ? styles.cardFirst : ""}`.trim()}
-      aria-label={`View ${screen.title} - QuickCart project details`}
+      aria-label={`View ${screen.title} - ${projectTitle} details`}
     >
       {/* Visual media preview container */}
       <div className={styles.cardMedia}>
@@ -61,7 +62,7 @@ export default function MockupCard({
         <Image
           ref={imgRef}
           src={screen.src}
-          alt={`QuickCart - ${screen.title}`}
+          alt={`${projectTitle} - ${screen.title}`}
           width={800}
           height={500}
           className={`${styles.cardImage} ${
