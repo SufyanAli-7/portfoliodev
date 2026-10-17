@@ -1,7 +1,12 @@
 import Container from "../../layout/Container/Container";
 import ProjectHeader from "./ProjectHeader";
 import MockupCarousel from "./MockupCarousel";
-import { SELECTED_WORK_SECTION, PROJECTS_DATA } from "@/constants/projects";
+import TestimonialCard from "./TestimonialCard";
+import {
+  SELECTED_WORK_SECTION,
+  PROJECTS_DATA,
+  FEATURED_TESTIMONIAL,
+} from "@/constants/projects";
 import styles from "./SelectedWork.module.css";
 
 export default function SelectedWork() {
@@ -39,6 +44,9 @@ export default function SelectedWork() {
             </div>
           ))}
         </div>
+
+        {/* Client Testimonial Banner (Matches Reference Screenshot) */}
+        <TestimonialCard testimonial={FEATURED_TESTIMONIAL} />
       </Container>
     </section>
   );
