@@ -28,7 +28,8 @@ export default function ExecHistoryItem({ item, isLast }) {
         <div className={styles.descriptionBlock}>
           {item.descriptionLines.map((line, idx) => (
             <p key={idx} className={styles.descriptionLine}>
-              {line}
+              <span className={styles.accentDot} aria-hidden="true" />
+              <span className={styles.lineText}>{line}</span>
             </p>
           ))}
         </div>

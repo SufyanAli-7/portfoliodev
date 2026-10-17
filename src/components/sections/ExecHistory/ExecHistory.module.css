@@ -42,8 +42,7 @@
   font-weight: 700;
   letter-spacing: -0.02em;
   text-transform: uppercase;
-  color: var(--brand-accent);
-  text-shadow: 0 0 20px rgba(200, 255, 0, 0.2);
+  color: #ffffff;
   white-space: nowrap;
   margin: 0;
 }
@@ -161,12 +160,30 @@
 .descriptionBlock {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
   margin-bottom: 24px;
   max-width: 780px;
 }
 
 .descriptionLine {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0;
+}
+
+.accentDot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #C8FF00;
+  box-shadow: 0 0 8px rgba(200, 255, 0, 0.7);
+  margin-top: 8.5px;
+  flex-shrink: 0;
+}
+
+.lineText {
   font-family: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont,
     sans-serif;
   font-size: 15px;
@@ -174,7 +191,7 @@
   line-height: 1.65;
   letter-spacing: -0.01em;
   color: var(--brand-text-secondary);
-  margin: 0;
+  flex: 1;
 }
 
 /* Technology Pills */
@@ -237,8 +254,8 @@
     font-size: 20px;
   }
 
-  .descriptionLine {
-    font-size: 13.5px;
+  .lineText {
+    font-size: 14px;
   }
 }
 
@@ -285,9 +302,13 @@
     word-break: break-all;
   }
 
-  .descriptionLine {
-    font-size: 13px;
+  .lineText {
+    font-size: 13.5px;
     line-height: 1.6;
+  }
+
+  .accentDot {
+    margin-top: 7px;
   }
 
   .techBadge {
