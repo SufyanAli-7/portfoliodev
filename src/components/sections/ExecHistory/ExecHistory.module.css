@@ -1,0 +1,297 @@
+/* ==========================================================================
+   ExecHistory Section Styles (Section 05 / EXEC_HISTORY)
+   Matches reference screenshots:
+   - Header: 05 / in secondary mono + EXEC_HISTORY in neon lime + horizontal accent line
+   - Two-column layout:
+     Left: Period (e.g. JUN 2026 — AUG 2026) + neon lime accent dash underneath
+     Right: ROLE_TITLE, ~/TERMINAL/PATH, clean description lines, and dark neon tech pills
+   - Subtle horizontal divider separating work experience entries
+   - Pure responsive brutality with dark backdrop and dot grid compatibility
+   ========================================================================== */
+
+.execHistorySection {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  padding-top: 80px;
+  padding-bottom: 120px;
+  scroll-margin-top: 100px;
+}
+
+/* Section Header: 05 / EXEC_HISTORY —————————————— */
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 56px;
+  width: 100%;
+}
+
+.headerPrefix {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--brand-text-secondary);
+  white-space: nowrap;
+}
+
+.headerTitle {
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--brand-accent);
+  text-shadow: 0 0 20px rgba(200, 255, 0, 0.2);
+  white-space: nowrap;
+  margin: 0;
+}
+
+.accentLine {
+  flex: 1;
+  height: 1px;
+  background-color: var(--brand-accent);
+  opacity: 0.9;
+  box-shadow: 0 0 8px rgba(200, 255, 0, 0.35);
+}
+
+/* History List Container */
+.historyList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Individual Experience Row */
+.historyItem {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  column-gap: 56px;
+  padding: 48px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: border-color var(--transition-normal);
+}
+
+.historyItem:first-child {
+  padding-top: 16px;
+}
+
+.historyItemLast {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Left Column: Timeline & Neon Accent Dash */
+.periodColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 4px;
+}
+
+.periodText {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--brand-text-secondary);
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.periodDash {
+  width: 32px;
+  height: 2px;
+  background-color: var(--brand-accent);
+  margin-top: 12px;
+  box-shadow: 0 0 8px rgba(200, 255, 0, 0.4);
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.historyItem:hover .periodDash {
+  width: 48px;
+  box-shadow: 0 0 12px rgba(200, 255, 0, 0.65);
+}
+
+/* Right Column: Experience Details */
+.detailsColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.roleTitle {
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+  line-height: 1.25;
+  transition: color var(--transition-fast);
+}
+
+.historyItem:hover .roleTitle {
+  color: #ffffff;
+}
+
+/* Command-line / Terminal Path Line */
+.terminalPath {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--brand-accent);
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.terminalPrompt {
+  color: var(--brand-accent);
+  opacity: 0.9;
+}
+
+/* Description Block */
+.descriptionBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 24px;
+  max-width: 780px;
+}
+
+.descriptionLine {
+  font-family: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  color: var(--brand-text-secondary);
+  margin: 0;
+}
+
+/* Technology Pills */
+.techList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+}
+
+.techBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  padding: 6px 14px;
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-accent);
+  user-select: none;
+  cursor: default;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.techBadge:hover {
+  background-color: rgba(200, 255, 0, 0.08);
+  border-color: var(--brand-accent);
+  box-shadow: 0 0 12px rgba(200, 255, 0, 0.22);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+/* Tablet & Intermediate Viewports */
+@media (max-width: 1024px) {
+  .execHistorySection {
+    padding-top: 60px;
+    padding-bottom: 100px;
+  }
+
+  .historyItem {
+    grid-template-columns: 200px 1fr;
+    column-gap: 36px;
+    padding: 40px 0;
+  }
+
+  .headerTitle {
+    font-size: 28px;
+  }
+
+  .roleTitle {
+    font-size: 20px;
+  }
+
+  .descriptionLine {
+    font-size: 13.5px;
+  }
+}
+
+/* Mobile Viewports */
+@media (max-width: 768px) {
+  .execHistorySection {
+    padding-top: 50px;
+    padding-bottom: 80px;
+  }
+
+  .sectionHeader {
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .headerTitle {
+    font-size: 22px;
+  }
+
+  .historyItem {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 32px 0;
+  }
+
+  .periodColumn {
+    padding-top: 0;
+    margin-bottom: 4px;
+  }
+
+  .periodDash {
+    margin-top: 8px;
+  }
+
+  .roleTitle {
+    font-size: 18px;
+  }
+
+  .terminalPath {
+    font-size: 12px;
+    margin-bottom: 16px;
+    word-break: break-all;
+  }
+
+  .descriptionLine {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .techBadge {
+    padding: 5px 10px;
+    font-size: 10.5px;
+  }
+}

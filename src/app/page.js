@@ -4,6 +4,7 @@ import Hero from "@/components/sections/Hero/Hero";
 import VitalStats from "@/components/sections/VitalStats/VitalStats";
 import ServicesRunning from "@/components/sections/ServicesRunning/ServicesRunning";
 import SelectedWork from "@/components/sections/SelectedWork/SelectedWork";
+import ExecHistory from "@/components/sections/ExecHistory/ExecHistory";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
           <VitalStats />
           <ServicesRunning />
           <SelectedWork />
+          <ExecHistory />
         </main>
       </div>
     </>
