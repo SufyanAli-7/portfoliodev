@@ -26,7 +26,7 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .mediaContainer {
+  .card {
     cursor: none;
   }
 }
@@ -70,24 +70,25 @@
 
 /* ==========================================================================
    Custom Floating Cursor Badge ("OPEN PROJECT")
-   Smooth Left-to-Right Entrance Animation
+   Smooth Slow Left-to-Right Entrance Animation, No Border/Outline
    ========================================================================== */
 
 .cursorBadge {
   position: absolute;
   pointer-events: none;
-  z-index: 20;
+  z-index: 50;
   transform: translate(-50%, -50%);
-  background: rgba(10, 10, 10, 0.95);
-  border: 1px solid #c8ff00;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8), 0 0 18px rgba(200, 255, 0, 0.3);
+  background: #000000;
+  border: none;
+  outline: none;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.95);
   border-radius: 4px;
-  padding: 6px 14px;
+  padding: 4px 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   white-space: nowrap;
-  animation: badgeSlideInLeftToRight 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: badgeSlideInLeftToRight 1.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
   will-change: transform, clip-path, opacity;
 }
 
@@ -99,18 +100,22 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   user-select: none;
+  line-height: 1.2;
 }
 
 @keyframes badgeSlideInLeftToRight {
   0% {
     opacity: 0;
-    transform: translate(-50%, -50%) translateX(-24px);
-    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    transform: translate(-50%, -50%) translateX(-20px);
+    clip-path: inset(0 100% 0 0 round 4px);
+  }
+  10% {
+    opacity: 1;
   }
   100% {
     opacity: 1;
     transform: translate(-50%, -50%) translateX(0);
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    clip-path: inset(0 0% 0 0 round 4px);
   }
 }
 

@@ -9,7 +9,7 @@ export default function ProjectCard({ project, priority = false }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
-  const mediaRef = useRef(null);
+  const cardRef = useRef(null);
   const imgRef = useRef(null);
 
   // If image is already cached
@@ -20,8 +20,8 @@ export default function ProjectCard({ project, priority = false }) {
   }, []);
 
   const handleMouseMove = (e) => {
-    if (!mediaRef.current) return;
-    const rect = mediaRef.current.getBoundingClientRect();
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
     setCursorPos({
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
@@ -29,8 +29,8 @@ export default function ProjectCard({ project, priority = false }) {
   };
 
   const handleMouseEnter = (e) => {
-    if (!mediaRef.current) return;
-    const rect = mediaRef.current.getBoundingClientRect();
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
     setCursorPos({
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
@@ -44,20 +44,30 @@ export default function ProjectCard({ project, priority = false }) {
 
   return (
     <article
+      ref={cardRef}
       className={styles.card}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       tabIndex={0}
       aria-label={`${project.title} - ${project.category}`}
     >
-      {/* Media Image Showcase with Skeleton & Custom Cursor Badge */}
-      <div
-        ref={mediaRef}
-        className={styles.mediaContainer}
-        onMouseMove={handleMouseMove}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
+      {/* Floating "OPEN PROJECT" cursor badge across entire card */}
+      {isHovered && (
+        <div
+          className={styles.cursorBadge}
+          style={{
+            left: `${cursorPos.x}px`,
+            top: `${cursorPos.y}px`,
+          }}
+          aria-hidden="true"
+        >
+          <span className={styles.badgeText}>OPEN PROJECT</span>
+        </div>
+      )}
+
+      {/* Media Image Showcase with Skeleton */}
+      <div className={styles.mediaContainer}>
         {/* Dark Brutalist Skeleton Loader */}
         <ProjectSkeleton isLoaded={isLoaded} />
 
@@ -75,20 +85,6 @@ export default function ProjectCard({ project, priority = false }) {
             onLoad={() => setIsLoaded(true)}
           />
         </div>
-
-        {/* Floating "OPEN PROJECT" cursor badge with smooth left-to-right reveal */}
-        {isHovered && (
-          <div
-            className={styles.cursorBadge}
-            style={{
-              left: `${cursorPos.x}px`,
-              top: `${cursorPos.y}px`,
-            }}
-            aria-hidden="true"
-          >
-            <span className={styles.badgeText}>OPEN PROJECT</span>
-          </div>
-        )}
       </div>
 
       {/* Card Info Meta Block */}
