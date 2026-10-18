@@ -5,7 +5,7 @@ export const PROJECTS_PAGE_CONFIG = {
   description:
     "An indexed repository of digital constructs, experimental protocols, and refined architectural software interfaces.",
   metaStats: [
-    { label: "TOTAL_ENTRIES:", value: "06" },
+    { label: "TOTAL_ENTRIES:", value: "04" },
     { label: "LAST_UPDATE:", value: "24.10.2024" },
     { label: "STATUS:", value: "OPERATIONAL" },
   ],
@@ -58,30 +58,6 @@ export const PROJECTS_LIST = [
     image: "/images/taskly-mockups/01-hero-trio.png",
     alt: "Taskly multi-screen productivity app overview",
     tags: ["React", "Next.js", "Node.js", "Express", "MongoDB"],
-    liveUrl: "https://github.com/sufyanali",
-  },
-  {
-    id: "quickcart-admin",
-    date: "APR 11, 2026",
-    title: "QUICKCART COMMAND",
-    category: "ADMIN & TELEMETRY",
-    description:
-      "Centralized analytics command center tracking gross revenue (PKR 2.29M+), live order status pipelines, inventory control, and role-based permissions.",
-    image: "/images/quickcart-mockups/05-admin-dashboard.png",
-    alt: "QuickCart admin analytics dashboard with live charts and metrics",
-    tags: ["Analytics", "RBAC", "REST API", "Tailwind CSS"],
-    liveUrl: "https://github.com/sufyanali",
-  },
-  {
-    id: "slidex-studio",
-    date: "APR 11, 2026",
-    title: "SLIDEX STUDIO",
-    category: "CURRICULUM ENGINE",
-    description:
-      "Interactive course catalog and curriculum authoring suite enabling instructors to structure modular chapters, deliver video lessons, and monitor engagement.",
-    image: "/images/slidex-lms-mockups/01-landing.png",
-    alt: "SlideX Studio interactive course catalog and curriculum discovery",
-    tags: ["React", "Curriculum", "State Machines", "RESTful API"],
     liveUrl: "https://github.com/sufyanali",
   },
 ];
