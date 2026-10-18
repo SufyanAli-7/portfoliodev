@@ -2,9 +2,10 @@
   position: sticky;
   top: 110px;
   align-self: flex-start;
-  width: 380px;
+  width: 500px;
   flex-shrink: 0;
   z-index: 10;
+  will-change: transform;
 }
 
 .stickyContent {
@@ -57,7 +58,7 @@
   line-height: 1.65;
   color: rgba(255, 255, 255, 0.6);
   margin: 0;
-  max-width: 340px;
+  max-width: 480px;
 }
 
 /* ==========================================================================
@@ -106,9 +107,15 @@
    Responsive Viewports (Tablet & Mobile)
    ========================================================================== */
 
+@media (max-width: 1200px) {
+  .sidebarWrapper {
+    width: 420px;
+  }
+}
+
 @media (max-width: 1024px) {
   .sidebarWrapper {
-    width: 320px;
+    width: 360px;
   }
 
   .mainHeading {

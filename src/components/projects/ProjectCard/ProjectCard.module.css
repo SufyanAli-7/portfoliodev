@@ -14,7 +14,7 @@
 .mediaContainer {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9.5;
+  height: 370px;
   background-color: #0d0d0d;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
@@ -232,6 +232,7 @@
 
 @media (max-width: 768px) {
   .mediaContainer {
+    height: auto;
     aspect-ratio: 16 / 10;
   }
 
