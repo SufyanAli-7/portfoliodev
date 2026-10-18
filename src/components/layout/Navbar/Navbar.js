@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Container from "../Container/Container";
 import Button from "../../common/Button/Button";
 import { NAV_LINKS, CTA_CONFIG } from "@/constants/navigation";
@@ -9,14 +11,21 @@ import styles from "./Navbar.module.css";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isLinkActive = (item) => {
+    if (item.href === "/" && pathname === "/") return true;
+    if (item.href === "/projects" && pathname?.startsWith("/projects")) return true;
+    return false;
+  };
 
   return (
     <header className={styles.header}>
       <Container>
         <div className={styles.navInner}>
           {/* Brand Logo */}
-          <a
-            href="#home"
+          <Link
+            href="/"
             className={styles.logo}
             aria-label={`${PROFILE.name} Homepage`}
           >
@@ -24,24 +33,27 @@ export default function Navbar() {
             <span className={styles.cursor}>
               {PROFILE.cursorChar || "_"}
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Nav Links */}
           <nav aria-label="Main Navigation">
             <ul className={styles.navLinks}>
-              {NAV_LINKS.map((item) => (
-                <li key={item.number}>
-                  <a
-                    href={item.href}
-                    className={`${styles.navLink} ${
-                      item.isActive ? styles.activeLink : ""
-                    }`}
-                  >
-                    <span>{item.number}/</span>
-                    <span>{item.label}</span>
-                  </a>
-                </li>
-              ))}
+              {NAV_LINKS.map((item) => {
+                const active = isLinkActive(item);
+                return (
+                  <li key={item.number}>
+                    <Link
+                      href={item.href}
+                      className={`${styles.navLink} ${
+                        active ? styles.activeLink : ""
+                      }`}
+                    >
+                      <span>{item.number}/</span>
+                      <span>{item.label}</span>
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
 
@@ -73,20 +85,23 @@ export default function Navbar() {
         {isMobileMenuOpen && (
           <div className={styles.mobileDrawer}>
             <ul className={styles.mobileNavList}>
-              {NAV_LINKS.map((item) => (
-                <li key={item.number}>
-                  <a
-                    href={item.href}
-                    className={`${styles.mobileNavLink} ${
-                      item.isActive ? styles.mobileActiveLink : ""
-                    }`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    <span>{item.number}/</span>
-                    <span>{item.label}</span>
-                  </a>
-                </li>
-              ))}
+              {NAV_LINKS.map((item) => {
+                const active = isLinkActive(item);
+                return (
+                  <li key={item.number}>
+                    <Link
+                      href={item.href}
+                      className={`${styles.mobileNavLink} ${
+                        active ? styles.mobileActiveLink : ""
+                      }`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      <span>{item.number}/</span>
+                      <span>{item.label}</span>
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         )}

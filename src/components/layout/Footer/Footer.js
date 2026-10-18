@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Container from "../Container/Container";
 import { FOOTER_CONFIG } from "@/constants/footer";
 import styles from "./Footer.module.css";
@@ -11,10 +12,10 @@ export default function Footer() {
         <div className={styles.footerInner}>
           {/* Left Column: Brand Logo with terminal cursor & Copyright line */}
           <div className={styles.brandColumn}>
-            <a href="#home" className={styles.brandLogo} aria-label={`${brandName} Home`}>
+            <Link href="/" className={styles.brandLogo} aria-label={`${brandName} Home`}>
               <span>{brandName}</span>
               <span className={styles.cursor}>{cursorChar}</span>
-            </a>
+            </Link>
             <p className={styles.buildInfo}>
               © {year} {brandName} // {buildStatus}
             </p>

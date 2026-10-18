@@ -1,0 +1,118 @@
+.skeletonWrapper {
+  position: absolute;
+  inset: 0;
+  background: #111111;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 20px;
+  overflow: hidden;
+  z-index: 2;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  pointer-events: none;
+  border-radius: 8px;
+}
+
+.skeletonHidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.skeletonBrowserFrame {
+  width: 100%;
+  height: 100%;
+  background: #161616;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.skeletonBrowserHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.skeletonDots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.skeletonDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.18);
+}
+
+.skeletonSearchBar {
+  flex: 1;
+  max-width: 140px;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.skeletonBody {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #131313;
+}
+
+.skeletonHeroBlock {
+  width: 100%;
+  height: 90px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.skeletonGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  flex: 1;
+}
+
+.skeletonGridItem {
+  height: 100%;
+  min-height: 80px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+/* Shimmer wave */
+.skeletonShimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.02) 20%,
+    rgba(200, 255, 0, 0.07) 50%,
+    rgba(255, 255, 255, 0.02) 80%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  animation: skeletonShimmerWave 1.8s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes skeletonShimmerWave {
+  0% {
+    transform: translateX(-100%);
+  }
+  60%, 100% {
+    transform: translateX(100%);
+  }
+}

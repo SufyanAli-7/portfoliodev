@@ -1,0 +1,253 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  outline: none;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Media Container & Image Presentation
+   ========================================================================== */
+
+.mediaContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9.5;
+  background-color: #0d0d0d;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mediaContainer {
+    cursor: none;
+  }
+}
+
+.card:hover .mediaContainer {
+  border-color: rgba(200, 255, 0, 0.3);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(200, 255, 0, 0.06);
+}
+
+.imageInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 255, 255, 0.02) 0%,
+    transparent 70%
+  );
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1);
+  transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.imageLoaded {
+  opacity: 1;
+}
+
+.card:hover .imageLoaded {
+  transform: scale(1.02);
+}
+
+/* ==========================================================================
+   Custom Floating Cursor Badge ("OPEN PROJECT")
+   Smooth Left-to-Right Entrance Animation
+   ========================================================================== */
+
+.cursorBadge {
+  position: absolute;
+  pointer-events: none;
+  z-index: 20;
+  transform: translate(-50%, -50%);
+  background: rgba(10, 10, 10, 0.95);
+  border: 1px solid #c8ff00;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8), 0 0 18px rgba(200, 255, 0, 0.3);
+  border-radius: 4px;
+  padding: 6px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  animation: badgeSlideInLeftToRight 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, clip-path, opacity;
+}
+
+.badgeText {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: #c8ff00;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+@keyframes badgeSlideInLeftToRight {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translateX(-24px);
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateX(0);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+/* ==========================================================================
+   Card Information & Meta Block (Matching Screenshot)
+   ========================================================================== */
+
+.infoBlock {
+  display: flex;
+  flex-direction: column;
+  padding-top: 18px;
+  gap: 8px;
+}
+
+.dateRow {
+  display: flex;
+  align-items: center;
+}
+
+.date {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.title {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 16px;
+  font-weight: 700;
+  color: #c8ff00;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.3;
+  transition: color var(--transition-fast);
+}
+
+/* ==========================================================================
+   Right-Side "● OPEN" Indicator (Revealed on Card Hover)
+   ========================================================================== */
+
+.openIndicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: #c8ff00;
+  letter-spacing: 0.12em;
+  opacity: 0;
+  transform: translateX(-12px);
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.card:hover .openIndicator {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.card:focus-visible .openIndicator {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.openDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #c8ff00;
+  box-shadow: 0 0 8px rgba(200, 255, 0, 0.9);
+  animation: dotPulse 1.6s infinite ease-in-out;
+}
+
+@keyframes dotPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(0.85);
+  }
+}
+
+.openLabel {
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Project Description
+   ========================================================================== */
+
+.description {
+  font-family: var(--font-inter), -apple-system, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 680px;
+}
+
+/* ==========================================================================
+   Responsive adjustments
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .mediaContainer {
+    aspect-ratio: 16 / 10;
+  }
+
+  .title {
+    font-size: 15px;
+  }
+
+  .description {
+    font-size: 12.5px;
+  }
+
+  /* Always show open indicator on touch devices */
+  @media (hover: none) {
+    .openIndicator {
+      opacity: 0.85;
+      transform: translateX(0);
+    }
+  }
+}
