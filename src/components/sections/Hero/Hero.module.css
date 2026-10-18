@@ -49,6 +49,11 @@
   display: block;
 }
 
+.nowrapEnding {
+  display: inline;
+  white-space: nowrap;
+}
+
 .cursor {
   display: inline-block;
   color: var(--brand-accent);
@@ -436,6 +441,11 @@
   .leftColumn {
     max-width: 100%;
     gap: 24px;
+  }
+
+  .displayHeading {
+    font-size: clamp(36px, 11vw, 64px) !important;
+    line-height: 1.02em;
   }
 
   .bioWrapper {
