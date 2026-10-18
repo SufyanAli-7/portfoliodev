@@ -15,9 +15,9 @@
   position: relative;
   z-index: 10;
   width: 100%;
-  padding-top: 60px;
-  padding-bottom: 120px;
-  scroll-margin-top: 100px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  scroll-margin-top: 90px;
 }
 
 /* Section Header: 04 / SELECTED WORK with horizontal neon accent line */
@@ -741,8 +741,8 @@
 /* Phone: Below 810px */
 @media (max-width: 809.98px) {
   .selectedWorkSection {
-    padding-top: 40px;
-    padding-bottom: 80px;
+    padding-top: 32px;
+    padding-bottom: 32px;
   }
 
   .sectionHeader {

@@ -14,8 +14,9 @@
   position: relative;
   z-index: 10;
   width: 100%;
-  padding-top: 110px;
-  padding-bottom: 40px;
+  padding-top: 40px;
+  padding-bottom: 24px;
+  scroll-margin-top: 90px;
   text-align: center;
   overflow: hidden;
 }
@@ -315,8 +316,8 @@
 /* Responsive Adaptations */
 @media (max-width: 1024px) {
   .readyStateSection {
-    padding-top: 80px;
-    padding-bottom: 30px;
+    padding-top: 36px;
+    padding-bottom: 20px;
   }
 
   .headline {
@@ -330,8 +331,8 @@
 
 @media (max-width: 768px) {
   .readyStateSection {
-    padding-top: 60px;
-    padding-bottom: 20px;
+    padding-top: 32px;
+    padding-bottom: 16px;
   }
 
   .headline {

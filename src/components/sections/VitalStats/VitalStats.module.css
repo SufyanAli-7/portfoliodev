@@ -2,8 +2,9 @@
   position: relative;
   z-index: 10;
   width: 100%;
-  padding-top: 100px;
-  padding-bottom: 90px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  scroll-margin-top: 90px;
 }
 
 /* Section Header */
@@ -208,8 +209,8 @@
 
 @media (max-width: 809.98px) {
   .statsSection {
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: 32px;
+    padding-bottom: 32px;
   }
 
   .headerTitle {

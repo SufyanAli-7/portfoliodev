@@ -2,12 +2,10 @@
   position: relative;
   z-index: 10;
   width: 100%;
-  min-height: calc(100vh - 120px);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding-top: 32px;
-  padding-bottom: 48px;
+  padding-top: 24px;
+  padding-bottom: 40px;
 }
 
 .heroGrid {

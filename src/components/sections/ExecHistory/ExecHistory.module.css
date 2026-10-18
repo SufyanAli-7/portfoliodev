@@ -13,9 +13,9 @@
   position: relative;
   z-index: 10;
   width: 100%;
-  padding-top: 80px;
-  padding-bottom: 120px;
-  scroll-margin-top: 100px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  scroll-margin-top: 90px;
 }
 
 /* Section Header: 05 / EXEC_HISTORY —————————————— */
@@ -236,14 +236,14 @@
 /* Tablet & Intermediate Viewports */
 @media (max-width: 1024px) {
   .execHistorySection {
-    padding-top: 60px;
-    padding-bottom: 100px;
+    padding-top: 36px;
+    padding-bottom: 36px;
   }
 
   .historyItem {
     grid-template-columns: 200px 1fr;
     column-gap: 36px;
-    padding: 40px 0;
+    padding: 36px 0;
   }
 
   .headerTitle {
@@ -262,8 +262,8 @@
 /* Mobile Viewports */
 @media (max-width: 768px) {
   .execHistorySection {
-    padding-top: 50px;
-    padding-bottom: 80px;
+    padding-top: 32px;
+    padding-bottom: 32px;
   }
 
   .sectionHeader {
