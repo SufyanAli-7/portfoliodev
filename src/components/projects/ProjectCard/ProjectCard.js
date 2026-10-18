@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import ProjectSkeleton from "../ProjectSkeleton/ProjectSkeleton";
 import styles from "./ProjectCard.module.css";
 
@@ -43,14 +44,14 @@ export default function ProjectCard({ project, priority = false }) {
   };
 
   return (
-    <article
+    <Link
+      href={`/projects/${project.id}`}
       ref={cardRef}
       className={styles.card}
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      tabIndex={0}
-      aria-label={`${project.title} - ${project.category}`}
+      aria-label={`${project.title} - ${project.category} (Click to open project details)`}
     >
       {/* Floating "OPEN PROJECT" cursor badge across entire card */}
       {isHovered && (
@@ -106,6 +107,6 @@ export default function ProjectCard({ project, priority = false }) {
         {/* Description */}
         <p className={styles.description}>{project.description}</p>
       </div>
-    </article>
+    </Link>
   );
 }

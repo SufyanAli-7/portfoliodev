@@ -1,0 +1,88 @@
+.specsSection {
+  position: relative;
+  width: 100%;
+  padding-top: 36px;
+  padding-bottom: 56px;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+}
+
+.sectionNumber {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.dividerLine {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.08);
+  margin: 18px 0 28px 0;
+}
+
+.specsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  width: 100%;
+}
+
+.specItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.specLabel {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.specValue {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #c8ff00;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
+@media (max-width: 860px) {
+  .specsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 24px;
+    column-gap: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .specsSection {
+    padding-top: 24px;
+    padding-bottom: 40px;
+  }
+
+  .specsGrid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}

@@ -5,6 +5,8 @@
   position: relative;
   outline: none;
   cursor: pointer;
+  text-decoration: none;
+  color: inherit;
 }
 
 /* ==========================================================================
