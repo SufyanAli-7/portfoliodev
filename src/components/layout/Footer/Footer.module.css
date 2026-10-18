@@ -1,0 +1,117 @@
+/* ==========================================================================
+   Footer Component Styles
+   Matches reference screenshot:
+   - Top border subtle separator
+   - Left: Brand Logo ERICODE_ with blinking cursor and © 2026 ERICODE // STABLE_BUILD
+   - Right: Navigation links (GITHUB, LINKEDIN, SOURCE) with hover effect
+   - "Made in Framer" badge excluded per user instructions
+   ========================================================================== */
+
+.footer {
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 40px 0 48px 0;
+  position: relative;
+  z-index: 10;
+  background-color: transparent;
+}
+
+.footerInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Left Column: Brand & Copyright */
+.brandColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.brandLogo {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brand-accent);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.2s ease;
+}
+
+.brandLogo:hover {
+  opacity: 0.85;
+}
+
+.cursor {
+  color: var(--brand-accent);
+  font-weight: 700;
+  margin-left: 2px;
+  animation: footerCursorBlink 1.2s infinite steps(1);
+}
+
+@keyframes footerCursorBlink {
+  0%, 50% {
+    opacity: 1;
+  }
+  50.01%, 100% {
+    opacity: 0;
+  }
+}
+
+.buildInfo {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--brand-text-secondary);
+  margin: 0;
+}
+
+/* Right Column: Social / Nav Links */
+.linksList {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footerLink {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-text-primary);
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.footerLink:hover {
+  color: var(--brand-accent);
+  text-shadow: 0 0 10px rgba(200, 255, 0, 0.4);
+}
+
+/* Responsive Adaptations */
+@media (max-width: 768px) {
+  .footer {
+    padding: 32px 0 40px 0;
+  }
+
+  .footerInner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .linksList {
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+}
