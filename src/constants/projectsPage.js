@@ -61,3 +61,19 @@ export const PROJECTS_LIST = [
     liveUrl: "https://github.com/sufyanali",
   },
 ];
+
+export const STACK_ANALYSIS_CONFIG = {
+  title: "STACK_ANALYSIS",
+  columns: [
+    [
+      { label: "FRONTEND", value: "Next.js / Tailwind" },
+      { label: "BACKEND", value: "Node.js / Go" },
+      { label: "INFRA", value: "AWS / Vercel" },
+    ],
+    [
+      { label: "RUNTIME", value: "Docker / WASM" },
+      { label: "VERSIONING", value: "Git / LFS" },
+      { label: "PROTOCOLS", value: "gRPC / WebSocket" },
+    ],
+  ],
+};

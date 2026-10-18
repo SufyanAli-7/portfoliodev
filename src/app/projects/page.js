@@ -1,6 +1,7 @@
 import DotGridBackground from "@/components/layout/DotGridBackground/DotGridBackground";
 import Navbar from "@/components/layout/Navbar/Navbar";
 import ProjectsContainer from "@/components/projects/ProjectsContainer/ProjectsContainer";
+import StackAnalysis from "@/components/projects/StackAnalysis/StackAnalysis";
 import Footer from "@/components/layout/Footer/Footer";
 import styles from "./page.module.css";
 
@@ -26,6 +27,7 @@ export default function ProjectsPage() {
         <Navbar />
         <main className={styles.mainContent}>
           <ProjectsContainer />
+          <StackAnalysis />
         </main>
         <Footer />
       </div>
