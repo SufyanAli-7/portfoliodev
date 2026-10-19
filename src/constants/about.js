@@ -4,7 +4,7 @@
  */
 
 export const ABOUT_CONFIG = {
-  sectionNumber: "04 /",
+  sectionNumber: "03 /",
   sectionTitle: "ABOUT",
 
   portrait: {

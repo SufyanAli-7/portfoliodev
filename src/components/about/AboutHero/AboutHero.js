@@ -17,7 +17,7 @@ export default function AboutHero() {
   return (
     <section className={styles.aboutSection} aria-label="About Muhammad Sufyan Ali">
       <Container>
-        {/* Page Title: 04 / ABOUT */}
+        {/* Page Title: 03 / ABOUT */}
         <div className={styles.titleWrapper}>
           <h1 className={styles.pageTitle}>
             <span className={styles.titlePrefix}>{sectionNumber}</span>
