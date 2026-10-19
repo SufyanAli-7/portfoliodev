@@ -17,7 +17,7 @@ export const NAV_LINKS = [
   {
     number: "04",
     label: "CONTACT",
-    href: "/#contact",
+    href: "/contact",
   },
 ];
 
