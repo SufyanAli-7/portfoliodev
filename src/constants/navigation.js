@@ -12,7 +12,7 @@ export const NAV_LINKS = [
   {
     number: "03",
     label: "ABOUT",
-    href: "/#about",
+    href: "/about",
   },
   {
     number: "04",

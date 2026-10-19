@@ -16,6 +16,7 @@ export default function Navbar() {
   const isLinkActive = (item) => {
     if (item.href === "/" && pathname === "/") return true;
     if (item.href === "/projects" && pathname?.startsWith("/projects")) return true;
+    if (item.href === "/about" && pathname?.startsWith("/about")) return true;
     return false;
   };
 

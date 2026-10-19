@@ -7,11 +7,11 @@ export const READY_STATE_CONFIG = {
     "Whether it's a greenfield build, a gnarly refactor, or scaling something that's already live — I'm always up for interesting problems. Let's talk.",
   ctaPrimary: {
     label: "INIT_CONV",
-    href: "mailto:contact@sufyanali.dev",
+    href: "mailto:sufyan.ali0612@gmail.com",
   },
   ctaSecondary: {
     label: "View Source",
-    href: "https://github.com/sufyanali",
+    href: "https://github.com/sufyanali-7",
   },
   terminalPrompt: {
     user: "sufyan",

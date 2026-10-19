@@ -6,17 +6,17 @@ export const FOOTER_CONFIG = {
   links: [
     {
       label: "GITHUB",
-      href: "https://github.com/sufyanali",
+      href: "https://github.com/sufyanali-7",
       isExternal: true,
     },
     {
       label: "LINKEDIN",
-      href: "https://linkedin.com/in/sufyanali",
+      href: "https://linkedin.com/in/m-sufyan-ali",
       isExternal: true,
     },
     {
       label: "SOURCE",
-      href: "https://github.com/sufyanali/portfolio",
+      href: "https://github.com/sufyanali-7",
       isExternal: true,
     },
   ],
