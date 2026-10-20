@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Container from "../../layout/Container/Container";
 import HeroPortrait from "../Hero/HeroPortrait";
 import DevSliderWidget from "../Hero/DevSliderWidget";
@@ -39,13 +40,23 @@ export default function ReadyState() {
 
           {/* Action Buttons: INIT_CONV & View Source */}
           <div className={styles.buttonGroup}>
-            <a
-              href={ctaPrimary.href}
-              className={styles.primaryBtn}
-              aria-label="Initialize conversation"
-            >
-              {ctaPrimary.label}
-            </a>
+            {ctaPrimary.href.startsWith("/") ? (
+              <Link
+                href={ctaPrimary.href}
+                className={styles.primaryBtn}
+                aria-label="Initialize conversation"
+              >
+                {ctaPrimary.label}
+              </Link>
+            ) : (
+              <a
+                href={ctaPrimary.href}
+                className={styles.primaryBtn}
+                aria-label="Initialize conversation"
+              >
+                {ctaPrimary.label}
+              </a>
+            )}
             <a
               href={ctaSecondary.href}
               className={styles.secondaryBtn}

@@ -23,6 +23,6 @@ export const NAV_LINKS = [
 
 export const CTA_CONFIG = {
   label: "INIT_CONV",
-  href: "#contact",
+  href: "/contact",
   target: "_self",
 };

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Badge from "../../common/Badge/Badge";
 import Button from "../../common/Button/Button";
 import { useLocalTime } from "@/hooks/useLocalTime";
@@ -30,7 +31,7 @@ export default function StatusWidget() {
       {/* Bottom CTA Button */}
       <div className={styles.actionRow}>
         <Button
-          as="a"
+          as={Link}
           href={CTA_CONFIG.href}
           variant="primary"
           size="md"

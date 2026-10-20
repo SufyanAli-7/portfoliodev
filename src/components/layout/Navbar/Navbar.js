@@ -133,11 +133,12 @@ export default function Navbar() {
           {/* CTA & Mobile Controls */}
           <div className={styles.actions}>
             <Button
-              as="a"
+              as={Link}
               href={CTA_CONFIG.href}
               variant="primary"
               size="md"
               aria-label="Initialize Conversation"
+              onClick={() => setIsMobileMenuOpen(false)}
             >
               {CTA_CONFIG.label}
             </Button>
