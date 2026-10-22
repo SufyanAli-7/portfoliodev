@@ -28,7 +28,7 @@ export function calculateExperience(startDateInput = "2024-04-01") {
 }
 
 export default function ServiceInfo({
-  serviceCode = "0031",
+  serviceCode = "01",
   title = "FULL_STACK_DEV",
   description = "I build apps end-to-end — from database schema to the UI you touch. React, Next.js, and Node.js are my daily drivers.",
   status = {

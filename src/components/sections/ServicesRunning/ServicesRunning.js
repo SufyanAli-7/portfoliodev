@@ -44,7 +44,7 @@ export default function ServicesRunning() {
           <div className={styles.accentLine} aria-hidden="true" />
         </div>
 
-        {/* List of Services (0031: FULL_STACK_DEV, 0032: API_ENGINEERING, 0033: PERF_OPTIMIZATION) */}
+        {/* List of Services (01: FULL_STACK_DEV, 02: API_ENGINEERING, 03: PERF_OPTIMIZATION, etc.) */}
         <div className={styles.servicesList}>
           {SERVICES_LIST.map((service) => (
             <div

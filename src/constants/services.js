@@ -6,7 +6,7 @@ export const SERVICES_SECTION = {
 export const SERVICES_LIST = [
   {
     id: "full-stack",
-    serviceCode: "0031",
+    serviceCode: "01",
     title: "FULL_STACK_DEV",
     description:
       "I build apps end-to-end — from database schema to the UI you touch. React, Next.js, and Node.js are my daily drivers.",
@@ -20,7 +20,7 @@ export const SERVICES_LIST = [
   },
   {
     id: "api-engineering",
-    serviceCode: "0032",
+    serviceCode: "02",
     title: "API_ENGINEERING",
     description:
       "I design APIs that are a joy to work with. REST, GraphQL, microservices — whatever fits the problem best.",
@@ -34,7 +34,7 @@ export const SERVICES_LIST = [
   },
   {
     id: "perf-optimization",
-    serviceCode: "0033",
+    serviceCode: "03",
     title: "PERF_OPTIMIZATION",
     description:
       "I make slow things fast. Core Web Vitals, bundle sizes, query optimization — I dig into the numbers and fix what matters.",
@@ -48,7 +48,7 @@ export const SERVICES_LIST = [
   },
   {
     id: "saas-platform-dev",
-    serviceCode: "0034",
+    serviceCode: "04",
     title: "SAAS_PLATFORM_DEV",
     description:
       "I build scalable SaaS products with secure auth, subscription billing, dashboards, and cloud-ready architecture.",
@@ -63,7 +63,7 @@ export const SERVICES_LIST = [
   },
   {
     id: "mobile-app-dev",
-    serviceCode: "0035",
+    serviceCode: "05",
     title: "MOBILE_APP_DEVELOPMENT",
     description:
       "I build cross-platform mobile apps with modern tech like React Native and Expo — fast, scalable, and user-friendly.",
