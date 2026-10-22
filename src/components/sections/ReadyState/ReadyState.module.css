@@ -30,6 +30,10 @@
 
 /* Section Header Label: 07 / READY_STATE */
 .sectionLabel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
   font-size: 12px;
   font-weight: 500;
