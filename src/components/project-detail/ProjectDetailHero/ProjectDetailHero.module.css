@@ -1,8 +1,8 @@
 .heroSection {
   position: relative;
   width: 100%;
-  padding-top: 36px;
-  padding-bottom: 56px;
+  padding-top: 18px;
+  padding-bottom: 32px;
 }
 
 .inner {
@@ -13,115 +13,514 @@
 
 .archiveCode {
   font-family: var(--font-jetbrains-mono), monospace;
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 500;
-  color: #C8FF00;
+  color: #c8ff00;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 .mainTitle {
   font-family: var(--font-space-grotesk), sans-serif;
-  font-size: clamp(48px, 7.5vw, 88px);
+  font-size: clamp(32px, 4.2vw, 54px);
   font-weight: 700;
-  line-height: 0.98;
-  letter-spacing: -0.03em;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
   color: #ffffff;
   text-transform: uppercase;
-  margin: 0 0 36px 0;
+  margin: 0 0 16px 0;
 }
 
-.mediaFrame {
+/* ==========================================================================
+   Slider Wrapper
+   ========================================================================== */
+
+.sliderWrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  max-height: 560px;
-  background-color: #050505;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  max-width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.imageWrapper {
+/* ==========================================================================
+   3D Coverflow Stage (Perspective & Atmospheric Lighting)
+   ========================================================================== */
+
+.coverflowStage {
+  position: relative;
+  width: 100%;
+  height: clamp(400px, 60vh, 530px);
+  perspective: 1400px;
+  perspective-origin: 50% 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 12px;
+  background: radial-gradient(ellipse at 50% 45%, rgba(28, 32, 44, 0.5) 0%, rgba(8, 9, 12, 0.98) 75%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.stageTrack {
   position: relative;
   width: 100%;
   height: 100%;
+  transform-style: preserve-3d;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.heroImg {
-  object-fit: cover;
-  object-position: center;
+/* ==========================================================================
+   3D Perspective Fanned Cards (100% Opaque, No Glass Bleed, 3 Left + 3 Right)
+   ========================================================================== */
+
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  transform: translate(-50%, -50%) translate3d(0, 0, -400px) scale(0.4);
   opacity: 0;
-  transform: scale(1);
-  transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.4s ease,
+              filter 0.5s ease,
+              box-shadow 0.5s ease,
+              border-color 0.4s ease;
+  will-change: transform, opacity;
+  cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #0d0f14;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85);
 }
 
-.heroImgLoaded {
+/* Active Center Card (Front & Focused) */
+.cardActive {
+  transform: translate(-50%, -50%) translate3d(0, 0, 0) scale(1);
+  opacity: 1;
+  visibility: visible;
+  z-index: 25;
+  pointer-events: auto;
+  cursor: default;
+  border-color: rgba(200, 255, 0, 0.65);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95),
+              0 0 28px rgba(200, 255, 0, 0.22),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  filter: brightness(1);
+  background-color: #0d0f14;
+}
+
+/* Left 1: Immediate Left Card (100% Solid & Opaque) */
+.cardLeft1 {
+  transform: translate(-50%, -50%) translate3d(-38%, 0, -60px) scale(0.86);
+  opacity: 1;
+  visibility: visible;
+  z-index: 20;
+  pointer-events: auto;
+  filter: brightness(0.72);
+  background-color: #0d0f14;
+}
+
+.cardLeft1:hover {
+  filter: brightness(0.90);
+  border-color: rgba(200, 255, 0, 0.4);
+}
+
+/* Left 2: Second Left Card (100% Solid & Opaque) */
+.cardLeft2 {
+  transform: translate(-50%, -50%) translate3d(-72%, 0, -120px) scale(0.74);
+  opacity: 1;
+  visibility: visible;
+  z-index: 15;
+  pointer-events: auto;
+  filter: brightness(0.52);
+  background-color: #0d0f14;
+}
+
+.cardLeft2:hover {
+  filter: brightness(0.72);
+  border-color: rgba(200, 255, 0, 0.3);
+}
+
+/* Left 3: Third Left Card (100% Solid & Opaque) */
+.cardLeft3 {
+  transform: translate(-50%, -50%) translate3d(-102%, 0, -180px) scale(0.62);
+  opacity: 1;
+  visibility: visible;
+  z-index: 10;
+  pointer-events: auto;
+  filter: brightness(0.38);
+  background-color: #0d0f14;
+}
+
+.cardLeft3:hover {
+  filter: brightness(0.55);
+}
+
+/* Right 1: Immediate Right Card (100% Solid & Opaque) */
+.cardRight1 {
+  transform: translate(-50%, -50%) translate3d(38%, 0, -60px) scale(0.86);
+  opacity: 1;
+  visibility: visible;
+  z-index: 20;
+  pointer-events: auto;
+  filter: brightness(0.72);
+  background-color: #0d0f14;
+}
+
+.cardRight1:hover {
+  filter: brightness(0.90);
+  border-color: rgba(200, 255, 0, 0.4);
+}
+
+/* Right 2: Second Right Card (100% Solid & Opaque) */
+.cardRight2 {
+  transform: translate(-50%, -50%) translate3d(72%, 0, -120px) scale(0.74);
+  opacity: 1;
+  visibility: visible;
+  z-index: 15;
+  pointer-events: auto;
+  filter: brightness(0.52);
+  background-color: #0d0f14;
+}
+
+.cardRight2:hover {
+  filter: brightness(0.72);
+  border-color: rgba(200, 255, 0, 0.3);
+}
+
+/* Right 3: Third Right Card (100% Solid & Opaque) */
+.cardRight3 {
+  transform: translate(-50%, -50%) translate3d(102%, 0, -180px) scale(0.62);
+  opacity: 1;
+  visibility: visible;
+  z-index: 10;
+  pointer-events: auto;
+  filter: brightness(0.38);
+  background-color: #0d0f14;
+}
+
+.cardRight3:hover {
+  filter: brightness(0.55);
+}
+
+/* Hidden Cards beyond visible range */
+.cardHidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   Card Media & Clean Mockup Display (16:10 Ratio, 100% Complete Mockup)
+   ========================================================================== */
+
+.cardMedia {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background-color: #0d0f14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardImg {
+  object-fit: contain;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.35s ease;
+}
+
+.cardImgLoading {
+  opacity: 0;
+}
+
+.cardImgLoaded {
   opacity: 1;
 }
 
-.mediaFrame:hover .heroImgLoaded {
-  transform: scale(1.02);
+/* ==========================================================================
+   Card Footer (Clean Framed Caption Bar)
+   ========================================================================== */
+
+.cardFooter {
+  padding: 11px 16px;
+  background-color: #0d0f14;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
-.heroBadge {
+.cardTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.cardDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #c8ff00;
+  box-shadow: 0 0 8px #c8ff00;
+  flex-shrink: 0;
+}
+
+.cardTitle {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardBadge {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: #c8ff00;
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Navigation Buttons (Left / Right Frosted Glass Chevrons)
+   ========================================================================== */
+
+.navBtn {
   position: absolute;
-  bottom: 24px;
-  left: 24px;
-  background: #000000;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.85);
-  padding: 5px 10px;
-  border-radius: 4px;
-  display: inline-flex;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(14, 16, 22, 0.65);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.55),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10;
+  cursor: pointer;
+  z-index: 35;
+  transition: all var(--transition-fast);
+  outline: none;
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none;
   user-select: none;
+  -webkit-user-select: none;
 }
 
-.badgeText {
-  font-family: var(--font-jetbrains-mono), monospace;
-  font-size: 10.5px;
-  font-weight: 700;
+.navBtn svg {
+  pointer-events: none;
+  stroke: currentColor;
+  transition: transform var(--transition-fast);
+}
+
+.navBtn:hover {
+  background: rgba(200, 255, 0, 0.18);
+  border-color: #c8ff00;
   color: #c8ff00;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  line-height: 1.2;
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 0 24px rgba(200, 255, 0, 0.45),
+              inset 0 1px 0 rgba(200, 255, 0, 0.35);
+}
+
+.navBtn:hover svg {
+  transform: scale(1.06);
+}
+
+.navBtn:focus {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.navBtn:focus-visible {
+  outline: none;
+  border-color: #c8ff00;
+  box-shadow: 0 0 18px rgba(200, 255, 0, 0.5);
+}
+
+.navBtn:active {
+  transform: translateY(-50%) scale(0.94);
+  background: rgba(200, 255, 0, 0.25);
+  outline: none;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+.prevBtn {
+  left: 14px;
+}
+
+.nextBtn {
+  right: 14px;
+}
+
+/* ==========================================================================
+   Pagination Bars (Dash Indicators)
+   ========================================================================== */
+
+.paginationBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 4px 0;
+}
+
+.dashBtn {
+  height: 4px;
+  width: 14px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all var(--transition-fast);
+  outline: none;
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none;
+}
+
+.dashBtn:hover {
+  background: rgba(200, 255, 0, 0.6);
+}
+
+.dashBtn:focus,
+.dashBtn:focus-visible,
+.dashBtn:active {
+  outline: none;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+.dashActive {
+  width: 34px;
+  background: #c8ff00;
+  box-shadow: 0 0 8px rgba(200, 255, 0, 0.7);
 }
 
 /* ==========================================================================
    Responsive Breakpoints
    ========================================================================== */
 
+@media (max-width: 1100px) {
+  .card {
+    width: 380px;
+  }
+  .cardLeft1 {
+    transform: translate(-50%, -50%) translate3d(-36%, 0, -50px) scale(0.85);
+  }
+  .cardRight1 {
+    transform: translate(-50%, -50%) translate3d(36%, 0, -50px) scale(0.85);
+  }
+  .cardLeft2 {
+    transform: translate(-50%, -50%) translate3d(-68%, 0, -100px) scale(0.72);
+  }
+  .cardRight2 {
+    transform: translate(-50%, -50%) translate3d(68%, 0, -100px) scale(0.72);
+  }
+  .cardLeft3 {
+    transform: translate(-50%, -50%) translate3d(-98%, 0, -150px) scale(0.60);
+  }
+  .cardRight3 {
+    transform: translate(-50%, -50%) translate3d(98%, 0, -150px) scale(0.60);
+  }
+}
+
 @media (max-width: 768px) {
   .heroSection {
-    padding-top: 24px;
-    padding-bottom: 40px;
+    padding-top: 14px;
+    padding-bottom: 24px;
   }
 
   .mainTitle {
-    font-size: clamp(38px, 10vw, 54px);
-    margin-bottom: 24px;
+    font-size: clamp(28px, 8vw, 40px);
+    margin-bottom: 14px;
   }
 
-  .mediaFrame {
-    aspect-ratio: 16 / 10;
-    border-radius: 6px;
+  .coverflowStage {
+    height: 360px;
+    border-radius: 8px;
   }
 
-  .heroBadge {
-    bottom: 16px;
-    left: 16px;
-    padding: 4px 8px;
+  .card {
+    width: 82%;
+    max-width: 310px;
   }
 
-  .badgeText {
-    font-size: 9.5px;
+  .cardLeft1 {
+    transform: translate(-50%, -50%) translate3d(-30%, 0, -40px) scale(0.86);
+    filter: brightness(0.68);
+  }
+
+  .cardRight1 {
+    transform: translate(-50%, -50%) translate3d(30%, 0, -40px) scale(0.86);
+    filter: brightness(0.68);
+  }
+
+  .cardLeft2,
+  .cardRight2,
+  .cardLeft3,
+  .cardRight3 {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .navBtn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .prevBtn {
+    left: 8px;
+  }
+
+  .nextBtn {
+    right: 8px;
+  }
+
+  .cardFooter {
+    padding: 8px 12px;
+  }
+
+  .cardTitle {
+    font-size: 11.5px;
+  }
+
+  .cardBadge {
+    font-size: 10px;
   }
 }

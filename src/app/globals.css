@@ -63,4 +63,6 @@ button {
   background: none;
   font: inherit;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
+

@@ -1,10 +1,30 @@
+import { PROJECTS_DATA } from "./projects";
+
+const getProjectScreens = (id, fallbackHero) => {
+  const found = PROJECTS_DATA.find((p) => p.id === id);
+  if (found && found.screens && found.screens.length > 0) {
+    return found.screens;
+  }
+  return [
+    {
+      id: "01",
+      num: "01",
+      title: "Hero Showcase",
+      caption: "",
+      src: fallbackHero,
+    },
+  ];
+};
+
 export const PROJECT_DETAILS_MAP = {
   quickcart: {
     id: "quickcart",
     archiveCode: "PROJECT_ARCHIVE_001",
     title: "QUICKCART",
+    backdropColor: "#EA580C",
     heroImage: "/images/quickcart-mockups/01-homepage-hero.png",
     heroBadge: "PRODUCTION_V2.4",
+    screens: getProjectScreens("quickcart", "/images/quickcart-mockups/01-homepage-hero.png"),
     overviewSectionNumber: "01 / OVERVIEW",
     overviewHeadline: "ARCHITECTED FOR\nSCALE & SEAMLESS\nCOMMERCE.",
     overviewLabel: "OVERVIEW",
@@ -30,8 +50,10 @@ export const PROJECT_DETAILS_MAP = {
     id: "slidex-lms",
     archiveCode: "PROJECT_ARCHIVE_002",
     title: "SLIDEX LMS",
+    backdropColor: "#111827",
     heroImage: "/images/slidex-lms-mockups/10-diagonal-style.png",
     heroBadge: "PRODUCTION_V1.8",
+    screens: getProjectScreens("slidex-lms", "/images/slidex-lms-mockups/10-diagonal-style.png"),
     overviewSectionNumber: "01 / OVERVIEW",
     overviewHeadline: "STREAMLINING\nMODULAR DIGITAL\nEDUCATION.",
     overviewLabel: "OVERVIEW",
@@ -57,8 +79,10 @@ export const PROJECT_DETAILS_MAP = {
     id: "that-marketing",
     archiveCode: "PROJECT_ARCHIVE_003",
     title: "THAT. MARKETING",
+    backdropColor: "#FF751F",
     heroImage: "/images/that-marketing-mockups/01-hero.png",
     heroBadge: "AGENCY_V3.0",
+    screens: getProjectScreens("that-marketing", "/images/that-marketing-mockups/01-hero.png"),
     overviewSectionNumber: "01 / OVERVIEW",
     overviewHeadline: "HIGH IMPACT\nDIGITAL EXPERIENCES\nFOR ENTERPRISE.",
     overviewLabel: "OVERVIEW",
@@ -84,8 +108,10 @@ export const PROJECT_DETAILS_MAP = {
     id: "taskly",
     archiveCode: "PROJECT_ARCHIVE_004",
     title: "TASKLY",
+    backdropColor: "#6366F1",
     heroImage: "/images/taskly-mockups/01-hero-trio.png",
     heroBadge: "MOBILE_PWA_V1.2",
+    screens: getProjectScreens("taskly", "/images/taskly-mockups/01-hero-trio.png"),
     overviewSectionNumber: "01 / OVERVIEW",
     overviewHeadline: "ZERO FRICTION\nTASK EXECUTION\n& TELEMETRY.",
     overviewLabel: "OVERVIEW",
