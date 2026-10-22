@@ -10,8 +10,8 @@
   position: relative;
   z-index: 10;
   width: 100%;
-  padding-top: 48px;
-  padding-bottom: 56px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   scroll-margin-top: 90px;
 }
 
@@ -329,6 +329,13 @@
 }
 
 /* Responsive adjustments */
+@media (max-width: 1024px) {
+  .educationSection {
+    padding-top: 36px;
+    padding-bottom: 36px;
+  }
+}
+
 @media (max-width: 920px) {
   .cardsGrid {
     grid-template-columns: 1fr;
@@ -341,6 +348,13 @@
 
   .sectionHeader {
     margin-bottom: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .educationSection {
+    padding-top: 32px;
+    padding-bottom: 32px;
   }
 }
 

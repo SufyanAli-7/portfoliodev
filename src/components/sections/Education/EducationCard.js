@@ -29,7 +29,7 @@ export default function EducationCard({ item, index }) {
 
         {/* Period Tag */}
         <div className={styles.periodTag}>
-          <span className={styles.periodPrefix}>//</span>
+          <span className={styles.periodPrefix}>/</span>
           <time>{item.period}</time>
         </div>
 

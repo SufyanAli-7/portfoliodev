@@ -9,7 +9,7 @@ export const EDUCATION_DATA = [
   {
     id: "gcuf-software-engineering",
     category: "DEGREE",
-    categoryBadge: "DEGREE // ACADEMIC",
+    categoryBadge: "DEGREE / ACADEMIC",
     title: "Bachelor in Software Engineering",
     institution: "GCUF University Faisalabad",
     institutionFull: "Government College University Faisalabad (GCUF)",
@@ -33,7 +33,7 @@ export const EDUCATION_DATA = [
   {
     id: "smit-web-mobile-app-dev",
     category: "CERTIFICATE",
-    categoryBadge: "CERTIFICATE // TECHNICAL",
+    categoryBadge: "CERTIFICATE / TECHNICAL",
     title: "Web and Mobile App Development",
     institution: "SMIT Faisalabad",
     institutionFull: "Saylani Mass IT Training (SMIT)",
