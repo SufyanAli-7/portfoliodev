@@ -120,6 +120,15 @@
   object-fit: cover;
   object-position: center 15%;
   display: block;
+  transition: opacity 0.4s ease;
+}
+
+.portraitImageLoading {
+  opacity: 0;
+}
+
+.portraitImageLoaded {
+  opacity: 1;
 }
 
 /* Equalizer Slider Widget */

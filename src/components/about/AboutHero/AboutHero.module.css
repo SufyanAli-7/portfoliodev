@@ -91,7 +91,15 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portraitImageLoading {
+  opacity: 0;
+}
+
+.portraitImageLoaded {
+  opacity: 1;
 }
 
 .imageCard:hover .portraitImage {

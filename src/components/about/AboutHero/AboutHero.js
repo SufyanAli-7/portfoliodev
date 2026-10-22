@@ -1,9 +1,22 @@
+"use client";
+
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Container from "@/components/layout/Container/Container";
+import PortraitSkeleton from "@/components/common/PortraitSkeleton/PortraitSkeleton";
 import { ABOUT_CONFIG } from "@/constants/about";
 import styles from "./AboutHero.module.css";
 
 export default function AboutHero() {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const imgRef = useRef(null);
+
+  useEffect(() => {
+    if (imgRef.current && imgRef.current.complete) {
+      setIsLoaded(true);
+    }
+  }, []);
+
   const {
     sectionNumber,
     sectionTitle,
@@ -36,14 +49,19 @@ export default function AboutHero() {
 
             {/* Vertical Portrait Image */}
             <div className={styles.imageCard}>
+              <PortraitSkeleton isLoaded={isLoaded} tag="DEV_PORTRAIT // ABOUT_ID" />
               <Image
+                ref={imgRef}
                 src={portrait.src}
                 alt={portrait.alt}
                 width={937}
                 height={1678}
                 priority
                 sizes="(max-width: 810px) 100vw, (max-width: 1200px) 45vw, 460px"
-                className={styles.portraitImage}
+                className={`${styles.portraitImage} ${
+                  isLoaded ? styles.portraitImageLoaded : styles.portraitImageLoading
+                }`}
+                onLoad={() => setIsLoaded(true)}
               />
             </div>
 

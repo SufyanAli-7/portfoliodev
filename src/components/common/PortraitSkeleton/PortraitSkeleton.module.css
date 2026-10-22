@@ -1,0 +1,318 @@
+.skeletonWrapper {
+  position: absolute;
+  inset: 0;
+  background: #0c0d10;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  z-index: 3;
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  user-select: none;
+  border-radius: inherit;
+}
+
+.skeletonHidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Cyber Technical Corner Reticles */
+.cornerTL,
+.cornerTR,
+.cornerBL,
+.cornerBR {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.cornerTL {
+  top: 10px;
+  left: 10px;
+  border-top: 1.5px solid #c8ff00;
+  border-left: 1.5px solid #c8ff00;
+}
+
+.cornerTR {
+  top: 10px;
+  right: 10px;
+  border-top: 1.5px solid #c8ff00;
+  border-right: 1.5px solid #c8ff00;
+}
+
+.cornerBL {
+  bottom: 10px;
+  left: 10px;
+  border-bottom: 1.5px solid #c8ff00;
+  border-left: 1.5px solid #c8ff00;
+}
+
+.cornerBR {
+  bottom: 10px;
+  right: 10px;
+  border-bottom: 1.5px solid #c8ff00;
+  border-right: 1.5px solid #c8ff00;
+}
+
+/* Subtle Technical Grid Background */
+.gridBackdrop {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+/* Top HUD Header */
+.topHud {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 0 20px;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+
+.hudTag {
+  color: #c8ff00;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.hudStatus {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 500;
+}
+
+.pulsingDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #c8ff00;
+  box-shadow: 0 0 8px #c8ff00;
+  animation: pulseNeon 1.4s infinite ease-in-out;
+}
+
+@keyframes pulseNeon {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(0.7);
+  }
+}
+
+/* Center Silhouette */
+.silhouetteContainer {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+
+.avatarSilhouette {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.head {
+  position: relative;
+  width: 82px;
+  height: 98px;
+  border-radius: 46% 46% 42% 42%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Biometric Optical Reticle Target */
+.reticleTarget {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px dashed rgba(200, 255, 0, 0.35);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reticleCrossH {
+  position: absolute;
+  width: 14px;
+  height: 1px;
+  background-color: rgba(200, 255, 0, 0.45);
+}
+
+.reticleCrossV {
+  position: absolute;
+  width: 1px;
+  height: 14px;
+  background-color: rgba(200, 255, 0, 0.45);
+}
+
+.neck {
+  width: 28px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  margin-top: -2px;
+}
+
+.shoulders {
+  width: clamp(160px, 60%, 220px);
+  height: 72px;
+  border-radius: 40px 40px 0 0;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: none;
+  margin-top: -2px;
+}
+
+/* Bottom HUD Footer */
+.bottomHud {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px 16px 20px;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.telemetryBars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 10px;
+}
+
+.bar {
+  width: 3px;
+  background-color: rgba(200, 255, 0, 0.5);
+  border-radius: 1px;
+  animation: barEqualize 1.2s infinite ease-in-out alternate;
+}
+
+.bar:nth-child(1) {
+  height: 40%;
+  animation-delay: 0.1s;
+}
+
+.bar:nth-child(2) {
+  height: 90%;
+  animation-delay: 0.3s;
+}
+
+.bar:nth-child(3) {
+  height: 60%;
+  animation-delay: 0.5s;
+}
+
+.bar:nth-child(4) {
+  height: 100%;
+  animation-delay: 0.2s;
+}
+
+@keyframes barEqualize {
+  0% {
+    height: 25%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+/* Moving Laser Scan Line */
+.scanLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(200, 255, 0, 0.2) 20%,
+    #c8ff00 50%,
+    rgba(200, 255, 0, 0.2) 80%,
+    transparent 100%
+  );
+  box-shadow: 0 0 14px rgba(200, 255, 0, 0.6);
+  z-index: 3;
+  animation: laserScan 2.4s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes laserScan {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+/* Diagonal Shimmer Glow */
+.shimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.015) 25%,
+    rgba(200, 255, 0, 0.06) 50%,
+    rgba(255, 255, 255, 0.015) 75%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  animation: shimmerWave 2s infinite ease-in-out;
+  pointer-events: none;
+  z-index: 3;
+}
+
+@keyframes shimmerWave {
+  0% {
+    transform: translateX(-100%);
+  }
+  60%, 100% {
+    transform: translateX(100%);
+  }
+}
