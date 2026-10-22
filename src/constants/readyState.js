@@ -1,5 +1,5 @@
 export const READY_STATE_CONFIG = {
-  sectionPrefix: "06 /",
+  sectionPrefix: "07 /",
   sectionTitle: "READY_STATE",
   id: "contact",
   headline: "GOT A PROJECT?",

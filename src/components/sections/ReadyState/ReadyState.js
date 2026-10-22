@@ -26,7 +26,7 @@ export default function ReadyState() {
     >
       <Container>
         <div className={styles.contentWrapper}>
-          {/* Section Label: 06 / READY_STATE */}
+          {/* Section Label: 07 / READY_STATE */}
           <div className={styles.sectionLabel}>
             <span className={styles.labelPrefix}>{sectionPrefix}</span>
             <span className={styles.labelTitle}>{sectionTitle}</span>
