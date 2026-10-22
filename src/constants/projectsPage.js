@@ -1,5 +1,5 @@
 export const PROJECTS_PAGE_CONFIG = {
-  systemVersion: "SYSTEM_VERSION // 2.0.4",
+  systemVersion: "SYSTEM_VERSION / 2.0.4",
   sectionPrefix: "02 /",
   sectionTitle: "PROJECTS",
   description:
