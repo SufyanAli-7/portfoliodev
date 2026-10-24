@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/db";
 import Contact from "@/models/Contact";
 import { getAuthenticatedAdmin } from "@/lib/auth";
+import { invalidateDashboardCache } from "@/lib/cache";
 
 export async function PATCH(request, context) {
   try {
@@ -42,6 +43,9 @@ export async function PATCH(request, context) {
       );
     }
 
+    // Invalidate Redis dashboard cache so fresh data is served immediately
+    await invalidateDashboardCache();
+
     return NextResponse.json(
       {
         success: true,
@@ -80,6 +84,9 @@ export async function DELETE(request, context) {
         { status: 404 }
       );
     }
+
+    // Invalidate Redis dashboard cache
+    await invalidateDashboardCache();
 
     return NextResponse.json(
       { success: true, message: "Contact record deleted successfully." },

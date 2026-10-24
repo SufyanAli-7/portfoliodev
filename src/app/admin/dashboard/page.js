@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import styles from "./dashboard.module.css";
@@ -20,13 +20,25 @@ export default function AdminDashboardPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
-  const [actionLoading, setActionLoading] = useState(null);
+  const [isSyncing, setIsSyncing] = useState(false);
 
-  // 1. Fetch Contacts with Filter & Search
+  // In-memory client cache: { [key: string]: { contacts: Array, stats: Object } }
+  const clientCache = useRef({});
+
+  // 1. Fetch Contacts with Filter & Search (Supports silent background revalidation)
   const fetchContactsData = useCallback(
-    async (status = statusFilter, query = searchQuery) => {
-      try {
+    async (status = statusFilter, query = searchQuery, options = { silent: false }) => {
+      const safeQuery = query.trim().toLowerCase();
+      const cacheKey = `${status}:${safeQuery}`;
+      const hasCached = !!clientCache.current[cacheKey];
+
+      if (!options.silent && !hasCached) {
         setIsRefreshing(true);
+      } else {
+        setIsSyncing(true);
+      }
+
+      try {
         const params = new URLSearchParams();
         if (status !== "all") {
           params.append("status", status);
@@ -42,18 +54,28 @@ export default function AdminDashboardPage() {
         }
         const data = await res.json();
         if (data.success) {
-          setContacts(data.contacts || []);
-          if (data.stats) {
-            setStats(data.stats);
+          const freshContacts = data.contacts || [];
+          const freshStats = data.stats || null;
+
+          setContacts(freshContacts);
+          if (freshStats) {
+            setStats(freshStats);
           }
+
+          // Cache current tab view
+          clientCache.current[cacheKey] = {
+            contacts: freshContacts,
+            stats: freshStats || stats,
+          };
         }
       } catch (err) {
         console.error("Failed to fetch contacts:", err);
       } finally {
         setIsRefreshing(false);
+        setIsSyncing(false);
       }
     },
-    [statusFilter, searchQuery, router]
+    [statusFilter, searchQuery, router, stats]
   );
 
   // 2. Initialize Authentication & Initial Data
@@ -73,8 +95,36 @@ export default function AdminDashboardPage() {
         const contactsRes = await fetch("/api/admin/contacts");
         if (contactsRes.ok && isMounted) {
           const cData = await contactsRes.json();
-          setContacts(cData.contacts || []);
-          if (cData.stats) setStats(cData.stats);
+          const loadedContacts = cData.contacts || [];
+          const loadedStats = cData.stats || {
+            total: loadedContacts.length,
+            unread: loadedContacts.filter((c) => c.status === "unread").length,
+            read: loadedContacts.filter((c) => c.status === "read").length,
+            replied: loadedContacts.filter((c) => c.status === "replied").length,
+            archived: loadedContacts.filter((c) => c.status === "archived").length,
+          };
+
+          setContacts(loadedContacts);
+          setStats(loadedStats);
+
+          // Seed in-memory client cache for all tabs for 0ms tab switching
+          clientCache.current["all:"] = { contacts: loadedContacts, stats: loadedStats };
+          clientCache.current["unread:"] = {
+            contacts: loadedContacts.filter((c) => c.status === "unread"),
+            stats: loadedStats,
+          };
+          clientCache.current["read:"] = {
+            contacts: loadedContacts.filter((c) => c.status === "read"),
+            stats: loadedStats,
+          };
+          clientCache.current["replied:"] = {
+            contacts: loadedContacts.filter((c) => c.status === "replied"),
+            stats: loadedStats,
+          };
+          clientCache.current["archived:"] = {
+            contacts: loadedContacts.filter((c) => c.status === "archived"),
+            stats: loadedStats,
+          };
         }
       } catch {
         router.replace("/admin/login");
@@ -88,53 +138,154 @@ export default function AdminDashboardPage() {
     };
   }, [router]);
 
-  // 3. Status Update Handler
+  // 3. Instant Tab Switching (0ms transition with background sync)
+  const handleTabChange = (newTab) => {
+    setStatusFilter(newTab);
+    const safeQuery = searchQuery.trim().toLowerCase();
+    const targetKey = `${newTab}:${safeQuery}`;
+
+    // A. Check specific cached tab query
+    if (clientCache.current[targetKey]) {
+      const cached = clientCache.current[targetKey];
+      setContacts(cached.contacts);
+      if (cached.stats) setStats(cached.stats);
+      fetchContactsData(newTab, searchQuery, { silent: true });
+      return;
+    }
+
+    // B. If no query, derive tab from "all:" cache
+    const allKey = `all:${safeQuery}`;
+    if (clientCache.current[allKey]) {
+      const allEntry = clientCache.current[allKey];
+      const filtered =
+        newTab === "all"
+          ? allEntry.contacts
+          : allEntry.contacts.filter((c) => c.status === newTab);
+
+      setContacts(filtered);
+      clientCache.current[targetKey] = {
+        contacts: filtered,
+        stats: allEntry.stats,
+      };
+      fetchContactsData(newTab, searchQuery, { silent: true });
+      return;
+    }
+
+    // C. Cache miss: fetch with spinner
+    fetchContactsData(newTab, searchQuery, { silent: false });
+  };
+
+  // 4. Optimistic Status Update (Instant UI & count update without page spinner)
   const handleStatusChange = async (id, newStatus) => {
+    const target = contacts.find((c) => c._id === id);
+    if (!target || target.status === newStatus) return;
+
+    const oldStatus = target.status;
+    const previousContacts = [...contacts];
+    const previousStats = { ...stats };
+
+    // A. Optimistic UI update for contacts list
+    setContacts((prev) => {
+      if (statusFilter !== "all" && newStatus !== statusFilter) {
+        // Filter out if currently viewing a specific status tab (e.g. unread -> read)
+        return prev.filter((c) => c._id !== id);
+      }
+      return prev.map((c) => (c._id === id ? { ...c, status: newStatus } : c));
+    });
+
+    // B. Optimistic Stats update (badges update in 0ms)
+    const updatedStats = {
+      ...stats,
+      [oldStatus]: Math.max(0, (stats[oldStatus] || 0) - 1),
+      [newStatus]: (stats[newStatus] || 0) + 1,
+    };
+    setStats(updatedStats);
+
+    // C. Update in-memory client cache across all tabs
+    Object.keys(clientCache.current).forEach((key) => {
+      const entry = clientCache.current[key];
+      if (entry && Array.isArray(entry.contacts)) {
+        if (key.startsWith(`${oldStatus}:`)) {
+          entry.contacts = entry.contacts.filter((c) => c._id !== id);
+        } else if (key.startsWith(`${newStatus}:`)) {
+          const alreadyExists = entry.contacts.some((c) => c._id === id);
+          if (!alreadyExists) {
+            entry.contacts = [{ ...target, status: newStatus }, ...entry.contacts];
+          }
+        } else {
+          entry.contacts = entry.contacts.map((c) =>
+            c._id === id ? { ...c, status: newStatus } : c
+          );
+        }
+        entry.stats = updatedStats;
+      }
+    });
+
+    // D. Fire server update in background
     try {
-      setActionLoading(id);
       const res = await fetch(`/api/admin/contacts/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: newStatus }),
       });
-      const data = await res.json();
-      if (data.success) {
-        setContacts((prev) =>
-          prev.map((c) => (c._id === id ? { ...c, status: newStatus } : c))
-        );
-        // Refresh counts
-        setStats((prev) => {
-          const updated = { ...prev };
-          return updated;
-        });
-        fetchContactsData();
+
+      if (!res.ok) {
+        throw new Error("Failed to update status on server.");
       }
     } catch (err) {
-      console.error("Failed to update status:", err);
-    } finally {
-      setActionLoading(null);
+      console.error("Status update error, rolling back:", err);
+      setContacts(previousContacts);
+      setStats(previousStats);
     }
   };
 
-  // 4. Delete Handler
+  // 5. Optimistic Delete (Instant removal from UI without spinner)
   const handleDelete = async (id, name) => {
     if (!window.confirm(`Are you sure you want to delete inquiry from "${name}"?`)) {
       return;
     }
+
+    const target = contacts.find((c) => c._id === id);
+    const previousContacts = [...contacts];
+    const previousStats = { ...stats };
+
+    // A. Optimistic UI update
+    setContacts((prev) => prev.filter((c) => c._id !== id));
+
+    // B. Optimistic Stats update
+    if (target) {
+      const statusKey = target.status;
+      const updatedStats = {
+        ...stats,
+        total: Math.max(0, stats.total - 1),
+        [statusKey]: Math.max(0, (stats[statusKey] || 0) - 1),
+      };
+      setStats(updatedStats);
+
+      // C. Remove from all cached entries
+      Object.keys(clientCache.current).forEach((key) => {
+        const entry = clientCache.current[key];
+        if (entry && Array.isArray(entry.contacts)) {
+          entry.contacts = entry.contacts.filter((c) => c._id !== id);
+          entry.stats = updatedStats;
+        }
+      });
+    }
+
+    // D. Fire server delete in background
     try {
-      setActionLoading(id);
       const res = await fetch(`/api/admin/contacts/${id}`, {
         method: "DELETE",
       });
-      const data = await res.json();
-      if (data.success) {
-        setContacts((prev) => prev.filter((c) => c._id !== id));
-        fetchContactsData();
+
+      if (!res.ok) {
+        throw new Error("Failed to delete contact on server.");
       }
     } catch (err) {
-      console.error("Failed to delete contact:", err);
-    } finally {
-      setActionLoading(null);
+      console.error("Delete error, rolling back:", err);
+      setContacts(previousContacts);
+      setStats(previousStats);
+      alert("Failed to delete inquiry. Reverted changes.");
     }
   };
 
@@ -180,7 +331,9 @@ export default function AdminDashboardPage() {
               <span>ADMIN_TERMINAL</span>
             </div>
             <span className={styles.brandDivider}>{"//"}</span>
-            <span className={styles.dashboardTitle}>TRANSMISSIONS LOG</span>
+            <span className={styles.dashboardTitle}>
+              TRANSMISSIONS LOG {isSyncing && "• SYNCING..."}
+            </span>
           </div>
 
           <div className={styles.navActions}>
@@ -237,10 +390,7 @@ export default function AdminDashboardPage() {
               <button
                 key={tab}
                 type="button"
-                onClick={() => {
-                  setStatusFilter(tab);
-                  fetchContactsData(tab, searchQuery);
-                }}
+                onClick={() => handleTabChange(tab)}
                 className={`${styles.tabBtn} ${
                   statusFilter === tab ? styles.tabBtnActive : ""
                 }`}
@@ -254,7 +404,7 @@ export default function AdminDashboardPage() {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              fetchContactsData(statusFilter, searchQuery);
+              fetchContactsData(statusFilter, searchQuery, { silent: false });
             }}
             className={styles.searchGroup}
           >
@@ -379,7 +529,6 @@ export default function AdminDashboardPage() {
                       {isUnread ? (
                         <button
                           type="button"
-                          disabled={actionLoading === c._id}
                           onClick={() => handleStatusChange(c._id, "read")}
                           className={styles.actionBtn}
                         >
@@ -388,7 +537,6 @@ export default function AdminDashboardPage() {
                       ) : (
                         <button
                           type="button"
-                          disabled={actionLoading === c._id}
                           onClick={() => handleStatusChange(c._id, "unread")}
                           className={styles.actionBtn}
                         >
@@ -399,7 +547,6 @@ export default function AdminDashboardPage() {
                       {!isReplied && (
                         <button
                           type="button"
-                          disabled={actionLoading === c._id}
                           onClick={() => handleStatusChange(c._id, "replied")}
                           className={styles.actionBtn}
                         >
@@ -410,7 +557,6 @@ export default function AdminDashboardPage() {
                       {!isArchived ? (
                         <button
                           type="button"
-                          disabled={actionLoading === c._id}
                           onClick={() => handleStatusChange(c._id, "archived")}
                           className={styles.actionBtn}
                         >
@@ -419,7 +565,6 @@ export default function AdminDashboardPage() {
                       ) : (
                         <button
                           type="button"
-                          disabled={actionLoading === c._id}
                           onClick={() => handleStatusChange(c._id, "read")}
                           className={styles.actionBtn}
                         >
@@ -429,7 +574,6 @@ export default function AdminDashboardPage() {
 
                       <button
                         type="button"
-                        disabled={actionLoading === c._id}
                         onClick={() => handleDelete(c._id, c.name)}
                         className={`${styles.actionBtn} ${styles.deleteBtn}`}
                       >
