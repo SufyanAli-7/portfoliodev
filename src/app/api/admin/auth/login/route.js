@@ -6,9 +6,26 @@ import {
   signToken,
   ensureDefaultAdmin,
 } from "@/lib/auth";
+import { getClientIP } from "@/lib/ip";
+import { checkLoginRateLimit } from "@/lib/ratelimit";
 
 export async function POST(request) {
   try {
+    // 1. Rate Limiting Protection (Anti Brute-Force: 5 attempts per 15m)
+    const clientIP = getClientIP(request);
+    const rateLimit = await checkLoginRateLimit(clientIP);
+
+    if (!rateLimit.allowed) {
+      const headers = {};
+      if (rateLimit.retryAfter) {
+        headers["Retry-After"] = String(rateLimit.retryAfter);
+      }
+      return NextResponse.json(
+        { success: false, error: rateLimit.error },
+        { status: rateLimit.status || 429, headers }
+      );
+    }
+
     const body = await request.json();
     const { email, password } = body;
 

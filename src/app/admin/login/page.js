@@ -76,9 +76,6 @@ export default function AdminLoginPage() {
             <span>05 // AUTH_GATEWAY</span>
           </div>
           <h1 className={styles.title}>ADMIN PORTAL</h1>
-          <p className={styles.subtitle}>
-            Enter your credentials to access the portfolio communications dashboard.
-          </p>
         </div>
 
         {/* Login form card */}

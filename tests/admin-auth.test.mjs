@@ -145,6 +145,42 @@ test("Admin Auth & Dashboard API security tests", async (t) => {
     assert.ok(cookie, "Should return cleared cookie");
     assert.match(cookie, /Max-Age=0/);
   });
+
+  await t.test("9. Login rate limiting blocks excessive attempts with HTTP 429", async () => {
+    const testIP = `198.51.100.${Math.floor(Math.random() * 200) + 10}`;
+    const payload = JSON.stringify({
+      email: "intruder@domain.com",
+      password: "wrong-password",
+    });
+
+    // Make 5 attempts
+    for (let i = 0; i < 5; i++) {
+      await fetch(`${BASE_URL}/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-real-ip": testIP,
+        },
+        body: payload,
+      });
+    }
+
+    // 6th attempt must trigger HTTP 429 Too Many Requests
+    const blockedRes = await fetch(`${BASE_URL}/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-real-ip": testIP,
+      },
+      body: payload,
+    });
+
+    assert.equal(blockedRes.status, 429);
+    const blockedData = await blockedRes.json();
+    assert.equal(blockedData.success, false);
+    assert.match(blockedData.error, /Too many login attempts/i);
+    assert.ok(blockedRes.headers.get("retry-after"));
+  });
 });
 
 test.after(async () => {

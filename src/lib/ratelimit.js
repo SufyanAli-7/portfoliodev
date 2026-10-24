@@ -8,6 +8,7 @@ import { Ratelimit } from "@upstash/ratelimit";
 let redisClient = null;
 let shortLimiter = null;
 let dailyLimiter = null;
+let loginLimiter = null;
 
 function getRateLimiters() {
   const url = process.env.UPSTASH_REDIS_REST_URL;
@@ -38,9 +39,17 @@ function getRateLimiters() {
       prefix: "ratelimit:contact:daily",
       analytics: false,
     });
+
+    // 5 login attempts per IP per 15 minutes (brute-force defense)
+    loginLimiter = new Ratelimit({
+      redis: redisClient,
+      limiter: Ratelimit.slidingWindow(5, "15 m"),
+      prefix: "ratelimit:admin:login",
+      analytics: false,
+    });
   }
 
-  return { shortLimiter, dailyLimiter };
+  return { shortLimiter, dailyLimiter, loginLimiter };
 }
 
 /**
@@ -110,3 +119,56 @@ export async function checkContactRateLimit(identifier) {
     };
   }
 }
+
+/**
+ * Evaluates login rate limit to prevent credential brute-forcing.
+ * Allows 5 attempts per 15 minutes per IP.
+ *
+ * @param {string} identifier - Client IP or fallback identifier
+ * @returns {Promise<{ allowed: boolean, status?: number, error?: string, retryAfter?: number }>}
+ */
+export async function checkLoginRateLimit(identifier) {
+  try {
+    const limiters = getRateLimiters();
+
+    if (!limiters) {
+      console.error(
+        "[Security] Login rate limiting unconfigured: missing Upstash Redis credentials."
+      );
+      return {
+        allowed: false,
+        status: 503,
+        error: "Authentication service temporarily unavailable. Please try again later.",
+      };
+    }
+
+    const result = await limiters.loginLimiter.limit(identifier);
+    if (!result.success) {
+      const retryAfter = Math.max(
+        1,
+        Math.ceil((result.reset - Date.now()) / 1000)
+      );
+      const minutes = Math.max(1, Math.ceil(retryAfter / 60));
+      return {
+        allowed: false,
+        status: 429,
+        retryAfter,
+        error: `Too many login attempts. Please wait ${minutes} minute${minutes > 1 ? "s" : ""} before trying again.`,
+      };
+    }
+
+    return {
+      allowed: true,
+      remaining: result.remaining,
+      reset: result.reset,
+    };
+  } catch (error) {
+    console.error("[Security] Login rate limiter error:", error.message);
+    return {
+      allowed: false,
+      status: 503,
+      error: "Authentication service temporarily unavailable. Please try again later.",
+    };
+  }
+}
+
