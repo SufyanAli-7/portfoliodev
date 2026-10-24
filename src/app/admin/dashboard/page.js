@@ -19,12 +19,14 @@ export default function AdminDashboardPage() {
   const [statusFilter, setStatusFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(true);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const [actionLoading, setActionLoading] = useState(null);
 
   // 1. Fetch Contacts with Filter & Search
   const fetchContactsData = useCallback(
     async (status = statusFilter, query = searchQuery) => {
       try {
+        setIsRefreshing(true);
         const params = new URLSearchParams();
         if (status !== "all") {
           params.append("status", status);
@@ -47,6 +49,8 @@ export default function AdminDashboardPage() {
         }
       } catch (err) {
         console.error("Failed to fetch contacts:", err);
+      } finally {
+        setIsRefreshing(false);
       }
     },
     [statusFilter, searchQuery, router]
@@ -156,6 +160,15 @@ export default function AdminDashboardPage() {
     });
   };
 
+  if (loading || !admin) {
+    return (
+      <div className={styles.loadingFullWrapper}>
+        <div className={styles.loadingSpinner}></div>
+        <p className={styles.loadingText}>VERIFYING SECURITY CLEARANCE...</p>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.dashboardWrapper}>
       {/* Top Navbar */}
@@ -263,7 +276,7 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* Inquiries Content */}
-        {loading ? (
+        {isRefreshing ? (
           <div className={styles.loadingState}>
             <div className={styles.loadingSpinner}></div>
             <p className={styles.loadingText}>DECRYPTING TRANSMISSIONS...</p>
