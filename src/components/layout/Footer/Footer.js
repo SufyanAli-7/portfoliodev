@@ -17,7 +17,7 @@ export default function Footer() {
               <span className={styles.cursor}>{cursorChar}</span>
             </Link>
             <p className={styles.buildInfo}>
-              © {year} {brandName} // {buildStatus}
+              © {year} {brandName} {"//"} {buildStatus}
             </p>
           </div>
 
@@ -26,14 +26,20 @@ export default function Footer() {
             <ul className={styles.linksList}>
               {links.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className={styles.footerLink}
-                    target={link.isExternal ? "_blank" : undefined}
-                    rel={link.isExternal ? "noopener noreferrer" : undefined}
-                  >
-                    {link.label}
-                  </a>
+                  {link.isExternal ? (
+                    <a
+                      href={link.href}
+                      className={styles.footerLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link href={link.href} className={styles.footerLink}>
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

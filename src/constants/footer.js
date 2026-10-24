@@ -19,5 +19,10 @@ export const FOOTER_CONFIG = {
       href: "https://github.com/sufyanali-7",
       isExternal: true,
     },
+    {
+      label: "ADMIN",
+      href: "/admin/login",
+      isExternal: false,
+    },
   ],
 };
