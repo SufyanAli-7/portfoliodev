@@ -11,7 +11,8 @@ export default function ContactForm() {
     email: "",
     message: "",
   });
-  const [status, setStatus] = useState("idle"); // idle | submitting | success
+  const [status, setStatus] = useState("idle"); // idle | submitting | success | error
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,25 +20,49 @@ export default function ContactForm() {
       ...prev,
       [name]: value,
     }));
+    if (status === "error") {
+      setStatus("idle");
+      setErrorMessage("");
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
 
     setStatus("submitting");
+    setErrorMessage("");
 
-    // Construct mailto fallback and trigger success animation
-    const subject = encodeURIComponent(`Portfolio Inquiry from ${formData.name}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    );
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    setTimeout(() => {
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to submit message. Please try again.");
+      }
+
       setStatus("success");
-      window.location.href = `mailto:sufyan.ali0612@gmail.com?subject=${subject}&body=${body}`;
-    }, 600);
+    } catch (err) {
+      console.error("Submission error:", err);
+      setStatus("error");
+      setErrorMessage(
+        err.message || "An unexpected error occurred. Please try again or reach out directly."
+      );
+    }
   };
+
+  const isFormFilled = Boolean(
+    formData.name.trim() &&
+    formData.email.trim() &&
+    formData.message.trim()
+  );
 
   return (
     <div className={styles.formCard} aria-label="Send direct message">
@@ -51,7 +76,7 @@ export default function ContactForm() {
           <div className={styles.successIcon}>✓</div>
           <h3 className={styles.successHeading}>MESSAGE TRANSMITTED</h3>
           <p className={styles.successText}>
-            Thank you, {formData.name}. Your transmission has been queued. I will reply within 24 hours.
+            Thank you, {formData.name}. Your transmission has been successfully received. I will review your inquiry and follow up within 24 hours.
           </p>
           <button
             type="button"
@@ -59,6 +84,7 @@ export default function ContactForm() {
             onClick={() => {
               setFormData({ name: "", email: "", message: "" });
               setStatus("idle");
+              setErrorMessage("");
             }}
           >
             TRANSMIT ANOTHER MESSAGE
@@ -66,6 +92,13 @@ export default function ContactForm() {
         </div>
       ) : (
         <form onSubmit={handleSubmit} className={styles.formElement}>
+          {status === "error" && errorMessage && (
+            <div className={styles.errorMessage} role="alert">
+              <span>⚠</span>
+              <span>{errorMessage}</span>
+            </div>
+          )}
+
           {/* Field: NAME */}
           <div className={styles.fieldGroup}>
             <label htmlFor="contact-name" className={styles.fieldLabel}>
@@ -126,7 +159,9 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={status === "submitting"}
-              className={styles.submitButton}
+              className={`${styles.submitButton} ${
+                isFormFilled && status !== "submitting" ? styles.submitButtonReady : ""
+              }`}
             >
               {status === "submitting" ? "TRANSMITTING..." : form.submitButton}
             </button>
