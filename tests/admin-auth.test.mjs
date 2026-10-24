@@ -9,11 +9,15 @@ const BASE_URL = "http://localhost:3000/api/admin";
 test("Admin Auth & Dashboard API security tests", async (t) => {
   let authCookie = "";
   let testContactId = "";
+  const sessionIP = `198.51.100.${Math.floor(Math.random() * 150) + 10}`;
 
   await t.test("1. Login fails with incorrect credentials (HTTP 401)", async () => {
     const res = await fetch(`${BASE_URL}/auth/login`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "x-real-ip": sessionIP,
+      },
       body: JSON.stringify({
         email: process.env.DEFAULT_ADMIN_EMAIL,
         password: "WrongPassword!999",
@@ -29,7 +33,10 @@ test("Admin Auth & Dashboard API security tests", async (t) => {
   await t.test("2. Login succeeds with correct credentials and returns JWT cookie (HTTP 200)", async () => {
     const res = await fetch(`${BASE_URL}/auth/login`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "x-real-ip": sessionIP,
+      },
       body: JSON.stringify({
         email: process.env.DEFAULT_ADMIN_EMAIL,
         password: process.env.DEFAULT_ADMIN_PASSWORD,
