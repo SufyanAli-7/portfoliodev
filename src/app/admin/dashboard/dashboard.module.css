@@ -1,5 +1,6 @@
 /* ==========================================================================
    Admin Dashboard Styles - Dark Cyber Brutalist Interface
+   Fully responsive across Desktop, Tablet, and Mobile devices (320px - 1440px)
    ========================================================================== */
 
 .dashboardWrapper {
@@ -10,6 +11,9 @@
   flex-direction: column;
 }
 
+/* ==========================================================================
+   Top Navbar
+   ========================================================================== */
 .topNavbar {
   background-color: var(--brand-surface);
   border-bottom: 1px solid var(--brand-border);
@@ -17,6 +21,7 @@
   top: 0;
   z-index: 50;
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .navContainer {
@@ -32,7 +37,8 @@
 .brandGroup {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 
 .brandBadge {
@@ -45,6 +51,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  white-space: nowrap;
 }
 
 .statusDot {
@@ -54,11 +61,18 @@
   background-color: var(--brand-accent);
   box-shadow: 0 0 10px var(--brand-accent);
   animation: pulse 2s infinite ease-in-out;
+  flex-shrink: 0;
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.85); }
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
 }
 
 .brandDivider {
@@ -68,17 +82,19 @@
 
 .dashboardTitle {
   font-family: var(--font-space-grotesk), sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--brand-text-primary);
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .navActions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .adminUserBadge {
@@ -89,6 +105,10 @@
   padding: 6px 12px;
   border-radius: 4px;
   border: 1px solid rgba(255, 255, 255, 0.06);
+  white-space: nowrap;
+  max-width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .portfolioLink {
@@ -100,6 +120,7 @@
   border-radius: 4px;
   border: 1px solid var(--brand-border);
   transition: all var(--transition-fast);
+  white-space: nowrap;
 }
 
 .portfolioLink:hover {
@@ -119,6 +140,7 @@
   border-radius: 4px;
   cursor: pointer;
   transition: all var(--transition-fast);
+  white-space: nowrap;
 }
 
 .logoutBtn:hover {
@@ -127,7 +149,9 @@
   color: #fff;
 }
 
-/* Main Content Layout */
+/* ==========================================================================
+   Main Content Layout
+   ========================================================================== */
 .mainContainer {
   max-width: 1400px;
   margin: 0 auto;
@@ -136,19 +160,21 @@
   flex: 1;
 }
 
-/* Stats Cards Grid */
+/* ==========================================================================
+   Stats Cards Grid
+   ========================================================================== */
 .statsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .statCard {
   background-color: var(--brand-surface);
   border: 1px solid var(--brand-border);
   border-radius: 6px;
-  padding: 20px 24px;
+  padding: 20px 22px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -166,7 +192,7 @@
 
 .statLabel {
   font-family: var(--font-jetbrains-mono), monospace;
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -175,7 +201,7 @@
 
 .statValue {
   font-family: var(--font-space-grotesk), sans-serif;
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 700;
   color: var(--brand-text-primary);
   line-height: 1;
@@ -185,7 +211,9 @@
   color: var(--brand-accent);
 }
 
-/* Filter & Controls Bar */
+/* ==========================================================================
+   Filter & Controls Bar
+   ========================================================================== */
 .controlsBar {
   display: flex;
   flex-wrap: wrap;
@@ -195,13 +223,13 @@
   background-color: var(--brand-surface);
   border: 1px solid var(--brand-border);
   border-radius: 6px;
-  padding: 16px 20px;
+  padding: 14px 18px;
   margin-bottom: 24px;
 }
 
 .filterTabs {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   gap: 6px;
 }
 
@@ -214,10 +242,11 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 8px 14px;
+  padding: 7px 12px;
   border-radius: 4px;
   cursor: pointer;
   transition: all var(--transition-fast);
+  white-space: nowrap;
 }
 
 .tabBtn:hover {
@@ -234,10 +263,10 @@
 .searchGroup {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   flex: 1;
-  max-width: 400px;
-  min-width: 260px;
+  max-width: 420px;
+  min-width: 240px;
 }
 
 .searchInput {
@@ -247,7 +276,7 @@
   color: var(--brand-text-primary);
   font-family: var(--font-inter), sans-serif;
   font-size: 13px;
-  padding: 8px 14px;
+  padding: 8px 12px;
   border-radius: 4px;
   transition: border-color var(--transition-fast);
 }
@@ -263,7 +292,8 @@
   color: var(--brand-text-secondary);
   font-family: var(--font-jetbrains-mono), monospace;
   font-size: 11px;
-  padding: 8px 14px;
+  font-weight: 600;
+  padding: 8px 12px;
   border-radius: 4px;
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -275,7 +305,9 @@
   border-color: var(--brand-accent);
 }
 
-/* Contacts List */
+/* ==========================================================================
+   Contacts List & Cards
+   ========================================================================== */
 .contactsList {
   display: flex;
   flex-direction: column;
@@ -286,9 +318,10 @@
   background-color: var(--brand-surface);
   border: 1px solid var(--brand-border);
   border-radius: 6px;
-  padding: 24px 28px;
+  padding: 22px 24px;
   transition: all var(--transition-fast);
   position: relative;
+  overflow: hidden;
 }
 
 .contactCardUnread {
@@ -305,27 +338,33 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 16px;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .senderInfo {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  min-width: 0;
+  flex: 1;
 }
 
 .senderName {
   font-family: var(--font-space-grotesk), sans-serif;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--brand-text-primary);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .senderEmail {
   font-family: var(--font-jetbrains-mono), monospace;
-  font-size: 12.5px;
+  font-size: 12px;
   color: var(--brand-accent);
   text-decoration: none;
+  overflow-wrap: anywhere;
+  word-break: break-all;
 }
 
 .senderEmail:hover {
@@ -335,17 +374,19 @@
 .cardMetaGroup {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
 .statusBadge {
   font-family: var(--font-jetbrains-mono), monospace;
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 4px 10px;
+  padding: 3px 8px;
   border-radius: 4px;
+  white-space: nowrap;
 }
 
 .statusUnread {
@@ -374,8 +415,9 @@
 
 .timeTag {
   font-family: var(--font-jetbrains-mono), monospace;
-  font-size: 11px;
+  font-size: 10.5px;
   color: var(--brand-text-muted);
+  white-space: nowrap;
 }
 
 .messageBody {
@@ -386,10 +428,11 @@
   background: rgba(10, 10, 10, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 4px;
-  padding: 16px 20px;
-  margin: 16px 0;
+  padding: 14px 18px;
+  margin: 14px 0;
   white-space: pre-wrap;
   word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .cardBottomRow {
@@ -397,7 +440,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   padding-top: 12px;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -409,18 +452,25 @@
   font-family: var(--font-jetbrains-mono), monospace;
   font-size: 10px;
   color: var(--brand-text-muted);
+  min-width: 0;
+  flex: 1;
 }
 
 .techItem {
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .actionsGroup {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .actionBtn {
@@ -435,6 +485,10 @@
   border: 1px solid var(--brand-border);
   color: var(--brand-text-secondary);
   transition: all var(--transition-fast);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .actionBtn:hover {
@@ -470,7 +524,9 @@
   color: #fff;
 }
 
-/* Empty State */
+/* ==========================================================================
+   Empty & Loading States
+   ========================================================================== */
 .emptyState {
   text-align: center;
   padding: 60px 20px;
@@ -481,7 +537,7 @@
 
 .emptyTitle {
   font-family: var(--font-space-grotesk), sans-serif;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--brand-text-primary);
   margin-bottom: 8px;
@@ -490,11 +546,10 @@
 
 .emptyText {
   font-family: var(--font-inter), sans-serif;
-  font-size: 13.5px;
+  font-size: 13px;
   color: var(--brand-text-secondary);
 }
 
-/* Loading State */
 .loadingState {
   display: flex;
   flex-direction: column;
@@ -519,34 +574,218 @@
 
 .loadingText {
   font-family: var(--font-jetbrains-mono), monospace;
-  font-size: 12px;
+  font-size: 11.5px;
   letter-spacing: 0.12em;
   color: var(--brand-accent);
   text-transform: uppercase;
 }
 
-/* Responsive */
+/* ==========================================================================
+   Responsive Breakpoints: Tablet & Mobile
+   ========================================================================== */
+
+/* Tablet & Smaller Laptops (<= 1024px) */
+@media (max-width: 1024px) {
+  .navContainer {
+    padding: 14px 24px;
+  }
+
+  .mainContainer {
+    padding: 24px 20px;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+  }
+}
+
+/* Tablets (<= 768px) */
 @media (max-width: 768px) {
   .navContainer {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    gap: 14px;
+    padding: 14px 18px;
   }
-  
+
+  .brandGroup {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .navActions {
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .adminUserBadge {
+    flex: 1;
+    max-width: 170px;
+    font-size: 10px;
+    padding: 5px 8px;
+  }
+
+  .portfolioLink,
+  .logoutBtn {
+    font-size: 10px;
+    padding: 5px 10px;
+  }
+
+  .mainContainer {
+    padding: 18px 14px;
+  }
+
+  /* 2x2 Clean Mobile Grid for Stats */
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .statCard {
+    padding: 14px 16px;
+    gap: 6px;
+  }
+
+  .statValue {
+    font-size: 24px;
+  }
+
   .controlsBar {
     flex-direction: column;
     align-items: stretch;
+    padding: 12px 14px;
+    gap: 12px;
+  }
+
+  /* Horizontal swipeable scroll for tabs */
+  .filterTabs {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+
+  .filterTabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tabBtn {
+    flex-shrink: 0;
+    padding: 6px 11px;
+    font-size: 10.5px;
   }
 
   .searchGroup {
+    width: 100%;
     max-width: 100%;
+    min-width: 0;
+  }
+
+  .searchInput {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .contactCard {
+    padding: 16px 14px;
   }
 
   .cardTopRow {
     flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .cardMetaGroup {
+    width: 100%;
+    justify-content: space-between;
   }
 
   .cardBottomRow {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .techDetails {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  /* Organized grid buttons for touch interaction */
+  .actionsGroup {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .actionBtn {
+    width: 100%;
+    padding: 8px 6px;
+    font-size: 10px;
+  }
+
+  .replyBtn {
+    grid-column: span 2;
+    padding: 9px 8px;
+    font-size: 11px;
+  }
+
+  .deleteBtn {
+    grid-column: span 2;
+  }
+}
+
+/* Small Mobile Screens (<= 480px) */
+@media (max-width: 480px) {
+  .navContainer {
+    padding: 12px 14px;
+  }
+
+  .dashboardTitle {
+    display: none; /* Hide secondary title on very small screens to keep brand badge clean */
+  }
+
+  .brandDivider {
+    display: none;
+  }
+
+  .adminUserBadge {
+    display: none; /* Keep navbar clean on small phones, show action buttons clearly */
+  }
+
+  .navActions {
+    justify-content: flex-end;
+  }
+
+  .mainContainer {
+    padding: 14px 10px;
+  }
+
+  .statsGrid {
+    gap: 8px;
+  }
+
+  .statCard {
+    padding: 12px 12px;
+  }
+
+  .statLabel {
+    font-size: 9px;
+  }
+
+  .statValue {
+    font-size: 22px;
+  }
+
+  .messageBody {
+    font-size: 13px;
+    padding: 12px 12px;
   }
 }
