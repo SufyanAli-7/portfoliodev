@@ -32,7 +32,7 @@ export async function PATCH(request, context) {
     const updated = await Contact.findByIdAndUpdate(
       id,
       { status },
-      { new: true, runValidators: true }
+      { returnDocument: "after", runValidators: true }
     );
 
     if (!updated) {
