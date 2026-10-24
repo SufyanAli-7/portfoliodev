@@ -10,6 +10,7 @@ export default function ContactForm() {
     name: "",
     email: "",
     message: "",
+    website: "", // Anti-bot honeypot field
   });
   const [status, setStatus] = useState("idle"); // idle | submitting | success | error
   const [errorMessage, setErrorMessage] = useState("");
@@ -82,7 +83,7 @@ export default function ContactForm() {
             type="button"
             className={styles.resetBtn}
             onClick={() => {
-              setFormData({ name: "", email: "", message: "" });
+              setFormData({ name: "", email: "", message: "", website: "" });
               setStatus("idle");
               setErrorMessage("");
             }}
@@ -98,6 +99,22 @@ export default function ContactForm() {
               <span>{errorMessage}</span>
             </div>
           )}
+
+          {/* Honeypot field for anti-bot trap: invisible to humans, filled by bots */}
+          <div className={styles.honeypotWrapper} aria-hidden="true">
+            <label htmlFor="contact-website" tabIndex={-1}>
+              Website (leave empty)
+            </label>
+            <input
+              id="contact-website"
+              name="website"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={formData.website}
+              onChange={handleChange}
+            />
+          </div>
 
           {/* Field: NAME */}
           <div className={styles.fieldGroup}>

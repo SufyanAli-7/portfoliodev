@@ -50,6 +50,19 @@
   gap: 8px;
 }
 
+/* Honeypot field for anti-spam: invisible to human users, accessible to automated bots */
+.honeypotWrapper {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
 .fieldGroup {
   display: flex;
   flex-direction: column;
