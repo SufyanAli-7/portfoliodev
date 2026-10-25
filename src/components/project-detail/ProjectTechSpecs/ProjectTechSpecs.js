@@ -16,12 +16,31 @@ export default function ProjectTechSpecs({ project }) {
 
           {/* 4 Columns Specifications Grid */}
           <div className={styles.specsGrid}>
-            {project.techSpecs.map((spec) => (
-              <div key={spec.id} className={styles.specItem}>
-                <span className={styles.specLabel}>{spec.label}</span>
-                <span className={styles.specValue}>{spec.value}</span>
-              </div>
-            ))}
+            {project.techSpecs.map((spec) => {
+              const liveHref = spec.href || (spec.id === "status" ? project.liveUrl : null);
+
+              return (
+                <div key={spec.id} className={styles.specItem}>
+                  <span className={styles.specLabel}>{spec.label}</span>
+                  {liveHref ? (
+                    <a
+                      href={liveHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`${styles.specValue} ${styles.specLink}`}
+                      title={`Open Live Project: ${liveHref}`}
+                    >
+                      <span>{spec.value}</span>
+                      <span className={styles.specLinkArrow} aria-hidden="true">
+                        ↗
+                      </span>
+                    </a>
+                  ) : (
+                    <span className={styles.specValue}>{spec.value}</span>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </Container>

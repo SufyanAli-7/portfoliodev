@@ -63,6 +63,35 @@
   text-transform: uppercase;
 }
 
+.specLink {
+  color: #c8ff00;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  border-bottom: 1px dashed rgba(200, 255, 0, 0.45);
+  padding-bottom: 2px;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.specLink:hover {
+  color: #ffffff;
+  border-bottom-color: #c8ff00;
+  text-shadow: 0 0 10px rgba(200, 255, 0, 0.45);
+}
+
+.specLinkArrow {
+  font-size: 13px;
+  line-height: 1;
+  transition: transform var(--transition-fast);
+}
+
+.specLink:hover .specLinkArrow {
+  transform: translate(2px, -2px);
+}
+
 /* ==========================================================================
    Responsive Breakpoints
    ========================================================================== */
