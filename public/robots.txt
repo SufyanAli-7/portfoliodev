@@ -1,0 +1,199 @@
+# robots.txt — https://sufyanali.dev
+# Policy: All AI crawlers explicitly ALLOWED for citation/visibility.
+# AI-optimized files: https://sufyanali.dev/llms.txt and https://sufyanali.dev/llms-full.txt
+
+# Default — all search engines and well-behaved crawlers
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# ---- AI crawlers (allowed for AIO visibility & citations) ----
+
+# OpenAI GPTBot
+User-agent: GPTBot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# OpenAI SearchBot
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# OpenAI ChatGPT User
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Anthropic ClaudeBot
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Anthropic Claude-Web
+User-agent: Claude-Web
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Anthropic AI
+User-agent: anthropic-ai
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# PerplexityBot
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Perplexity-User
+User-agent: Perplexity-User
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Google-Extended (Gemini / Vertex AI retrieval & citation)
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Common Crawl
+User-agent: CCBot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Applebot-Extended (Apple Intelligence)
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Applebot
+User-agent: Applebot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# ByteDance Bytespider (TikTok / Doubao)
+User-agent: Bytespider
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Amazonbot (Alexa / Amazon Bedrock)
+User-agent: Amazonbot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Meta External Agent (Llama / Meta AI)
+User-agent: meta-externalagent
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Diffbot
+User-agent: Diffbot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# You.com Search
+User-agent: YouBot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Phind Bot
+User-agent: PhindBot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# DuckAssist Bot
+User-agent: DuckAssistBot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Googlebot & Image Bot
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: Googlebot-Image
+Allow: /
+
+# Bingbot
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# DuckDuckBot
+User-agent: DuckDuckBot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Facebook / Meta Bot
+User-agent: FacebookBot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# LinkedIn Bot
+User-agent: LinkedInBot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Twitter / X Bot
+User-agent: Twitterbot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Slackbot
+User-agent: Slackbot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Discordbot
+User-agent: Discordbot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# WhatsApp
+User-agent: WhatsApp
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# TelegramBot
+User-agent: TelegramBot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# ---- Endpoints ----
+
+Host: https://sufyanali.dev
+Sitemap: https://sufyanali.dev/sitemap.xml
