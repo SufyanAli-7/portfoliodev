@@ -14,7 +14,7 @@ export const PROJECTS_DATA = [
     title: "QuickCart",
     description:
       "Full-stack e-commerce ecosystem — product catalog, cart & checkout, customer portal, and comprehensive admin management.",
-    liveUrl: "https://github.com/sufyanali",
+    liveUrl: "https://quick-cart-client-alpha.vercel.app",
     detailUrl: "/projects/quickcart",
     caseStudy: {
       client: "QuickCart Commerce Inc.",
@@ -143,7 +143,7 @@ export const PROJECTS_DATA = [
     title: "SlideX LMS",
     description:
       "Full-stack Learning Management System — multi-role student & instructor portals, interactive course catalog, video lecture delivery, and comprehensive admin analytics.",
-    liveUrl: "https://github.com/sufyanali",
+    liveUrl: "https://lms-client-blush.vercel.app",
     detailUrl: "/projects/slidex-lms",
     caseStudy: {
       client: "SlideX Technologies",
@@ -270,7 +270,7 @@ export const PROJECTS_DATA = [
     title: "that. Marketing",
     description:
       "Modern digital agency web platform — interactive services catalog, multi-category work portfolio, client appreciations, and streamlined project manager consultation booking.",
-    liveUrl: "https://github.com/sufyanali",
+    liveUrl: "https://markting-site-deploy-18-10-2025.vercel.app",
     detailUrl: "/projects/that-marketing",
     caseStudy: {
       client: "that. Marketing Agency",
@@ -375,7 +375,7 @@ export const PROJECTS_DATA = [
     title: "Taskly",
     description:
       "Modern productivity & task management mobile web app — real-time task tracking, priority categorization, image attachments, deadline alerts, and progress analytics.",
-    liveUrl: "https://github.com/sufyanali",
+    liveUrl: "https://github.com/SufyanAli-7/Taskly-Client-Expo",
     detailUrl: "/projects/taskly",
     caseStudy: {
       client: "Personal Project / Open Source",
