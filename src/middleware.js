@@ -8,13 +8,23 @@ import { NextResponse } from "next/server";
 export function middleware(request) {
   const { pathname } = request.nextUrl;
 
-  // Only protect dashboard routes (do not block /admin/login)
-  if (pathname.startsWith("/admin/dashboard")) {
+  // 1. If accessing protected admin routes without token -> redirect to /admin/login
+  if (pathname.startsWith("/admin/dashboard") || pathname === "/admin") {
     const token = request.cookies.get("admin_token")?.value;
 
     if (!token) {
       const loginUrl = new URL("/admin/login", request.url);
       return NextResponse.redirect(loginUrl);
+    }
+  }
+
+  // 2. If already logged in and accessing /admin/login -> redirect to /admin/dashboard
+  if (pathname === "/admin/login") {
+    const token = request.cookies.get("admin_token")?.value;
+
+    if (token) {
+      const dashboardUrl = new URL("/admin/dashboard", request.url);
+      return NextResponse.redirect(dashboardUrl);
     }
   }
 
