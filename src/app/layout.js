@@ -28,7 +28,7 @@ export const metadata = {
   metadataBase: new URL("https://sufyanali.dev"),
   title: "Muhammad Sufyan Ali | Full Stack Developer",
   description:
-    "Muhammad Sufyan Ali is a Full-Stack Developer specializing in React, Next.js, Node.js, Express, MongoDB, PostgreSQL, and modern web application development.",
+    "Muhammad Sufyan Ali is a Full-Stack MERN Developer specializing in React, Next.js, Node.js, and modern scalable web and mobile application development.",
   keywords: [
     "Muhammad Sufyan Ali",
     "Sufyan Ali",
@@ -74,7 +74,7 @@ export const metadata = {
     url: "https://sufyanali.dev/",
     title: "Muhammad Sufyan Ali | Full Stack Developer",
     description:
-      "Full Stack Developer crafting exceptional web experiences with MERN stack.",
+      "Full-Stack MERN Developer crafting exceptional web and mobile applications.",
     siteName: "Muhammad Sufyan Ali Portfolio",
     images: [
       {
@@ -91,7 +91,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Muhammad Sufyan Ali | Full Stack Developer",
     description:
-      "Full Stack Developer crafting exceptional web experiences with MERN stack.",
+      "Full-Stack MERN Developer crafting exceptional web and mobile applications.",
     images: ["https://sufyanali.dev/cover.jpg"],
     creator: "@SufyanAli",
   },

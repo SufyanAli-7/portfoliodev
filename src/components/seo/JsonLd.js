@@ -6,9 +6,9 @@ export default function JsonLd() {
     alternateName: "Sufyan Ali",
     url: "https://sufyanali.dev/",
     image: "https://sufyanali.dev/cover.jpg",
-    jobTitle: "Full-Stack Developer",
+    jobTitle: "Full-Stack Web & Mobile App Developer",
     description:
-      "Full-Stack Developer specializing in React, Next.js, Node.js, Express, MongoDB, PostgreSQL, and modern web application development.",
+      "Full-Stack MERN Developer specializing in React, Next.js, Node.js, and modern scalable web and mobile application development.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Faisalabad",
