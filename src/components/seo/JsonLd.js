@@ -8,7 +8,7 @@ export default function JsonLd() {
     image: "https://sufyanali.dev/cover.jpg",
     jobTitle: "Full-Stack Web & Mobile App Developer",
     description:
-      "Full-Stack MERN Developer specializing in React, Next.js, Node.js, and modern scalable web and mobile application development.",
+      "Muhammad Sufyan Ali is a Full-Stack Developer specializing in MERN, Expo, SaaS, & AI-Powered Solutions, building modern scalable web and mobile applications.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Faisalabad",

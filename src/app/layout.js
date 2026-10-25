@@ -26,9 +26,9 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata = {
   metadataBase: new URL("https://sufyanali.dev"),
-  title: "Muhammad Sufyan Ali | Full Stack Developer",
+  title: "Muhammad Sufyan Ali | Full Stack Developer | Scalable SaaS & AI Solutions",
   description:
-    "Muhammad Sufyan Ali is a Full-Stack MERN Developer specializing in React, Next.js, Node.js, and modern scalable web and mobile application development.",
+    "Muhammad Sufyan Ali is a Full-Stack Developer specializing in MERN, Expo, SaaS, & AI-Powered Solutions, building modern scalable web and mobile applications.",
   keywords: [
     "Muhammad Sufyan Ali",
     "Sufyan Ali",
@@ -72,9 +72,9 @@ export const metadata = {
     type: "website",
     locale: "en_US",
     url: "https://sufyanali.dev/",
-    title: "Muhammad Sufyan Ali | Full Stack Developer",
+    title: "Muhammad Sufyan Ali | Full Stack Developer | Scalable SaaS & AI Solutions",
     description:
-      "Full-Stack MERN Developer crafting exceptional web and mobile applications.",
+      "Muhammad Sufyan Ali is a Full-Stack Developer specializing in MERN, Expo, SaaS, & AI-Powered Solutions, building modern scalable web and mobile applications.",
     siteName: "Muhammad Sufyan Ali Portfolio",
     images: [
       {
@@ -89,9 +89,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Muhammad Sufyan Ali | Full Stack Developer",
+    title: "Muhammad Sufyan Ali | Full Stack Developer | Scalable SaaS & AI Solutions",
     description:
-      "Full-Stack MERN Developer crafting exceptional web and mobile applications.",
+      "Muhammad Sufyan Ali is a Full-Stack Developer specializing in MERN, Expo, SaaS, & AI-Powered Solutions, building modern scalable web and mobile applications.",
     images: ["https://sufyanali.dev/cover.jpg"],
     creator: "@SufyanAli",
   },
