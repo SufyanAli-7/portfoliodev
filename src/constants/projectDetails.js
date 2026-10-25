@@ -37,7 +37,7 @@ export const PROJECT_DETAILS_MAP = {
     techSpecs: [
       { id: "role", label: "ROLE", value: "FULL-STACK ARCHITECT" },
       { id: "timeline", label: "TIMELINE", value: "3 MONTHS" },
-      { id: "stack", label: "STACK", value: "NEXT.JS / NODE.JS" },
+      { id: "stack", label: "STACK", value: "MERN STACK" },
       { id: "status", label: "STATUS", value: "LIVE / VERIFIED" },
     ],
     nextProjectSectionNumber: "03 / NEXT_PROJECT",
@@ -66,7 +66,7 @@ export const PROJECT_DETAILS_MAP = {
     techSpecs: [
       { id: "role", label: "ROLE", value: "SYSTEMS LEAD" },
       { id: "timeline", label: "TIMELINE", value: "4 MONTHS" },
-      { id: "stack", label: "STACK", value: "EXPRESS / MONGODB" },
+      { id: "stack", label: "STACK", value: "MERN STACK" },
       { id: "status", label: "STATUS", value: "DEPLOYED / STABLE" },
     ],
     nextProjectSectionNumber: "03 / NEXT_PROJECT",
@@ -124,7 +124,7 @@ export const PROJECT_DETAILS_MAP = {
     techSpecs: [
       { id: "role", label: "ROLE", value: "FULL-STACK DEV" },
       { id: "timeline", label: "TIMELINE", value: "2 MONTHS" },
-      { id: "stack", label: "STACK", value: "PWA / NEXT.JS" },
+      { id: "stack", label: "STACK", value: "REACT NATIVE / EXPO" },
       { id: "status", label: "STATUS", value: "PRODUCTION / READY" },
     ],
     nextProjectSectionNumber: "03 / NEXT_PROJECT",

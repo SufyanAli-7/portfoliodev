@@ -24,34 +24,53 @@ export const ABOUT_CONFIG = {
   content: {
     headline: "BRIDGING THE GAP BETWEEN RAW FUNCTIONAL LOGIC AND EDITORIAL AESTHETICS.",
     paragraphs: [
-      "I am a Full-Stack Developer based in Faisalabad, Pakistan, operating at the intersection of technical precision and visual minimalism. My work focuses on building digital architectures and scalable SaaS platforms that are as robust in their performance as they are intentional in their design.",
+      "I am a Software Engineer and a Full-Stack Developer based in Faisalabad, Pakistan, operating at the intersection of technical precision and visual minimalism. My work focuses on building digital architectures and scalable SaaS platforms that are as robust in their performance as they are intentional in their design.",
       "Deeply influenced by the brutalist movement and the structural clarity of the terminal interface, I reject unnecessary complexity. With core expertise spanning React, Next.js, TypeScript, and Node.js, every line of code and every pixel in my layout serves a functional purpose.",
     ],
   },
 
   techStack: {
-    label: "/ TECH_STACK_OVERVIEW",
-    columns: [
-      {
-        id: "frontend",
-        title: "CORE_FRONTEND",
-        skills: [
-          "React / Next.js",
-          "TypeScript",
-          "Tailwind CSS",
-        ],
-      },
-      {
-        id: "engineering",
-        title: "ENGINEERING",
-        skills: [
-          "Node.js / Express.js",
-          "MongoDB / Prisma",
-          "AWS Infrastructure",
-        ],
-      },
-    ],
-  },
+  label: "/ TECH_STACK_OVERVIEW",
+  columns: [
+    {
+      id: "frontend",
+      title: "FRONTEND & UI",
+      skills: [
+        "Next.js / React / React Native",
+        "JavaScript / TypeScript",
+        "Tailwind CSS / shadcn / Ant Design",
+      ],
+    },
+    {
+      id: "backend",
+      title: "BACKEND & DATA",
+      skills: [
+        "Node.js / Express.js",
+        "MongoDB / PostgreSQL / Redis",
+        "Prisma / Mongoose",
+      ],
+    },
+    {
+      id: "infrastructure",
+      title: "INFRASTRUCTURE",
+      skills: [
+        "Vercel / Docker / VPS / AWS",
+        "Git / GitHub",
+        "CI/CD",
+      ],
+    },
+    {
+      id: "integrations",
+      title: "INTEGRATIONS",
+      skills: [
+        "JWT / Clerk / OAuth",
+        "Stripe Payments",
+        "REST APIs / AI APIs",
+        "Redux / Zustand",
+      ],
+    },
+  ],
+},
 
   philosophy: {
     label: "DESIGN_PHILOSOPHY",

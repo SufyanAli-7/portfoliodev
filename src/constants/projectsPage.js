@@ -6,7 +6,7 @@ export const PROJECTS_PAGE_CONFIG = {
     "An indexed repository of digital constructs, experimental protocols, and refined architectural software interfaces.",
   metaStats: [
     { label: "TOTAL_ENTRIES:", value: "04" },
-    { label: "LAST_UPDATE:", value: "24.10.2024" },
+    { label: "LAST_UPDATE:", value: "26.10.2026" },
     { label: "STATUS:", value: "OPERATIONAL" },
   ],
 };
@@ -22,7 +22,7 @@ export const PROJECTS_LIST = [
     image: "/images/quickcart-mockups/01-homepage-hero.png",
     alt: "QuickCart e-commerce storefront hero and product catalogue interface",
     tags: ["React", "Next.js", "Node.js", "MongoDB", "Tailwind CSS"],
-    liveUrl: "https://github.com/sufyanali",
+    liveUrl: "https://quick-cart-client-alpha.vercel.app",
   },
   {
     id: "slidex-lms",
@@ -31,10 +31,10 @@ export const PROJECTS_LIST = [
     category: "EDTECH LEARNING SYSTEM",
     description:
       "SlideX LMS is an all-in-one learning platform built to provide students, instructors, and administrators with an intuitive educational experience.",
-    image: "/images/slidex-lms-mockups/10-diagonal-style.png",
+    image: "/images/slidex-lms-mockups/02-course-catalog.png",
     alt: "SlideX LMS complete platform perspective view and interface suite",
     tags: ["Next.js", "Express", "Node.js", "MongoDB", "Video Engine"],
-    liveUrl: "https://github.com/sufyanali",
+    liveUrl: "https://lms-client-blush.vercel.app",
   },
   {
     id: "that-marketing",
@@ -46,7 +46,7 @@ export const PROJECTS_LIST = [
     image: "/images/that-marketing-mockups/01-hero.png",
     alt: "that. Marketing agency hero showcase and client metrics overview",
     tags: ["React", "Next.js", "Node.js", "Framer Motion", "Tailwind CSS"],
-    liveUrl: "https://github.com/sufyanali",
+    liveUrl: "https://markting-site-deploy-18-10-2025.vercel.app",
   },
   {
     id: "taskly",
@@ -58,22 +58,32 @@ export const PROJECTS_LIST = [
     image: "/images/taskly-mockups/01-hero-trio.png",
     alt: "Taskly multi-screen productivity app overview",
     tags: ["React", "Next.js", "Node.js", "Express", "MongoDB"],
-    liveUrl: "https://github.com/sufyanali",
+    liveUrl: "https://github.com/SufyanAli-7/Taskly-Client-Expo",
   },
 ];
 
 export const STACK_ANALYSIS_CONFIG = {
   title: "STACK_ANALYSIS",
   columns: [
-    [
-      { label: "FRONTEND", value: "Next.js / Tailwind" },
-      { label: "BACKEND", value: "Node.js / Go" },
-      { label: "INFRA", value: "AWS / Vercel" },
-    ],
-    [
-      { label: "RUNTIME", value: "Docker / WASM" },
-      { label: "VERSIONING", value: "Git / LFS" },
-      { label: "PROTOCOLS", value: "gRPC / WebSocket" },
-    ],
+  [
+    { label: "FRONTEND", value: "Next.js / React / React Native" },
+    { label: "STYLING", value: "Tailwind CSS / shadcn / Ant Design" },
+    { label: "LANGUAGES", value: "JavaScript / TypeScript" },
   ],
+  [
+    { label: "BACKEND", value: "Node.js / Express.js" },
+    { label: "DATABASE", value: "MongoDB / PostgreSQL / Redis" },
+    { label: "ORM", value: "Prisma / Mongoose" },
+  ],
+  [
+    { label: "AUTH", value: "JWT / Clerk / OAuth" },
+    { label: "PAYMENTS", value: "Stripe" },
+    { label: "DEPLOYMENT", value: "Vercel / Docker / VPS / AWS" },
+  ],
+  [
+    { label: "STATE", value: "Redux / Zustand" },
+    { label: "VERSIONING", value: "Git / GitHub" },
+    { label: "INTEGRATION", value: "REST APIs / AI APIs / CI/CD" },
+  ],
+],
 };
