@@ -3,11 +3,12 @@
 Full-Stack Web and Mobile App Developer specializing in building high-performance web applications, cross-platform mobile apps with React Native & Expo, scalable SaaS platforms, and MERN stack solutions.
 
 - **Location:** Faisalabad, Punjab, Pakistan (works remotely worldwide)
-- **Experience:** 3+ years
-- **Projects completed:** 25+ projects
-- **Clients:** 20+ satisfied clients across 12 countries
+- **Experience:** 2.5+ years
+- **Projects completed:** 7+ major projects
 - **Rating:** 5.0 / 5 across verified client engagements
-- **Education:** BS in Software Engineering — Government College University Faisalabad (GCUF) (2021–2025)
+- **Education:**
+  - BS in Software Engineering — Government College University Faisalabad (GCUF) (2021–2025)
+  - Web and Mobile App Development — Saylani Mass IT Training (SMIT Faisalabad) (2026)
 - **Certifications:**
   - Google Certified: Start Writing Prompts Like a Pro (Coursera)
   - Google Certified: Foundations of Project Management (Coursera)
@@ -22,11 +23,13 @@ Full-Stack Web and Mobile App Developer specializing in building high-performanc
 
 ## Services
 
-### Full-Stack Web Development
+### Full-Stack Web Development (FULL_STACK_DEV)
+- **Portfolio Anchor:** [https://sufyanali.dev/#services](https://sufyanali.dev/#services)
+- **Code Identifier:** `SERVICE_01 / FULL_STACK_DEV`
 
 Full-stack web development is the end-to-end design and engineering of a web application — covering responsive user interfaces, frontend architecture, backend business logic, secure RESTful APIs, and databases — delivered as a complete, production-ready product.
 
-I engineer modern web applications from initial architecture to final cloud deployment: intuitive UI design, responsive frontend engineering, scalable API development, data modeling, authentication, payment gateways, and cloud hosting. Engagements typically ship production-grade MVPs in 3 to 8 weeks depending on scope.
+I build apps end-to-end — from database schema to the UI you touch. React, Next.js, and Node.js are my daily drivers. I engineer modern web applications from initial architecture to final cloud deployment: intuitive UI design, responsive frontend engineering, scalable API development, data modeling, authentication, payment gateways, and cloud hosting. Engagements typically ship production-grade MVPs in 3 to 8 weeks depending on scope.
 
 - **Tech:** React.js, Next.js, TypeScript, Node.js, Express.js, MongoDB, PostgreSQL, Tailwind CSS
 - **Starting price:** $3,000 USD — Starting estimate for a scoped MVP; custom fixed quotes provided after project discovery.
@@ -37,9 +40,60 @@ I engineer modern web applications from initial architecture to final cloud depl
   - Automated deployment and hosting setup (Vercel / AWS / Node.js)
   - Complete source code, documentation, and handover support
 
-### Mobile App Development (React Native & Expo)
+### API Engineering & Backend Architecture (API_ENGINEERING)
+- **Portfolio Anchor:** [https://sufyanali.dev/#services](https://sufyanali.dev/#services)
+- **Code Identifier:** `SERVICE_02 / API_ENGINEERING`
 
-Mobile app development is engineering high-performance, cross-platform applications for iOS and Android using React Native and Expo — delivering fluid native performance, gesture animations, offline caching, and native device capabilities.
+I design APIs that are a joy to work with. REST, GraphQL, microservices — whatever fits the problem best. Backend engineering is designing robust, modular, and high-throughput REST APIs and server-side logic that handle data securely and scale reliably under user growth.
+
+I architect clean, maintainable backend services: token-based authentication (JWT, Clerk, OAuth 2.0), secure password hashing, rate limiting, request validation (Zod), database query optimization, error handling, and third-party API integrations.
+
+- **Tech:** Node.js, Express.js, REST APIs, GraphQL, JWT, Clerk, Prisma, Supabase, Firebase, Redis
+- **Starting price:** $2,500 USD — Backend architectures and API endpoints scoped by complexity.
+- **Deliverables:**
+  - Modular, documented RESTful API endpoints
+  - Secure authentication and authorization middleware
+  - Database schema design, migrations, and relationship models
+  - Security protections (CORS, Helmet, rate limiting, validation)
+  - API documentation and Postman collections
+
+### Performance Optimization (PERF_OPTIMIZATION)
+- **Portfolio Anchor:** [https://sufyanali.dev/#services](https://sufyanali.dev/#services)
+- **Code Identifier:** `SERVICE_03 / PERF_OPTIMIZATION`
+
+I make slow things fast. Core Web Vitals, bundle sizes, query optimization — I dig into the numbers and fix what matters. Performance engineering systematically identifies and eliminates CPU, network, and database bottlenecks to deliver sub-second response times and 90+ Google Lighthouse scores across both desktop and mobile platforms.
+
+- **Tech:** Next.js Turbopack, Chrome DevTools, Redis Caching, Database Indexing, Bundle Analysis, Image Optimization
+- **Starting price:** $1,500 USD — Scoped diagnostic audit and performance refactoring.
+- **Deliverables:**
+  - Full Core Web Vitals audit and diagnostic report
+  - Bundle size reduction and code-splitting implementation
+  - Database query indexing and caching layer setup (Redis / Upstash)
+  - Server-side rendering (SSR) and edge-caching optimizations
+  - 90+ verified Google Lighthouse score on key conversion pages
+
+### SaaS Platform Development (SAAS_PLATFORM_DEV)
+- **Portfolio Anchor:** [https://sufyanali.dev/#services](https://sufyanali.dev/#services)
+- **Code Identifier:** `SERVICE_04 / SAAS_PLATFORM_DEV`
+
+I build scalable SaaS products with secure auth, subscription billing, dashboards, and cloud-ready architecture. SaaS platform development is building multi-tenant, subscription-based web applications with user onboarding, recurring billing, role-based access, and interactive admin dashboards.
+
+I engineer SaaS products from architecture to launch: user authentication, multi-tenant databases, Stripe subscription checkout, billing management, team roles, usage tracking, and administrative controls.
+
+- **Tech:** React, Next.js, Node.js, Express.js, Stripe, MongoDB, PostgreSQL, Supabase, Redis
+- **Starting price:** $6,000 USD — Complete SaaS builds typically range between $6K and $20K depending on features.
+- **Deliverables:**
+  - Multi-tenant SaaS web application
+  - Stripe subscription integration with webhooks and recurring billing
+  - User authentication and role-based access control (RBAC)
+  - Interactive user and admin dashboards
+  - Onboarding workflows and email notification triggers
+
+### Mobile App Development (MOBILE_APP_DEVELOPMENT)
+- **Portfolio Anchor:** [https://sufyanali.dev/#services](https://sufyanali.dev/#services)
+- **Code Identifier:** `SERVICE_05 / MOBILE_APP_DEVELOPMENT`
+
+I build cross-platform mobile apps with modern tech like React Native and Expo — fast, scalable, and user-friendly. Mobile app development is engineering high-performance, cross-platform applications for iOS and Android using React Native and Expo — delivering fluid native performance, gesture animations, offline caching, and native device capabilities.
 
 I build cross-platform mobile apps that feel 100% native on both platforms with a single clean codebase: intuitive touch navigation, Expo Router, offline persistence, push notifications, camera/storage integration, and secure API connectivity.
 
@@ -53,6 +107,7 @@ I build cross-platform mobile apps that feel 100% native on both platforms with 
   - App store / Play Store build configurations and APKs
 
 ### MERN Stack Development
+- **Portfolio Anchor:** [https://sufyanali.dev/#capabilities](https://sufyanali.dev/#capabilities)
 
 MERN stack development is engineering full-stack web applications with MongoDB, Express.js, React, and Node.js — providing a unified, cohesive JavaScript/TypeScript workflow across the entire application stack.
 
@@ -68,12 +123,11 @@ I build fast, modular MERN applications with strict separation of concerns: type
   - Cloud deployment on Vercel and Node.js server environments
 
 ### Next.js & Frontend Engineering
+- **Portfolio Anchor:** [https://sufyanali.dev/#capabilities](https://sufyanali.dev/#capabilities)
 
-Next.js frontend development is building ultra-fast, SEO-optimized, and accessible web interfaces using React, Server-Side Rendering (SSR), Static Site Generation (SSG), and modern CSS frameworks.
+Next.js frontend development is building ultra-fast, SEO-optimized, and accessible web interfaces using React, Server-Side Rendering (SSR), Static Site Generation (SSG), and modern CSS frameworks like Tailwind CSS, shadcn/ui, and Framer Motion.
 
-I build visually stunning, interactive user interfaces with fluid animations, micro-interactions, dark modes, and glassmorphism. Optimized for Google Core Web Vitals, sub-second load times, and maximum conversion rates.
-
-- **Tech:** Next.js, React.js, TypeScript, Tailwind CSS, Canvas API, Redux
+- **Tech:** Next.js, React.js, TypeScript, Tailwind CSS, shadcn/ui, Ant Design, Framer Motion, Redux, Zustand
 - **Starting price:** $2,500 USD — Scoped for landing pages, design systems, and frontend dashboards.
 - **Deliverables:**
   - Next.js web application with SSR/SSG optimization
@@ -82,37 +136,8 @@ I build visually stunning, interactive user interfaces with fluid animations, mi
   - Dynamic interactive animations and state management
   - SEO meta tags, Open Graph tags, and structured JSON-LD schemas
 
-### SaaS Platform Development
-
-SaaS platform development is building multi-tenant, subscription-based web applications with user onboarding, recurring billing, role-based access, and interactive admin dashboards.
-
-I engineer SaaS products from architecture to launch: user authentication, multi-tenant databases, Stripe subscription checkout, billing management, team roles, usage tracking, and administrative controls.
-
-- **Tech:** React, Next.js, Node.js, Express.js, Stripe, MongoDB, PostgreSQL, Supabase
-- **Starting price:** $6,000 USD — Complete SaaS builds typically range between $6K and $20K depending on features.
-- **Deliverables:**
-  - Multi-tenant SaaS web application
-  - Stripe subscription integration with webhooks and recurring billing
-  - User authentication and role-based access control (RBAC)
-  - Interactive user and admin dashboards
-  - Onboarding workflows and email notification triggers
-
-### API & Backend Architecture
-
-Backend engineering is designing robust, modular, and high-throughput REST APIs and server-side logic that handle data securely and scale reliably under user growth.
-
-I architect clean, maintainable backend services: token-based authentication (JWT), secure password hashing, rate limiting, request validation, database query optimization, error handling, and third-party API integrations.
-
-- **Tech:** Node.js, Express.js, REST APIs, JWT, Prisma, Supabase, Firebase
-- **Starting price:** $2,500 USD — Backend architectures and API endpoints scoped by complexity.
-- **Deliverables:**
-  - Modular, documented RESTful API endpoints
-  - Secure authentication and authorization middleware
-  - Database schema design, migrations, and relationship models
-  - Security protections (CORS, Helmet, rate limiting, validation)
-  - API documentation and Postman collections
-
 ### AI & Generative AI Integration
+- **Portfolio Anchor:** [https://sufyanali.dev/#capabilities](https://sufyanali.dev/#capabilities)
 
 AI application engineering is integrating intelligent machine learning, language models, and automated generative workflows directly into user-facing web and mobile applications.
 
@@ -128,12 +153,13 @@ I connect web and mobile platforms with state-of-the-art AI APIs (OpenAI, Anthro
   - Secure API key management and user quota tracking
 
 ### Database Architecture & Optimization
+- **Portfolio Anchor:** [https://sufyanali.dev/#capabilities](https://sufyanali.dev/#capabilities)
 
 Database engineering is creating organized, efficient, and reliable database structures that store, query, and protect application data with low latency.
 
-I design and manage both NoSQL and relational databases: schema planning, foreign key relationships, document nesting, indexing strategies, Prisma ORM migrations, and Supabase integration.
+I design and manage both NoSQL and relational databases: schema planning, foreign key relationships, document nesting, indexing strategies, Prisma ORM migrations, Redis caching, and Supabase integration.
 
-- **Tech:** MongoDB, PostgreSQL, Supabase, Prisma ORM, Firebase Realtime Database
+- **Tech:** MongoDB, PostgreSQL, MySQL, Redis, Supabase, Prisma ORM, Firebase
 - **Starting price:** $2,000 USD — Database schema design, migrations, and performance tuning.
 - **Deliverables:**
   - Normalized database schema design or MongoDB document modeling
@@ -146,7 +172,6 @@ I design and manage both NoSQL and relational databases: schema planning, foreig
 ## Selected Work
 
 ### QuickCart
-
 - **Category:** E-Commerce Platform · Web Application
 - **Stack:** React, Node.js, Express.js, MongoDB, Tailwind CSS, Vercel
 - **Detail Page:** https://sufyanali.dev/projects/quickcart
@@ -157,7 +182,6 @@ I design and manage both NoSQL and relational databases: schema planning, foreig
 **Overview:** QuickCart is a modern e-commerce web application engineered for smooth online retail. It provides a dynamic product catalog with search, category filtering, cart state management, user authentication, and an intuitive checkout flow designed for high purchase conversion and speed.
 
 ### SlideX LMS
-
 - **Category:** Learning Management System · Web Application
 - **Stack:** React, Node.js, Express.js, MongoDB, MERN Stack, Vercel
 - **Detail Page:** https://sufyanali.dev/projects/slidex-lms
@@ -168,7 +192,6 @@ I design and manage both NoSQL and relational databases: schema planning, foreig
 **Overview:** SlideX LMS is an all-in-one educational platform connecting instructors, students, and institutional administrators with structured course delivery, interactive media, RBAC permissions, and transparent progress analytics.
 
 ### that. Marketing
-
 - **Category:** Digital Agency Platform · Web Application
 - **Stack:** React, Next.js, Node.js, Framer Motion, Tailwind CSS, Vercel
 - **Detail Page:** https://sufyanali.dev/projects/that-marketing
@@ -179,7 +202,6 @@ I design and manage both NoSQL and relational databases: schema planning, foreig
 **Overview:** A commercial agency website engineered to position brand expertise and capture qualified client leads. Features structured service offerings, interactive case studies, high-contrast visual design, and fast Core Web Vitals performance.
 
 ### Taskly
-
 - **Category:** Productivity & Task Management · Cross-Platform Mobile App
 - **Stack:** React Native, Expo, Expo Router, TypeScript, Redux
 - **Detail Page:** https://sufyanali.dev/projects/taskly
@@ -190,7 +212,6 @@ I design and manage both NoSQL and relational databases: schema planning, foreig
 **Overview:** Taskly is a mobile-first task optimization and productivity workflow management suite built for deep work focus, keyboard-first interaction, priority categorization, and rapid local synchronization.
 
 ### DevFolio
-
 - **Category:** Developer Portfolio · Web Application
 - **Stack:** React, Next.js, TypeScript, Tailwind CSS, UI/UX Design, Vercel
 - **Live URL:** https://dev-folio-client.vercel.app/
@@ -220,6 +241,7 @@ I design and manage both NoSQL and relational databases: schema planning, foreig
 ## Education & Certifications
 
 - **BS Software Engineering:** Government College University Faisalabad (GCUF) (2021–2025)
+- **Web and Mobile App Development Certification:** Saylani Mass IT Training (SMIT Faisalabad) (2026)
 - **Start Writing Prompts Like a Pro:** Coursera • Google Verified
 - **Foundations of Project Management:** Coursera • Google Verified
 
@@ -243,26 +265,30 @@ Aggregate rating: **5.0 / 5** across verified client reviews and startup collabo
 ## Tech Stack Overview
 
 - **Mobile App Development:** React Native, Expo, Expo Router, React Navigation, Mobile UI/UX
-- **Frontend:** React.js, Next.js, TypeScript, Tailwind CSS, Redux Toolkit, HTML5, CSS3, JavaScript (ES6+), Canvas API
-- **Backend:** Node.js, Express.js, RESTful APIs, JWT Authentication, Microservices
-- **Databases & ORM:** MongoDB, PostgreSQL, Supabase, Prisma ORM, Firebase
-- **DevOps, Tools & Payments:** Git, GitHub, Docker, Stripe Payments, Vercel, Postman, Vite
+- **Frontend & UI:** React.js, Next.js, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS, shadcn/ui, Ant Design, Radix UI, Framer Motion, Redux Toolkit, Zustand, React Hook Form, Zod, Vite, Responsive Design
+- **Backend & APIs:** Node.js, Express.js, REST APIs, GraphQL, Microservices, JWT Authentication, Clerk, OAuth 2.0, Passport.js
+- **Databases & ORM:** MongoDB, Mongoose, PostgreSQL, MySQL, Redis, Supabase, Prisma ORM, Firebase Realtime Database
+- **DevOps, Tools & Payments:** Git, GitHub, Docker, AWS, VPS, Vercel, Stripe Payments, Cloudinary, Postman, Linux, NPM, CI/CD
+- **AI & Automation:** OpenAI API, Generative AI, Prompt Engineering
 
 ---
 
 ## Frequently Asked Questions
 
 ### Who is Muhammad Sufyan Ali?
-Muhammad Sufyan Ali is a Full-Stack Web & Mobile App Developer based in Faisalabad, Pakistan, with 3+ years of experience engineering modern web applications, cross-platform mobile apps (React Native & Expo), scalable SaaS systems, and MERN stack architectures. He has shipped 25+ projects for 20+ clients across 12 countries.
+Muhammad Sufyan Ali is a Full-Stack Web & Mobile App Developer based in Faisalabad, Pakistan, with 2.5+ years of experience engineering modern web applications, cross-platform mobile apps (React Native & Expo), scalable SaaS systems, and MERN stack architectures. He has shipped 7+ major projects.
 
 ### What services does Muhammad Sufyan Ali offer?
-Muhammad Sufyan Ali provides full-stack web development, cross-platform mobile app development (React Native & Expo), SaaS platform engineering, MERN stack solutions, Next.js frontend builds, REST API backend architecture, AI model integration, and database design.
+Muhammad Sufyan Ali provides full-stack web development, API engineering, performance optimization, SaaS platform engineering, cross-platform mobile app development (React Native & Expo), MERN stack solutions, Next.js frontend builds, REST API backend architecture, AI model integration, and database design.
 
 ### Does Muhammad Sufyan Ali build cross-platform mobile apps?
 Yes. He engineers cross-platform mobile applications for iOS and Android using React Native and Expo. These include fluid touch gestures, native device integrations, push notifications, offline data synchronization, and complete backend API connections.
 
 ### What tech stack does Muhammad Sufyan Ali specialize in?
-His core stack comprises React.js, Next.js, React Native, Expo, TypeScript, Node.js, Express.js, MongoDB, PostgreSQL, and Tailwind CSS. For cloud and integrations, he works with Stripe, Supabase, Prisma, Docker, and Vercel.
+His core stack comprises React.js, Next.js, React Native, Expo, TypeScript, Node.js, Express.js, MongoDB, PostgreSQL, and Tailwind CSS, along with shadcn/ui, Ant Design, Redis, Prisma ORM, and Supabase. For cloud and integrations, he works with Stripe, Docker, AWS, and Vercel.
+
+### What is Muhammad Sufyan Ali's education background?
+He holds a Bachelor in Software Engineering from Government College University Faisalabad (GCUF) (2021–2025) and completed specialized training in Web and Mobile App Development from Saylani Mass IT Training (SMIT Faisalabad). He also holds Google verified certifications in Prompt Engineering and Project Management.
 
 ### Is Muhammad Sufyan Ali available for hire?
 Yes. He is available for freelance projects, contract roles, MVP builds, and remote collaborations with clients worldwide. He can be contacted directly via email at sufyan.ali0612@gmail.com or on WhatsApp at +92 301 7135273.
