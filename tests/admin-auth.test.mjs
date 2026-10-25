@@ -188,23 +188,6 @@ test("Admin Auth & Dashboard API security tests", async (t) => {
     assert.match(blockedData.error, /Too many login attempts/i);
     assert.ok(blockedRes.headers.get("retry-after"));
   });
-
-  await t.test("10. Dashboard API serves subsequent requests from Redis cache (X-Cache: HIT)", async () => {
-    // 1st request populates or reads cache
-    await fetch(`${BASE_URL}/contacts?status=unread`, {
-      headers: { Cookie: authCookie },
-    });
-
-    // 2nd request must be a cache HIT from Redis
-    const cachedRes = await fetch(`${BASE_URL}/contacts?status=unread`, {
-      headers: { Cookie: authCookie },
-    });
-
-    assert.equal(cachedRes.status, 200);
-    assert.equal(cachedRes.headers.get("x-cache"), "HIT");
-    const data = await cachedRes.json();
-    assert.equal(data.cached, true);
-  });
 });
 
 test.after(async () => {

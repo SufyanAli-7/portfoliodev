@@ -2,12 +2,6 @@ import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/db";
 import Contact from "@/models/Contact";
 import { getAuthenticatedAdmin } from "@/lib/auth";
-import {
-  getDashboardCacheVersion,
-  buildContactsCacheKey,
-  getCache,
-  setCache,
-} from "@/lib/cache";
 
 export async function GET(request) {
   try {
@@ -19,33 +13,18 @@ export async function GET(request) {
       );
     }
 
-    const { searchParams } = new URL(request.url);
-    const statusFilter = searchParams.get("status") || "all";
-    const searchQuery = searchParams.get("q") || "";
-
-    // 1. Check Redis Cache First (returns in ~10ms without querying MongoDB)
-    const version = await getDashboardCacheVersion();
-    const cacheKey = buildContactsCacheKey(version, statusFilter, searchQuery);
-    const cachedData = await getCache(cacheKey);
-
-    if (cachedData) {
-      return NextResponse.json(
-        { ...cachedData, cached: true },
-        {
-          status: 200,
-          headers: {
-            "X-Cache": "HIT",
-            "Cache-Control": "private, max-age=60",
-          },
-        }
-      );
-    }
-
-    // 2. Cache Miss: Connect and Query MongoDB
     await connectDB();
 
+    const { searchParams } = new URL(request.url);
+    const statusFilter = searchParams.get("status");
+    const searchQuery = searchParams.get("q");
+
     const query = {};
-    if (["unread", "read", "replied", "archived"].includes(statusFilter)) {
+
+    if (
+      statusFilter &&
+      ["unread", "read", "replied", "archived"].includes(statusFilter)
+    ) {
       query.status = statusFilter;
     }
 
@@ -68,28 +47,20 @@ export async function GET(request) {
       Contact.countDocuments({ status: "archived" }),
     ]);
 
-    const payload = {
-      success: true,
-      contacts,
-      stats: {
-        total,
-        unread,
-        read,
-        replied,
-        archived,
+    return NextResponse.json(
+      {
+        success: true,
+        contacts,
+        stats: {
+          total,
+          unread,
+          read,
+          replied,
+          archived,
+        },
       },
-    };
-
-    // 3. Store in Redis Cache with 300s (5m) TTL
-    await setCache(cacheKey, payload, 300);
-
-    return NextResponse.json(payload, {
-      status: 200,
-      headers: {
-        "X-Cache": "MISS",
-        "Cache-Control": "private, max-age=60",
-      },
-    });
+      { status: 200 }
+    );
   } catch (error) {
     console.error("[Admin Contacts Fetch Error]:", error.message);
     return NextResponse.json(

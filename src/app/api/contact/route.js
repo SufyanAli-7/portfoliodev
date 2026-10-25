@@ -5,7 +5,6 @@ import { checkContactRateLimit } from "@/lib/ratelimit";
 import { getClientIP } from "@/lib/ip";
 import { readJsonWithLimit } from "@/lib/request";
 import { contactSubmissionSchema } from "@/lib/validations/contact";
-import { invalidateDashboardCache } from "@/lib/cache";
 
 const SECURITY_HEADERS = {
   "X-Content-Type-Options": "nosniff",
@@ -133,9 +132,6 @@ export async function POST(request) {
       ipAddress: sanitizedIP,
       userAgent,
     });
-
-    // Invalidate Redis dashboard cache so new inquiry appears instantly
-    await invalidateDashboardCache();
 
     return NextResponse.json(
       {
