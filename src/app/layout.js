@@ -23,6 +23,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://sufyanali.dev"),
   title: "Muhammad Sufyan Ali | Full-stack Developer",
   description:
     "Full-stack developer based in Faisalabad. I turn ideas into fast, scalable products — and I care about the details that make software feel right.",
@@ -41,6 +42,21 @@ export const metadata = {
     description:
       "Full-stack developer based in Faisalabad. I turn ideas into fast, scalable products — and I care about the details that make software feel right.",
     type: "website",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Muhammad Sufyan Ali // Full-Stack Developer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Muhammad Sufyan Ali | Full-stack Developer",
+    description:
+      "Full-stack developer based in Faisalabad. I turn ideas into fast, scalable products.",
+    images: ["/og-image.jpg"],
   },
   icons: {
     icon: [
