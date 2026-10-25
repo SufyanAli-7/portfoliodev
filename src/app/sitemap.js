@@ -1,3 +1,5 @@
+import { PROJECT_DETAILS_MAP } from "@/constants/projectDetails";
+
 export default function sitemap() {
   const baseUrl = "https://sufyanali.dev";
   const currentDate = new Date().toISOString();
@@ -8,34 +10,45 @@ export default function sitemap() {
       lastModified: currentDate,
       changeFrequency: "weekly",
       priority: 1.0,
+      images: [`${baseUrl}/cover.jpg`],
     },
     {
       url: `${baseUrl}/about`,
       lastModified: currentDate,
       changeFrequency: "monthly",
       priority: 0.9,
+      images: [`${baseUrl}/cover.jpg`],
     },
     {
       url: `${baseUrl}/projects`,
       lastModified: currentDate,
       changeFrequency: "weekly",
       priority: 0.9,
+      images: [`${baseUrl}/cover.jpg`],
     },
     {
       url: `${baseUrl}/contact`,
       lastModified: currentDate,
       changeFrequency: "monthly",
       priority: 0.8,
+      images: [`${baseUrl}/cover.jpg`],
     },
   ];
 
-  const projectSlugs = ["quickcart", "slidex-lms", "that-marketing", "taskly"];
-  const projectRoutes = projectSlugs.map((slug) => ({
-    url: `${baseUrl}/projects/${slug}`,
-    lastModified: currentDate,
-    changeFrequency: "monthly",
-    priority: 0.8,
-  }));
+  const projectRoutes = Object.keys(PROJECT_DETAILS_MAP).map((slug) => {
+    const project = PROJECT_DETAILS_MAP[slug];
+    const heroImage = project?.heroImage
+      ? `${baseUrl}${project.heroImage.startsWith("/") ? "" : "/"}${project.heroImage}`
+      : `${baseUrl}/cover.jpg`;
+
+    return {
+      url: `${baseUrl}/projects/${slug}`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.8,
+      images: [heroImage],
+    };
+  });
 
   return [...staticRoutes, ...projectRoutes];
 }
