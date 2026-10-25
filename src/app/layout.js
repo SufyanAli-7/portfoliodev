@@ -42,6 +42,16 @@ export const metadata = {
       "Full-stack developer based in Faisalabad. I turn ideas into fast, scalable products — and I care about the details that make software feel right.",
     type: "website",
   },
+  icons: {
+    icon: [
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.png", sizes: "64x64", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
 };
 
 export default function RootLayout({ children }) {
