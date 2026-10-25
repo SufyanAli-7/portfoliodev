@@ -1,4 +1,6 @@
+import Script from "next/script";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import JsonLd from "@/components/seo/JsonLd";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -24,39 +26,74 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata = {
   metadataBase: new URL("https://sufyanali.dev"),
-  title: "Muhammad Sufyan Ali | Full-stack Developer",
+  title: "Muhammad Sufyan Ali | Full Stack Developer",
   description:
-    "Full-stack developer based in Faisalabad. I turn ideas into fast, scalable products — and I care about the details that make software feel right.",
+    "Muhammad Sufyan Ali is a Full-Stack Developer specializing in React, Next.js, Node.js, Express, MongoDB, PostgreSQL, and modern web application development.",
   keywords: [
     "Muhammad Sufyan Ali",
-    "Sufyan",
-    "Full-stack developer",
+    "Sufyan Ali",
+    "Full Stack Developer",
+    "MERN Stack Developer",
+    "Web and Mobile App Developer",
+    "Web Developer",
+    "Mobile App Developer",
+    "Software Engineer",
+    "React Developer",
+    "Next.js Developer",
+    "Node.js Developer",
+    "Express.js",
+    "MongoDB",
+    "PostgreSQL",
+    "React Native Developer",
+    "Frontend Engineer",
+    "Backend Engineer",
     "Faisalabad",
-    "React",
-    "Next.js",
+    "Pakistan",
     "Portfolio",
   ],
-  authors: [{ name: "Muhammad Sufyan Ali" }],
+  authors: [{ name: "Muhammad Sufyan Ali", url: "https://sufyanali.dev" }],
+  creator: "Muhammad Sufyan Ali",
+  publisher: "Muhammad Sufyan Ali",
+  alternates: {
+    canonical: "https://sufyanali.dev/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
-    title: "Muhammad Sufyan Ali | Full-stack Developer",
-    description:
-      "Full-stack developer based in Faisalabad. I turn ideas into fast, scalable products — and I care about the details that make software feel right.",
     type: "website",
+    locale: "en_US",
+    url: "https://sufyanali.dev/",
+    title: "Muhammad Sufyan Ali | Full Stack Developer",
+    description:
+      "Full Stack Developer crafting exceptional web experiences with MERN stack.",
+    siteName: "Muhammad Sufyan Ali Portfolio",
     images: [
       {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Muhammad Sufyan Ali // Full-Stack Developer",
+        url: "https://sufyanali.dev/cover.jpg",
+        secureUrl: "https://sufyanali.dev/cover.jpg",
+        type: "image/jpeg",
+        width: 1376,
+        height: 768,
+        alt: "Muhammad Sufyan Ali | Full Stack Developer Portfolio Cover",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Muhammad Sufyan Ali | Full-stack Developer",
+    title: "Muhammad Sufyan Ali | Full Stack Developer",
     description:
-      "Full-stack developer based in Faisalabad. I turn ideas into fast, scalable products.",
-    images: ["/og-image.jpg"],
+      "Full Stack Developer crafting exceptional web experiences with MERN stack.",
+    images: ["https://sufyanali.dev/cover.jpg"],
+    creator: "@SufyanAli",
   },
   icons: {
     icon: [
@@ -65,6 +102,7 @@ export const metadata = {
       { url: "/favicon.ico", sizes: "any" },
     ],
     apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
       { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
     ],
   },
@@ -78,7 +116,28 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
-      <body suppressHydrationWarning>{children}</body>
+      <head>
+        <JsonLd />
+      </head>
+      <body suppressHydrationWarning>
+        {/* Google tag (gtag.js) */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-PWLHVGC81W"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+        >
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-PWLHVGC81W');
+          `}
+        </Script>
+        {children}
+      </body>
     </html>
   );
 }

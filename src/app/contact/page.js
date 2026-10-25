@@ -6,13 +6,17 @@ import Footer from "@/components/layout/Footer/Footer";
 import styles from "./page.module.css";
 
 export const metadata = {
-  title: "04 / CONTACT | Muhammad Sufyan Ali — Full-Stack Developer",
+  title: "Contact | Hire Muhammad Sufyan Ali",
   description:
-    "Let's build something. Open to new projects, collaborations, and conversations. Direct transmissions, inquiry protocols, and contact form for Muhammad Sufyan Ali.",
+    "Get in touch with Muhammad Sufyan Ali for full-stack, MERN stack, web, and mobile application development projects and collaborations.",
+  alternates: {
+    canonical: "https://sufyanali.dev/contact",
+  },
   openGraph: {
-    title: "04 / CONTACT | Muhammad Sufyan Ali",
+    title: "Contact | Hire Muhammad Sufyan Ali",
     description:
-      "Open to new projects, collaborations, and conversations. Get in touch with Muhammad Sufyan Ali.",
+      "Get in touch with Muhammad Sufyan Ali for full-stack, MERN stack, web, and mobile application development projects and collaborations.",
+    url: "https://sufyanali.dev/contact",
     type: "website",
   },
 };

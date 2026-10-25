@@ -13,12 +13,54 @@ export function generateStaticParams() {
   return Object.keys(PROJECT_DETAILS_MAP).map((slug) => ({ slug }));
 }
 
+const PROJECT_SEO_MAP = {
+  quickcart: {
+    title: "QuickCart | Full Stack E-Commerce Platform",
+    description:
+      "Full-stack e-commerce platform with product catalog, cart & checkout, customer portal, and admin management built by Sufyan Ali.",
+  },
+  "slidex-lms": {
+    title: "SlideX LMS | Modern Learning Management System",
+    description:
+      "Full-stack Learning Management System with interactive courses, video delivery, student portals, and analytics by Sufyan Ali.",
+  },
+  "that-marketing": {
+    title: "that. Marketing | Modern Digital Agency Web App",
+    description:
+      "Modern digital agency web platform with interactive services catalog, work portfolio showcase, and consultation booking by Sufyan.",
+  },
+  taskly: {
+    title: "Taskly | Task & Productivity Mobile Web App",
+    description:
+      "Modern productivity and task management mobile web app with real-time tracking, priority tags, and progress analytics by Sufyan.",
+  },
+};
+
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const project = PROJECT_DETAILS_MAP[slug] || DEFAULT_PROJECT_DETAIL;
+  const seo = PROJECT_SEO_MAP[slug] || {
+    title: `${project.title} | Muhammad Sufyan Ali`.slice(0, 60),
+    description: (project.overviewBody || "").slice(0, 155),
+  };
+
   return {
-    title: `${project.title} // ARCHIVE | Muhammad Sufyan Ali`,
-    description: project.overviewBody,
+    title: seo.title,
+    description: seo.description,
+    alternates: {
+      canonical: `https://sufyanali.dev/projects/${slug}`,
+    },
+    openGraph: {
+      title: seo.title,
+      description: seo.description,
+      url: `https://sufyanali.dev/projects/${slug}`,
+      images: [
+        {
+          url: project.heroImage || "https://sufyanali.dev/cover.jpg",
+          alt: seo.title,
+        },
+      ],
+    },
   };
 }
 

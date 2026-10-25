@@ -6,13 +6,17 @@ import Footer from "@/components/layout/Footer/Footer";
 import styles from "./page.module.css";
 
 export const metadata = {
-  title: "03 / ABOUT | Muhammad Sufyan Ali — Full-Stack Developer",
+  title: "About Muhammad Sufyan Ali | Full Stack Developer",
   description:
-    "Bridging the gap between raw functional logic and editorial aesthetics. Muhammad Sufyan Ali is a Full-Stack Developer specializing in MERN, Next.js, and high-performance digital architectures.",
+    "Full-Stack Developer & Software Engineer based in Faisalabad, Pakistan. Specializing in MERN stack, Next.js, React Native, and scalable architectures.",
+  alternates: {
+    canonical: "https://sufyanali.dev/about",
+  },
   openGraph: {
-    title: "03 / ABOUT | Muhammad Sufyan Ali",
+    title: "About Muhammad Sufyan Ali | Full Stack Developer",
     description:
-      "Bridging the gap between raw functional logic and editorial aesthetics. Full-Stack Developer based in Faisalabad, Pakistan.",
+      "Full-Stack Developer & Software Engineer based in Faisalabad, Pakistan. Specializing in MERN stack, Next.js, React Native, and scalable architectures.",
+    url: "https://sufyanali.dev/about",
     type: "profile",
   },
 };

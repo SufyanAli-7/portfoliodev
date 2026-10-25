@@ -7,13 +7,17 @@ import Footer from "@/components/layout/Footer/Footer";
 import styles from "./page.module.css";
 
 export const metadata = {
-  title: "02 / PROJECTS | Muhammad Sufyan Ali — Full-Stack Developer",
+  title: "Projects Archive | Muhammad Sufyan Ali",
   description:
-    "An indexed repository of digital constructs, experimental protocols, and refined architectural software interfaces built by Muhammad Sufyan Ali.",
+    "Explore production-ready full stack web and mobile apps engineered with Next.js, React, Node.js, and modern cloud architectures by Sufyan Ali.",
+  alternates: {
+    canonical: "https://sufyanali.dev/projects",
+  },
   openGraph: {
-    title: "02 / PROJECTS | Muhammad Sufyan Ali",
+    title: "Projects Archive | Muhammad Sufyan Ali",
     description:
-      "An indexed repository of digital constructs, experimental protocols, and refined architectural software interfaces.",
+      "Explore production-ready full stack web and mobile apps engineered with Next.js, React, Node.js, and modern cloud architectures by Sufyan Ali.",
+    url: "https://sufyanali.dev/projects",
   },
 };
 
