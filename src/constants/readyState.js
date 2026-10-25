@@ -14,8 +14,8 @@ export const READY_STATE_CONFIG = {
     href: "https://github.com/sufyanali-7",
   },
   terminalPrompt: {
-    user: "sufyan",
-    host: "sufyanali",
+    user: "ready",
+    host: "sufyanali.dev",
     path: "~$",
     cursor: "_",
   },
