@@ -66,10 +66,6 @@ export async function POST(request) {
     });
 
     const isProduction = process.env.NODE_ENV === "production";
-    const cookieValue = `admin_token=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${
-      7 * 24 * 60 * 60
-    }; ${isProduction ? "Secure;" : ""}`;
-
     const response = NextResponse.json(
       {
         success: true,
@@ -82,7 +78,16 @@ export async function POST(request) {
       { status: 200 }
     );
 
-    response.headers.set("Set-Cookie", cookieValue);
+    response.cookies.set({
+      name: "admin_token",
+      value: token,
+      httpOnly: true,
+      path: "/",
+      sameSite: "lax",
+      maxAge: 7 * 24 * 60 * 60,
+      secure: isProduction,
+    });
+
     return response;
   } catch (error) {
     console.error("[Admin Auth Login Error]:", error.message);

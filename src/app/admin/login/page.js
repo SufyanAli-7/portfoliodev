@@ -18,14 +18,14 @@ export default function AdminLoginPage() {
       try {
         const res = await fetch("/api/admin/auth/me");
         if (res.ok) {
-          router.replace("/admin/dashboard");
+          window.location.href = "/admin/dashboard";
         }
       } catch {
         // Not authenticated, stay on login
       }
     }
     checkAuth();
-  }, [router]);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,8 +49,9 @@ export default function AdminLoginPage() {
         throw new Error(data.error || "Invalid credentials.");
       }
 
-      // Login successful, redirect to dashboard
-      router.push("/admin/dashboard");
+      // Login successful: perform a full browser navigation to dashboard.
+      // This bypasses Next.js client router cache which can hold a stale redirect to /admin/login
+      window.location.href = "/admin/dashboard";
     } catch (err) {
       setStatus("error");
       setErrorMessage(err.message || "Failed to log in.");

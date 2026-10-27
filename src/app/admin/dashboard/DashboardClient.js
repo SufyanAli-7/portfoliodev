@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import styles from "./dashboard.module.css";
@@ -18,6 +18,11 @@ export default function DashboardClient({
   const [searchQuery, setSearchQuery] = useState("");
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [actionLoading, setActionLoading] = useState(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // 1. Fetch Contacts with Filter & Search
   const fetchContactsData = useCallback(
@@ -34,7 +39,7 @@ export default function DashboardClient({
 
         const res = await fetch(`/api/admin/contacts?${params.toString()}`);
         if (res.status === 401) {
-          router.replace("/admin/login");
+          window.location.href = "/admin/login";
           return;
         }
         const data = await res.json();
@@ -102,9 +107,9 @@ export default function DashboardClient({
   const handleLogout = async () => {
     try {
       await fetch("/api/admin/auth/logout", { method: "POST" });
-      router.push("/admin/login");
+      window.location.href = "/admin/login";
     } catch {
-      router.push("/admin/login");
+      window.location.href = "/admin/login";
     }
   };
 
@@ -112,6 +117,7 @@ export default function DashboardClient({
     if (!dateStr) return "N/A";
     const date = new Date(dateStr);
     return date.toLocaleDateString("en-US", {
+      timeZone: mounted ? undefined : "UTC",
       year: "numeric",
       month: "short",
       day: "numeric",
@@ -285,7 +291,7 @@ export default function DashboardClient({
                       <span className={`${styles.statusBadge} ${statusClass}`}>
                         {c.status || "unread"}
                       </span>
-                      <time className={styles.timeTag}>
+                      <time className={styles.timeTag} suppressHydrationWarning>
                         {formatDate(c.createdAt)}
                       </time>
                     </div>

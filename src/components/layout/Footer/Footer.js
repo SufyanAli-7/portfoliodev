@@ -36,7 +36,11 @@ export default function Footer() {
                       {link.label}
                     </a>
                   ) : (
-                    <Link href={link.href} className={styles.footerLink}>
+                    <Link
+                      href={link.href}
+                      prefetch={false}
+                      className={styles.footerLink}
+                    >
                       {link.label}
                     </Link>
                   )}

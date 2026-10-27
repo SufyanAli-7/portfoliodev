@@ -21,7 +21,7 @@ export const FOOTER_CONFIG = {
     },
     {
       label: "ADMIN",
-      href: "/admin/dashboard",
+      href: "/admin/login",
       isExternal: false,
     },
   ],
